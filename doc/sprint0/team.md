@@ -7,4 +7,4 @@ final-project-s23-limeade created by GitHub Classroom
 | Yuqi Liang | liang289 | 1006931616 | amy.liang@mail.utoronto.ca | Discord: Ami#3491 | Amy Liang |
 | Youngjae Heo | heyoun1  | 1007002743  | youngjae.heo@mail.utoronto.ca  | youngjaeheo2002#0834 | Youngjae Heo  |
 | Gary Chen  |chengar6   |1007193065   |thegary.chen@mail.utoronto.ca   | garry#2501   |Gary Chen   |
-|   |   |   |   |   |   |
+| Lukas Augustynowicz  | august66  | 1006877328  | lukas.augustynowicz@mail.utoronto.ca  | instabiliity#8530  | Lukas Augustynowicz  |
