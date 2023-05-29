@@ -23,13 +23,15 @@ Once users find others who want to share the experience, they will be able to in
 wish to go the event together. 
 
 
-#### Q2: Who are your target users? (2-3 personas)
+#### **Q2: Who are your target users? (2-3 personas)**
 
-YOUR ANSWER GOES HERE ...
+There are 2 primary target users for this innovative platform.
 
- * Short (2-5 min' read max)
- * Be specific (e.g. )
- * You can create your personas as part of this Markdown file, or add a link to an external site (for example, [Xtensio](https://xtensio.com/user-persona/)), or add a pdf
+We have the consumers who want to attend exciting events but do not have anyone to join them. They are willing to share experiences with others, regardless if they know eachother. Whether it's a music concert, a sports game, or a musical performance, these individuals thrive on the energy that comes from being part of a crowd. 
+
+We also have the business customers who are looking for an easy way to monetize their last-minute unsold tickets. Recognizing the potential revenue loss and the possibility of filling up their venues, the organizers want to be able to adverstise and sell off their remaining seats. This platform will provide them with a solution by allowing them to post their available tickets and even entice users to attend with exclusive discounts and incentives.
+
+To be more specific with what type of customer we are targeting, we will prioritize reaching out to Gen Z and Millennials. These 2 generations are known for their tech-savviness and willingness to look for new experiences represent a significant portion of the potential customer base. Additionally, we will focus on Solo Travelers, Urban Professionals, and Expats & Newcomers.
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
 
