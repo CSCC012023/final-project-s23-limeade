@@ -1,0 +1,45 @@
+# Product Backlog
+
+### Payment
+* no need for payment tiers
+* for now, everything free
+* Separate freemium and premium in theory
+ 
+### Features
+* signin/login/signout
+* editing/viewing profiles
+    * interests
+    * filtering
+* create experiences and events
+    * On-Me – creator of event covers cost of experience
+interact and join experiences and events
+* chat feature between users after invitation acceptance
+* search function
+* searching for experiences (related to interests)
+* searching for users within experiences (based on profiles)
+* UI/UX design
+* UI artifact: base on the pitch presentation?
+* see if enough stories, if not enough, go to business features
+
+### Stories
+1. As a new user, I want to be able to sign up or become a premium user so that I can have access to premium features
+2. As a new user, I want to be able to sign up as a normal user so that I can use the app with the basic features
+3. As a user, I would like the ability to add personal information to my profile so I can find people with similar interests and they can find me in the same way
+4. As a user, I want to access account settings to edit private information, delete my account, set my email, address, and whatever is needed for the app
+5. As a user, I want to be able to search other users based on experiences and preferences so that I can find people that I have things in common with
+6. As a user I want to be able to search events so that I can find events to interact with
+7. As a user, I want to be able to see a board of events so I can click on the event and see what the event is about
+8. As a user, I want to be able to join events so it can show that I am a user joining the event on the event page
+9. As a user, I want to see recommendations of events based on my personal interests stated in my profile
+10. As a user, I want to be able to chat with other users so that I can coordinate meetings and events with them
+11. As a user, I want to be able to see invitations to events by other users so that I can accept or decline the invitations
+12. As a user, I want to see a list of users I’ve been chatting with to continue chatting with them
+13. As a user, I want to see a list of users that want to start a chat with me so I can accept or decline their chats
+14. As a premium user, I want to be able to create events so that I can advertise my event to users of the app
+15. As a person interested in experiencing things with strangers, I want to be able to sign in to the application so that I can access experiences
+16. As a user, I want to be able to log in so that I can access my account and experiences
+17. As a user, I want to be able to log out so that my information is protected and private from others
+18. As a user, I want to be able to see other user’s profiles so I can see whether I vibe with the person
+19. As a user, I would like the ability to report inappropriate content in chat messages or profiles, so that I can feel more safe on the app
+20. As a user, I would like the ability to ignore or block other users, so that they can’t constantly send spam to annoy me or I can avoid people I did not like
+21. As a staff user, I want to be able to sign in as a staff so that I can moderate the events and chats/general interactions
