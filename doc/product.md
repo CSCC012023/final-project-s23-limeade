@@ -3,20 +3,24 @@
  > _Note:_ This document is meant to evolve throughout the planning phase of your project.    
  > That is, it makes sense for you commit regularly to this file while working on the project (especially edits/additions/deletions to the _Highlights_ section).
 
-#### Q1: What are you planning to build?
+#### **Q1: What are you planning to build?**
 
-YOUR ANSWER GOES HERE ...
+GoGo is an application that connects users who want to share similar experiences. 
 
- * Short (2-5 min' read)
- * Start with a single sentence, high-level description of the product.
- * Be clear - Describe the problem you are solving in simple terms.
- * Be concrete. For example:
-    * What are you planning to build? Is it a website, mobile app,
-   browser extension, command-line app, etc.?      
-    * When describing the problem/need, give concrete examples of common use cases.
- * Focus on *what* your product does, and avoid discussing *how* you're going to implement it.      
-   For example: This is not the time or the place to talk about which programming language and/or framework you are planning to use.
- * **Feel free (and very much encouraged) to include useful diagrams, mock-ups and/or links**.
+We are aiming to solve the issue of wanting to attend events and experiences but not knowing anyone
+to attend with. This will also simulatenously solve a business issue of venues not being sold out,
+and potential customers being lost due to them not having anyone to experience the event with. 
+
+We are planning to build a website that will allow users to find each other based on
+similar interests and being able to interact with one another and attend events together.
+The center of connection will be the experience that the users want. Due to the growing 
+trend of younger generations prioritizing doing what they want, regardless of who they do it with,
+known as the Dazi phenonmemon, the app aims to capture this and have the connection rely on memorable 
+experience rather then matching based on personality or friendships.
+
+Users will be able to create experiences/events, invite others to their own, and join others as well.
+Once users find others who want to share the experience, they will be able to interact and decide if they 
+wish to go the event together. 
 
 
 #### Q2: Who are your target users? (2-3 personas)
