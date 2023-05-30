@@ -3,7 +3,7 @@
 ## Installation
 
 0.  
-Make sure you have mongodb installed as per the online documentation
+Make sure you have node, npm, angular cli, mongodb installed as per the online documentation
 
 1.  
 $ git clone https://github.com/CSCC012023/final-project-s23-limeade.git  
@@ -14,7 +14,7 @@ $ cd backend
 
 $ npm install  
 
-$ nodemon server.js  
+$ node server.js  
 
 
 3.  
