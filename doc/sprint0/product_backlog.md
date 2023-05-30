@@ -43,3 +43,5 @@ interact and join experiences and events
 19. As a user, I would like the ability to report inappropriate content in chat messages or profiles, so that I can feel more safe on the app
 20. As a user, I would like the ability to ignore or block other users, so that they can’t constantly send spam to annoy me or I can avoid people I did not like
 21. As a staff user, I want to be able to sign in as a staff so that I can moderate the events and chats/general interactions
+22. As a user, I would like the ability to filter events by location and time so that I can focus on events that are accessible to me
+23. As a user, I would like to filter the users attending the events by shared interests and/or age/gender so that I can go with specific kinds of people
