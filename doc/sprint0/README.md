@@ -32,7 +32,7 @@ then edit ./src/environments/environment.development.ts just like the example fi
 $ ng serve       
 
 
-Then the app should be ready to go!    
+Then the app should be ready to go on http://localhost:4200!    
 
 
 ## Contribution
