@@ -19,7 +19,7 @@ usersRouter.post("/signup",async (req,res)=>{
         return res.status(422).json({error:"user creation failed"});
     }
 
-    res.json(user);
+    return res.json(user);
 
 
 })

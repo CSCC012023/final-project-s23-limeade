@@ -4,15 +4,18 @@ import mongoose from "mongoose";
 import session from "express-session";
 import cors from "cors";
 import { usersRouter } from "./routers/user_router.js";
+import dotenv from "dotenv"
+import morgan from "morgan"
 const app = express();
 const port = 3000; // Choose the desired port number
-
+dotenv.config();
 // Middleware
 const corsOptions = {
-    origin:"http://localhost:4200",
+    origin:process.env.FRONTEND,
     credentials:true
 }
 app.use(cors(corsOptions));
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(
   session({
@@ -27,7 +30,7 @@ app.use("/api/users", usersRouter);
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-const mongoURI = 'mongodb://localhost:27017/limeade'; // Replace with your MongoDB connection URI
+const mongoURI = process.env.MONGO_URI; // Replace with your MongoDB connection URI
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
