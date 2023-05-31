@@ -2,37 +2,47 @@
 
 ## Installation
 
-0.  
-Make sure you have node, npm, angular cli, mongodb installed as per the online documentation
+0. Make sure you have Node.js, npm, Angular CLI, MongoDB installed as per the online documentation.
 
-1.  
+1. Open a terminal window and run the following commands to clone the repository:
+
+```shell
 $ git clone https://github.com/CSCC012023/final-project-s23-limeade.git  
-$ cd into created directory
+$ cd [into created directory]
+```
  
-2. 
-$ cd backend  
+2. Run the following commands to start the backend server:
 
-$ npm install  
+```shell
+$ cd backend
 
-$ node server.js  
+$ npm install
+```
 
+Then create a `.env` file like the `.env.example`.
 
-3.  
-open a new terminal  
+```shell
+$ node server.js
+```
 
-$cd frontend  
+3. Open a new terminal window and run the following commands to configure the frontend:
 
-$npm install   
+```shell
+$ cd frontend
 
-$ng generate environments            
+$ npm install
 
+$ ng generate environments
+```
 
-then edit ./src/environments/environment.development.ts just like the example file ./src/environments/environment.development.ts.example     
+Then edit `./src/environments/environment.development.ts` just like the example file `./src/environments/environment.development.ts.example` 
 
+Run the following command to start the frontend:
+
+```shell
 $ ng serve       
+```
 
-
-Then the app should be ready to go on http://localhost:4200!    
-
+Then the app should be ready to go on http://localhost:4200!
 
 ## Contribution

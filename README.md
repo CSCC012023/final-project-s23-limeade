@@ -1,5 +1,6 @@
 CSCC01 Project - Limeade
 ========================================================================
+
 Introduction
 ------------------------------------------------------------------------
 
@@ -11,6 +12,7 @@ The motivation behind the project is to let people be able to experience events 
 
 Installation
 ------------------------------------------------------------------------
+
 TBD
 
 Contribution
