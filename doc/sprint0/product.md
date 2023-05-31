@@ -35,15 +35,13 @@ To be more specific with what type of customer we are targeting, we will priorit
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
 
-YOUR ANSWER GOES HERE ...
+Our product is a unique solution that is exclusively designed for setting up meetups for events and experiences. Unlike our competitors, the product focuses on providing comprehension services to not only users who wish to enjoy events with others but also offer businesses and artists a digital stage to transform their services into experiences. 
 
- * Short (2-5 min' read max)
- * We want you to "connect the dots" for us - Why does your product (as described in your answer to Q1) fits the needs of your users (as described in your answer to Q2)?
- * Explain the benefits of your product explicitly & clearly. For example:
-    * Save users time (how much?)
-    * Allow users to discover new information (which information? And, why couldn't they discover it before?)
-    * Provide users with more accurate and/or informative data (what kind of data? Why is it useful to them?)
+This encourages companies and artists to use our platform because it will create more jobs for organizations within the event planning and promotion sector as well as giving aspiring artists and musicians an opportunity to give them the exposure they need to reach a wider audience. 
 
+Another big advantage of our product is the freemium model. Unlike our competitors, we offer a free option to users that allows them to utilize part of our service without any charge. This gives users a chance to try out our platform and see firsthand if they enjoy the experiences that they can join and make a decision to upgrade to our premium features.
+
+Our product addresses the needs of everyday users, large organizations and aspiring artists, and gives each of them the ability to connect in single unified platform.
 
 #### Q4: What does "DONE" means to your Team 
  * The whole team needs to agree as to what ”done” means for the features you will
