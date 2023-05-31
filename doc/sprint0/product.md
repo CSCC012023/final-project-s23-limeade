@@ -33,7 +33,7 @@ We also have the business customers who are looking for an easy way to monetize 
 
 To be more specific with what type of customer we are targeting, we will prioritize reaching out to Gen Z and Millennials. These 2 generations are known for their tech-savviness and willingness to look for new experiences represent a significant portion of the potential customer base. Additionally, we will focus on Solo Travelers, Urban Professionals, and Expats & Newcomers.
 
-#### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
+#### **Q3: Why would your users choose your product? What are they using today to solve their problem/need?**
 
 Our product is a unique solution that is exclusively designed for setting up meetups for events and experiences. Unlike our competitors, the product focuses on providing comprehension services to not only users who wish to enjoy events with others but also offer businesses and artists a digital stage to transform their services into experiences. 
 
@@ -44,17 +44,16 @@ Another big advantage of our product is the freemium model. Unlike our competito
 Our product addresses the needs of everyday users, large organizations and aspiring artists, and gives each of them the ability to connect in single unified platform.
 
 #### Q4: What does "DONE" means to your Team 
- * The whole team needs to agree as to what ”done” means for the features you will
-   implement.
- * Definition of done applies to all userstories
+
+Done means that all the features listed in the user story are completed and functioning. No other features are broken and no glaring issues that need to be fixed/adjusted. 
 
 ----
 
 
 
-### Highlights
+### **Highlights**
 
-YOUR ANSWER GOES HERE ...
+We decided to limit the functionality to the primary user only and expand on business side on a rolling basis. For now, all users will have same services available to them. This will be also expanded upon on a rolling basis.  
 
 Specify 3 - 5 key decisions and/or insights that came up during your meetings
 and/or collaborative process. Here are few questions that can guide you
