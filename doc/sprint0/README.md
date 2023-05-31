@@ -2,18 +2,17 @@ CSCC01 Project - Limeade / GoGo
 ========================================================================
 
 ## Introduction
-------------------------------------------------------------------------
+
 
 This project will be a web-based version of the GoGo app, which aims to allow users to find other people to attend events with.
 
 Here is a [link to the user interface mockup on Figma](https://www.figma.com/proto/VxVHNaAY7aCgBv1k8hdqUR/UX-Mockup?type=design&node-id=9-3&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=9%3A3) that shows how the interface of the app is expected to flow.
 
 ## Motivation
-------------------------------------------------------------------------
+
 The motivation behind the project is to let people be able to experience events that they may not want to go to alone, and also allow businesses to create experiences out of their events that can be promoted.
 
 ## Installation
----
 
 0. Make sure you have Node.js, npm, Angular CLI, MongoDB installed as per the online documentation.
 
@@ -59,7 +58,6 @@ $ ng serve
 Then the app should be ready to go on http://localhost:4200!
 
 ## Contribution
----
 The contribution will be based on git flow.
 
 Branches will be named based on their feature name/Jira issue.
