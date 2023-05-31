@@ -14,6 +14,8 @@ $ cd backend
 
 $ npm install  
 
+then create a .env file like the .env.example
+
 $ node server.js  
 
 
