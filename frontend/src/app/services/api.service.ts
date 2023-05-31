@@ -14,7 +14,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   signUp(firstName:string,lastName:string,type:string){
-    return this.http.post<User>(this.apiEndPoint + 'api/users/signup',
+    return this.http.post<User>(this.apiEndPoint + '/api/users/signup',
     {
       firstName:firstName,
       lastName:lastName,

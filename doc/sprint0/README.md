@@ -19,7 +19,7 @@ $ cd backend
 $ npm install
 ```
 
-Then create a `.env` file like the `.env.example`.
+Then create a `.env` file exactly like the `.env.example`.
 
 ```shell
 $ node server.js
