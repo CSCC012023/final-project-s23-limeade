@@ -53,20 +53,8 @@ Done means that all the features listed in the user story are completed and func
 
 ### **Highlights**
 
-We decided to limit the functionality to the primary user only and expand on business side on a rolling basis. For now, all users will have same services available to them. This will be also expanded upon on a rolling basis.  
+We decided to limit the functionality to the primary user only and expand on business side on a rolling basis. For now, all users will have same services available to them. This will be also expanded upon on a rolling basis. The reason for this was because we believed that a large part of the application pertains to the user and implementing all the features is our primary goal. We believe that this constitutes enough work for us at the moment and if we have more time we can follow through with the tiering system and possibly even implementing the business services. 
 
-Specify 3 - 5 key decisions and/or insights that came up during your meetings
-and/or collaborative process. Here are few questions that can guide you
+We had one long meeting where we planned out our user stories, what our product will include and room for expansion if required. During this meeting we also split up the work and decided who was going to complete what tasks and the technology that we were going to use to develop the application. The team decided to use figma for our project mockups to display what our interface will look like. Our team also decided on the MEAN stack because this was what we were most comfortable developing in. 
 
- * Short (5 min' read max)
- * Decisions can be related to the product and/or the team process.
-    * Mention which alternatives you were considering.
-    * Present the arguments for each alternative.
-    * Explain why the option you decided on makes the most sense for your team/product/users.
- * Essentially, we want to understand how (and why) you ended up with your current product plan.
- * How did you organise the team? Which tools did you use, if any?
- * How frequently did you meet?
- 
- 
-  
-
+We also decided that we were going to use Slack and Discord as our main methods of communicating. Since Discord was a platform that we were all familiar with, and a place we could all be reached, it was the best option for us. We decided that we were going to post our daily updates in the chat to ensure that we all know what the other is working on, and to let others know if we have any blockers. We have also organized threads within our communication platforms to ensure that no questions or concerns get lost. We concluded that daily meetings were a bit unnecessary since we were giving our updates through Slack messages but decided that meetings would still run on a weekly basis and also whenever others needed support. 
