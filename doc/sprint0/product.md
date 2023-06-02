@@ -7,27 +7,21 @@
 
 GoGo is an application that connects users who want to share similar experiences. 
 
-We are aiming to solve the issue of wanting to attend events and experiences but not knowing anyone
-to attend with. This will also simulatenously solve a business issue of venues not being sold out,
-and potential customers being lost due to them not having anyone to experience the event with. 
+We are aiming to solve the issue of wanting to attend events and experiences but not knowing anyone to attend with. This will also simulatenously solve a business issue of venues not being sold out, and potential customers being lost due to them not having anyone to experience the event with. 
 
 We are planning to build a website that will allow users to find each other based on
 similar interests and being able to interact with one another and attend events together.
 The center of connection will be the experience that the users want. Due to the growing 
-trend of younger generations prioritizing doing what they want, regardless of who they do it with,
-known as the Dazi phenonmemon, the app aims to capture this and have the connection rely on memorable 
-experience rather then matching based on personality or friendships.
+trend of younger generations prioritizing doing what they want, regardless of who they do it with, known as the Dazi phenonmemon, the app aims to capture this and have the connection rely on memorable experience rather then matching based on personality or friendships.
 
-Users will be able to create experiences/events, invite others to their own, and join others as well.
-Once users find others who want to share the experience, they will be able to interact and decide if they 
-wish to go the event together. 
+Users will be able to create experiences/events, invite others to their own, and join others as well. Once users find others who want to share the experience, they will be able to interact and decide if they wish to go the event together. 
 
 
 #### **Q2: Who are your target users? (2-3 personas)**
 
 There are 2 primary target users for this innovative platform.
 
-We have the consumers who want to attend exciting events but do not have anyone to join them. They are willing to share experiences with others, regardless if they know eachother. Whether it's a music concert, a sports game, or a musical performance, these individuals thrive on the energy that comes from being part of a crowd. 
+We have the consumers who want to attend exciting events but do not have anyone to join them. They are willing to share experiences with others, regardless if they know each other. Whether it's a music concert, a sports game, or a musical performance, these individuals thrive on the energy that comes from being part of a crowd. 
 
 We also have the business customers who are looking for an easy way to monetize their last-minute unsold tickets. Recognizing the potential revenue loss and the possibility of filling up their venues, the organizers want to be able to adverstise and sell off their remaining seats. This platform will provide them with a solution by allowing them to post their available tickets and even entice users to attend with exclusive discounts and incentives.
 
@@ -55,6 +49,6 @@ Done means that all the features listed in the user story are completed and func
 
 We decided to limit the functionality to the primary user only and expand on business side on a rolling basis. For now, all users will have same services available to them. This will be also expanded upon on a rolling basis. The reason for this was because we believed that a large part of the application pertains to the user and implementing all the features is our primary goal. We believe that this constitutes enough work for us at the moment and if we have more time we can follow through with the tiering system and possibly even implementing the business services. 
 
-We had one long meeting where we planned out our user stories, what our product will include and room for expansion if required. During this meeting we also split up the work and decided who was going to complete what tasks and the technology that we were going to use to develop the application. The team decided to use figma for our project mockups to display what our interface will look like. Our team also decided on the MEAN stack because this was what we were most comfortable developing in. 
+We had one long meeting where we planned out our user stories, what our product will include and room for expansion if required. During this meeting we also split up the work and decided who was going to complete what tasks and the technology that we were going to use to develop the application. The team decided to use Figma for our project mockups to display what our interface will look like. Our team also decided on the MEAN stack because this was what we were most comfortable developing in. 
 
 We also decided that we were going to use Slack and Discord as our main methods of communicating. Since Discord was a platform that we were all familiar with, and a place we could all be reached, it was the best option for us. We decided that we were going to post our daily updates in the chat to ensure that we all know what the other is working on, and to let others know if we have any blockers. We have also organized threads within our communication platforms to ensure that no questions or concerns get lost. We concluded that daily meetings were a bit unnecessary since we were giving our updates through Slack messages but decided that meetings would still run on a weekly basis and also whenever others needed support. 
