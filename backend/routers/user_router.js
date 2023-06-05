@@ -1,14 +1,20 @@
 import { Router } from "express";
 import { User } from "../models/users.js";
+import bcrypt from "bcrypt";
 
 export const usersRouter = Router();
 
 usersRouter.post("/signup",async (req,res)=>{
+    const plaintextPassword = req.body.password;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(plaintextPassword,salt);
 
     const user = new User({
+        username:req.body.username,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        type: req.body.type
+        type: req.body.type,
+        password:hashedPassword,
     });
 
     try {
@@ -22,4 +28,37 @@ usersRouter.post("/signup",async (req,res)=>{
     return res.json(user);
 
 
+});
+
+usersRouter.post("/login",async (req,res)=>{
+    const plaintextPassword = req.body.password;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(plaintextPassword,salt);
+    console.log(hashedPassword);
+    const user = await User.findOne({
+        username:req.body.username
+    });
+    if(!user){
+        return res.status(404).json({error:"User not found"});
+    }  
+
+    if (!bcrypt.compareSync(req.body.password, user.password)) {
+        return res.status(401).json({ error: "Incorrect username or password." });
+    }
+    req.session.userId = user._id;
+    return res.json({
+        message:"Login successful",
+        userId:user._id,
+        username:user.username,
+    });
 })
+
+usersRouter.get('/logout', (req, res) => {
+    // Destroy the session
+    req.session.destroy((err) => {
+      if (err) {
+        console.log('Error destroying session:', err);
+      }
+      return res.json({message:"Logout successful"});
+    });
+});

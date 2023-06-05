@@ -8,6 +8,13 @@ import dotenv from "dotenv"
 import morgan from "morgan"
 const app = express();
 const port = 3000; // Choose the desired port number
+
+app.use(session({
+  secret: 'YourSecretKey',
+  resave: false,
+  saveUninitialized: true
+}));
+
 dotenv.config();
 // Middleware
 const corsOptions = {
