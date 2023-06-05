@@ -13,7 +13,7 @@ export class MvcDemoComponent {
     this.generatedUser = new User('','','');
   }
   demo(){
-    this.api.signUp("Random","User","basic").subscribe({
+    this.api.signUp("Random","User","basic","password").subscribe({
       next:(value)=>{
         console.log(value);
         this.generatedUser = value;

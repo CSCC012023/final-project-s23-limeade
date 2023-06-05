@@ -13,12 +13,13 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  signUp(firstName:string,lastName:string,type:string){
+  signUp(firstName:string,lastName:string,type:string,password:string){
     return this.http.post<User>(this.apiEndPoint + '/api/users/signup',
     {
       firstName:firstName,
       lastName:lastName,
-      type:type
+      type:type,
+      password:password
     },
     {
       withCredentials:true

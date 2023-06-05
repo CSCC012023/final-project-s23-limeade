@@ -1,14 +1,19 @@
 import { Router } from "express";
 import { User } from "../models/users.js";
+import bcrypt from "bcrypt";
 
 export const usersRouter = Router();
 
 usersRouter.post("/signup",async (req,res)=>{
+    const plaintextPassword = req.body.password;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(plaintextPassword,salt);
 
     const user = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        type: req.body.type
+        type: req.body.type,
+        password:hashedPassword,
     });
 
     try {
@@ -22,4 +27,8 @@ usersRouter.post("/signup",async (req,res)=>{
     return res.json(user);
 
 
+});
+
+usersRouter.post("/signin",async (req,res)=>{
+    return res.json();
 })
