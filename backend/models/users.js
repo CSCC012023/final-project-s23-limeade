@@ -24,6 +24,10 @@ const interestsEnum = [
   ];
 
 const userSchema = new mongoose.Schema({
+    username:{
+        required:true,
+        type:String,
+    },
     firstName:{
         required:true,
         type:String,
