@@ -8,7 +8,12 @@ usersRouter.post("/signup",async (req,res)=>{
     const plaintextPassword = req.body.password;
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(plaintextPassword,salt);
-
+    const existing = await User.findOne({
+        username:req.body.username
+    });
+    if(existing){
+        return res.status(422).json({error:"Username already taken"})
+    }
     const user = new User({
         username:req.body.username,
         firstName: req.body.firstName,
@@ -21,8 +26,8 @@ usersRouter.post("/signup",async (req,res)=>{
         await user.save();
 
     }
-    catch{
-        return res.status(422).json({error:"user creation failed"});
+    catch(err){
+        return res.status(422).json(err);
     }
 
     return res.json(user);

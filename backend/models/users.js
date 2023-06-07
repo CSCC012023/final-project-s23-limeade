@@ -27,6 +27,7 @@ const userSchema = new mongoose.Schema({
     username:{
         required:true,
         type:String,
+        unique:true,
     },
     firstName:{
         required:true,
@@ -38,12 +39,12 @@ const userSchema = new mongoose.Schema({
     },
     type:{
         type:String,
-        enum:['basic','premium'],
+        enum:['Basic','Premium'],
         required:true
     },
     password:{
-        type:String,
-        required:true,
+        type: String,
+        required: true,
     },
     interests:[{
         type:String,

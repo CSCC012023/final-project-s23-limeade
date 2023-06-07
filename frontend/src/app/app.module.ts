@@ -9,6 +9,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginformComponent } from './components/loginform/loginform.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { LoginformComponent } from './components/loginform/loginform.component';
     LoginComponent,
     SignupComponent,
     NavbarComponent,
-    LoginformComponent
+    LoginformComponent,
+    SignupFormComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
