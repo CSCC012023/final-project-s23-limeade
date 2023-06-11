@@ -33,6 +33,11 @@ export class LoginformComponent {
     .subscribe(
       (next)=>{
         this.api.loggedIn = true;
+        this.api.userId = next.userId;
+        this.api.username = next.username;
+        this.api.firstName = next.firstName;
+        this.api.lastName = next.lastName;
+        this.api.type = next.type;
         this.router.navigate(["/"])
       },
       (error)=>{

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { User } from "../models/users.js";
 import bcrypt from "bcrypt";
-
+import { isAuthenticated } from "../middleware/auth.js";
 export const usersRouter = Router();
 
 usersRouter.post("/signup",async (req,res)=>{
@@ -51,10 +51,13 @@ usersRouter.post("/login",async (req,res)=>{
         message:"Login successful",
         userId:user._id,
         username:user.username,
+        firstName:user.firstName,
+        lastName:user.lastName,
+        type:user.type,
     });
 })
 
-usersRouter.get('/logout', (req, res) => {
+usersRouter.get('/logout',isAuthenticated, (req, res) => {
     // Destroy the session
     req.session.destroy((err) => {
       if (err) {
@@ -63,3 +66,23 @@ usersRouter.get('/logout', (req, res) => {
       return res.json({message:"Logout successful"});
     });
 });
+
+usersRouter.patch("/switchToPremium",isAuthenticated,async (req,res)=>{
+    const user = await User.findOne({
+        _id:req.session.userId
+    });
+    if(!user){
+        return res.status(404).json({error:"User not found"});
+    }
+
+    user.type = 'Premium';
+
+    try{
+       await  user.save();
+    }
+    catch(err){
+        return res.status(422).json(err);
+    }
+
+    return res.json(user);
+})

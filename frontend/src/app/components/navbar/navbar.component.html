@@ -11,6 +11,9 @@
       <li *ngIf="!api.loggedIn"  class="nav-item">
         <a class="nav-link" routerLink="/signup">Signup</a>
       </li>
+      <li *ngIf="api.loggedIn" class = "nav-item">
+        <a class="nav-link" routerLink="/profile">Profile</a>
+      </li>
       <li *ngIf="api.loggedIn" class = "nav-item" >
         <div (click)="logout()">Logout</div>
       </li>
