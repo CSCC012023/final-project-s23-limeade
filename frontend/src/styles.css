@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+  }
+  
+  .col {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 15px;
+  }
+  
+  /* Column widths */
+  .col-1 { width: 8.33%; }
+  .col-2 { width: 16.66%; }
+  .col-3 { width: 25%; }
+  .col-4 { width: 33.33%; }
+  .col-5 { width: 41.66%; }
+  .col-6 { width: 50%; }
+  .col-7 { width: 58.33%; }
+  .col-8 { width: 66.66%; }
+  .col-9 { width: 75%; }
+  .col-10 { width: 83.33%; }
+  .col-11 { width: 91.66%; }
+  .col-12 { width: 100%; }
+
+  .center-text {
+    text-align: center;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    margin:20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f2f2f2; /* Slightly darker than white */
+    color: #000000; /* Text color */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    text-decoration: none;
+    border:none;
+  }
+  
+  .btn:hover {
+    background-color: #e6e6e6; /* Lighter color on hover */
+  }
+
+  .center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

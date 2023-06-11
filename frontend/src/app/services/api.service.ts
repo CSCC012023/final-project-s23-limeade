@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment.development';
 export class ApiService {
 
   apiEndPoint = environment.apiEndpoint;
-
+  loggedIn:boolean = false;
   constructor(private http: HttpClient) { }
 
   signUp(firstName:string,lastName:string,type:string,password:string,username:string){
@@ -27,6 +27,19 @@ export class ApiService {
     })
       
   };
+
+  signIn(username:string,password:string){
+    return this.http.post<User>(this.apiEndPoint+'/api/users/login',
+    {
+      username:username,
+      password:password,
+    },
+    {withCredentials:true})
+  };
+
+  signOut(){
+    return this.http.get(this.apiEndPoint+'/api/users/logout',{withCredentials:true});
+  }
   
   
 }
