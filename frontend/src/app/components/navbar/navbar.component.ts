@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+    constructor(public api:ApiService,private router:Router){};
 
+  logout(){
+    console.log("logout");
+    this.api.signOut().subscribe(
+      (next)=>{
+        this.api.loggedIn = false;
+        this.router.navigate(['/'])
+      }
+    );
+  }
 }

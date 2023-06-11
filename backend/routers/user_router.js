@@ -36,19 +36,15 @@ usersRouter.post("/signup",async (req,res)=>{
 });
 
 usersRouter.post("/login",async (req,res)=>{
-    const plaintextPassword = req.body.password;
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(plaintextPassword,salt);
-    console.log(hashedPassword);
     const user = await User.findOne({
         username:req.body.username
     });
     if(!user){
-        return res.status(404).json({error:"User not found"});
+        return res.status(404).json({error:"Credentials not found"});
     }  
 
     if (!bcrypt.compareSync(req.body.password, user.password)) {
-        return res.status(401).json({ error: "Incorrect username or password." });
+        return res.status(401).json({ error: "Credentials not found" });
     }
     req.session.userId = user._id;
     return res.json({
