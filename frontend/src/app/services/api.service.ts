@@ -11,10 +11,15 @@ export class ApiService {
 
   apiEndPoint = environment.apiEndpoint;
   loggedIn:boolean = false;
+  userId:string = '';
+  username:string = '';
+  firstName:string = '';
+  lastName:string = '';
+  type:string = '';
   constructor(private http: HttpClient) { }
 
   signUp(firstName:string,lastName:string,type:string,password:string,username:string){
-    return this.http.post<User>(this.apiEndPoint + '/api/users/signup',
+    return this.http.post<any>(this.apiEndPoint + '/api/users/signup',
     {
       username:username,
       firstName:firstName,
@@ -29,7 +34,7 @@ export class ApiService {
   };
 
   signIn(username:string,password:string){
-    return this.http.post<User>(this.apiEndPoint+'/api/users/login',
+    return this.http.post<any>(this.apiEndPoint+'/api/users/login',
     {
       username:username,
       password:password,
@@ -41,5 +46,14 @@ export class ApiService {
     return this.http.get(this.apiEndPoint+'/api/users/logout',{withCredentials:true});
   }
   
+  switchToPremium(){
+    if(!(this.loggedIn)){
+      return new Observable(observer=>{
+        observer.error("Not logged in");
+      })
+    };
+
+    return this.http.patch(this.apiEndPoint+'/api/users/switchToPremium',{},{withCredentials:true});
+  }
   
 }
