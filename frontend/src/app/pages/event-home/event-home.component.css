@@ -1,0 +1,23 @@
+.event-body {
+  justify-content: center;
+  padding: 32px 16px 16px 16px;
+}
+
+.event-card {
+  flex-basis: 40%;
+  flex-grow: 1;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1
+}
+
+.small-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0px 8px 0px;
+}
