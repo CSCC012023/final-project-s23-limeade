@@ -1,21 +1,19 @@
-<nav class="navbar">
-
-    <ul class="navbar-nav">
-        
-        <li class = "nav-item">
-            <h1><a class="navbar-brand" routerLink="/">Limeade</a></h1>
-        </li>
-      <li  *ngIf="!api.loggedIn" class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
-      </li>
-      <li *ngIf="!api.loggedIn"  class="nav-item">
-        <a class="nav-link" routerLink="/signup">Signup</a>
-      </li>
-      <li *ngIf="api.loggedIn" class = "nav-item">
-        <a class="nav-link" routerLink="/profile">Profile</a>
-      </li>
-      <li *ngIf="api.loggedIn" class = "nav-item" >
-        <div (click)="logout()">Logout</div>
-      </li>
-    </ul>
+<header>
+  <div class="navbar-wrapper"><a class= "navbar-brand"routerLink="/">Limeade</a></div>
+  <nav>
+  <ul class="nav-links">
+    <li  *ngIf="!api.loggedIn">
+      <a routerLink="/login">Login</a>
+    </li>
+    <li *ngIf="!api.loggedIn">
+      <a routerLink="/signup">Signup</a>
+    </li>
+    <li *ngIf="api.loggedIn">
+      <a routerLink="/profile">Profile</a>
+    </li>
+    <li *ngIf="api.loggedIn">
+      <div (click)="logout()">Logout</div>
+    </li>
+  </ul>
   </nav>
+</header>
