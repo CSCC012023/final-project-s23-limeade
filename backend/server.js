@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import session from "express-session";
 import cors from "cors";
 import { usersRouter } from "./routers/user_router.js";
+import { eventsRouter } from "./routers/event_router.js";
 import dotenv from "dotenv"
 import morgan from "morgan"
 const app = express();
@@ -33,6 +34,7 @@ app.use(
 );
 
 app.use("/api/users", usersRouter);
+app.use("/api/events", eventsRouter);
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

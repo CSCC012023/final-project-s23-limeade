@@ -55,5 +55,26 @@ export class ApiService {
 
     return this.http.patch(this.apiEndPoint+'/api/users/switchToPremium',{},{withCredentials:true});
   }
+
+  addEvent(eventName:string,eventDescription:string,eventDate:string,eventLocation:string, userId:string){
+
+    return this.http.post(this.apiEndPoint+'/api/events',
+    {
+      eventName:eventName,
+      eventDescription:eventDescription,
+      eventDate:eventDate,
+      eventLocation:eventLocation,
+      userId:userId,
+    },
+    {withCredentials:true});
+  }
+
+  getEvents(){
+    return this.http.get(this.apiEndPoint+'/api/events',{withCredentials:true});
+  }
+
+  getEventbyId(eventId:string){
+    return this.http.get(this.apiEndPoint+'/api/events/'+eventId,{withCredentials:true});
+  }
   
 }
