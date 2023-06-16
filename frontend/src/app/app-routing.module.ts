@@ -7,6 +7,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { PremiumSignupComponent } from './pages/premium-signup/premium-signup.component';
 import { EventHomeComponent } from './pages/event-home/event-home.component';
 import { EventInfoPageComponent } from './pages/event-info-page/event-info-page.component';
+import { EventAddComponent } from './pages/event-add/event-add.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path:'event-info-page',
     component: EventInfoPageComponent
+  },
+  {
+    path:'event-add',
+    component: EventAddComponent
   }
 ];
 

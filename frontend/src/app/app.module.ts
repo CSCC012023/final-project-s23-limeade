@@ -14,10 +14,11 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { PremiumSignupComponent } from './pages/premium-signup/premium-signup.component';
 import { PaymentFormComponent } from './components/payment-form/payment-form.component';
 import { EventHomeComponent } from './pages/event-home/event-home.component';
-import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { LargeEventCardComponent } from './components/large-event-card/large-event-card.component';
 import { EventInfoPageComponent } from './pages/event-info-page/event-info-page.component';
+import { EventAddComponent } from './pages/event-add/event-add.component';
+import { EventAddFormComponent } from './components/event-add-form/event-add-form.component';
 
 @NgModule({
   declarations: [
@@ -32,10 +33,11 @@ import { EventInfoPageComponent } from './pages/event-info-page/event-info-page.
     PremiumSignupComponent,
     PaymentFormComponent,
     EventHomeComponent,
-    NavigationBarComponent,
     EventCardComponent,
     LargeEventCardComponent,
-    EventInfoPageComponent
+    EventInfoPageComponent,
+    EventAddComponent,
+    EventAddFormComponent
   ],
   imports: [
     HttpClientModule,
