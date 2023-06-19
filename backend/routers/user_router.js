@@ -85,4 +85,17 @@ usersRouter.patch("/switchToPremium",isAuthenticated,async (req,res)=>{
     }
 
     return res.json(user);
-})
+});
+
+usersRouter.get("/getMe",isAuthenticated,async(req,res)=>{
+    const user = await User.findOne({
+        _id:req.session.userId
+    });
+    if(!user){
+        return res.status(404).json({error:"User not found"});
+    }
+
+    user.password = null;
+    return res.json(user);
+}
+)

@@ -12,9 +12,6 @@ export class ApiService {
   apiEndPoint = environment.apiEndpoint;
   loggedIn:boolean = false;
   userId:string = '';
-  username:string = '';
-  firstName:string = '';
-  lastName:string = '';
   type:string = '';
   constructor(private http: HttpClient) { }
 
@@ -44,6 +41,10 @@ export class ApiService {
 
   signOut(){
     return this.http.get(this.apiEndPoint+'/api/users/logout',{withCredentials:true});
+  }
+
+  getme(){
+    return this.http.get<any>(this.apiEndPoint+'/api/users/getMe',{withCredentials:true});
   }
   
   switchToPremium(){
