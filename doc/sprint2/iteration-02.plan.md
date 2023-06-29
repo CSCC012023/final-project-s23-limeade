@@ -34,6 +34,7 @@ Describe the different roles on the team and the responsibilities associated wit
 Youngjae and Lukas - work on user profiles
 Kai - implementing design on event page and work on add events
 Ami - implement myEvents page component
+Gary - working on documentation and jira
 
 #### Events
 
@@ -42,7 +43,9 @@ Describe meetings (and other events) you are planning to have:
  * When and where? In-person or online?
  * What's the purpose of each meeting?
  * Other events could be coding sessions, code reviews, quick weekly sync' meeting online, etc.
-5 online standup meetings using messages
+
+5 online standup meetings using messages on discord 
+
 #### Artifacts
 
 List/describe the artifacts you will produce in order to organize your team.       
@@ -54,6 +57,7 @@ List/describe the artifacts you will produce in order to organize your team.
    * How do tasks get assigned to team members?
    
 Jira Board
+* assigning story points and members to tasks
 
 #### Git / GitHub workflow
 
@@ -66,6 +70,7 @@ For example, "we use pull-requests" is not a precise statement since it leaves t
  * If applicable, specify any naming conventions or standards you decide to adopt.
 
  * Don't forget to **explain why** you chose this workflow.
+
 We have a main branch and a development branch. During the sprint, changes should be merged to the development branch and then at the end of the sprint, the main branch should merge with the development branch. This is to protect the integrity of the main branch during sprint and while changes are still being made. Changes would be made to the development branch using pull-requests. People review pull requests and merge them by themselves. As for naming conventions we will name them after our tickets on jira as soon as we get the jira to github repo connection worked out. This is so jira can track our branches. 
 
 
@@ -80,6 +85,8 @@ _This entire section is mandatory._
  * Order the items from most to least important.
  * Feel free (but not obligated) to specify some/all tasks as user stories.
 
+-----
+
  * add a page for user profiles and related info/features
  * add event details page
  * add “My Events” page to user profile
@@ -92,5 +99,7 @@ List/describe the artifacts you will produce in order to present your project id
  * Make sure to explain the purpose of each artifact (i.e. Why is it on your to-do list? Why is it useful for your team?)
  * Be concise, yet precise.         
    For example: "Build the website" is not precise at all, but "Build a static home page and upload it somewhere, so that it is publicly accessible" is much clearer.
+
+-----
 
  * Build an interactive website demo that can be run locally
