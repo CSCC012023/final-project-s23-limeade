@@ -13,6 +13,7 @@ export class ApiService {
   loggedIn:boolean = false;
   userId:string = '';
   type:string = '';
+  user:any;
   constructor(private http: HttpClient) { }
 
   signUp(firstName:string,lastName:string,type:string,password:string,username:string){
@@ -55,6 +56,33 @@ export class ApiService {
     };
 
     return this.http.patch(this.apiEndPoint+'/api/users/switchToPremium',{},{withCredentials:true});
+  }
+
+  updateUserInfo():void{
+    this.getme().subscribe((next)=>{
+      this.userId = next.userId;
+      this.type = next.type;
+      this.user = next;
+    })
+  }
+  getUserById(userId:string){
+    if(!(this.loggedIn)){
+      return new Observable(observer=>{
+        observer.error("Not logged in");
+      })
+    }
+
+    return this.http.get<any>(this.apiEndPoint + `/api/users/id=${userId}`,{withCredentials:true});
+  };
+
+  patchProfile(userId:string, firstName:string,lastName:string,interests:string[]){
+    return this.http.patch(this.apiEndPoint + '/api/users/profile',{
+      userId:userId,
+      firstName:firstName,
+      lastName:lastName,
+      interests:interests,
+    },
+    {withCredentials:true});
   }
 
   addEvent(eventName:string,eventDescription:string,eventDate:string,eventLocation:string, userId:string){
