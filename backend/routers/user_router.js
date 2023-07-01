@@ -47,14 +47,8 @@ usersRouter.post("/login",async (req,res)=>{
         return res.status(401).json({ error: "Credentials not found" });
     }
     req.session.userId = user._id;
-    return res.json({
-        message:"Login successful",
-        userId:user._id,
-        username:user.username,
-        firstName:user.firstName,
-        lastName:user.lastName,
-        type:user.type,
-    });
+    user.message = "login successful";
+    return res.json(user);
 })
 
 usersRouter.get('/logout',isAuthenticated, (req, res) => {
@@ -99,3 +93,46 @@ usersRouter.get("/getMe",isAuthenticated,async(req,res)=>{
     return res.json(user);
 }
 )
+
+usersRouter.get('/id=:id',isAuthenticated,async(req,res)=>{
+    const user = await User.findOne({
+        _id:req.params.id
+    });
+    if(!user){
+        return res.status(404).json({error:"User not found"});
+
+    }
+
+    user.password = null;
+    return res.json(user);
+});
+
+usersRouter.patch("/profile",isAuthenticated,async(req,res)=>{
+    const interests = req.body.interests;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const userId = req.body.userId;
+    if(req.session.userId !== userId){
+        return res.status(401).json({error:"Only allowed to change your own profile"});
+    }
+
+    const user = await User.findOne({
+        _id:userId
+    });
+
+    if(!user){
+        return res.status(404).json({error:"User not found"});
+
+    }
+
+    user.interests = interests;
+    user.firstName = firstName;
+    user.lastName = lastName;
+    user.save();
+    return res.json({message:"save complete"});
+
+
+
+
+})
+  

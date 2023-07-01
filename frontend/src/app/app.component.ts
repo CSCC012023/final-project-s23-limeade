@@ -16,7 +16,6 @@ export class AppComponent implements OnInit{
         this.api.loggedIn = true;
         this.api.userId = next._id;
         this.api.type = next.type;
-
       },
       (error)=>{
         this.api.loggedIn = false;
