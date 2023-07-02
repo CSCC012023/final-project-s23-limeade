@@ -1,0 +1,6 @@
+<input type="text" [(ngModel)]="searchQuery" (input)="search()">
+<ul>
+  <li *ngFor="let result of searchResults">
+    {{ result }}
+  </li>
+</ul>
