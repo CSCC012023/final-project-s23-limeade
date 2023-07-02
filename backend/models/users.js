@@ -50,6 +50,12 @@ const userSchema = new mongoose.Schema({
         type:String,
         enum:interestsEnum,
         default:[]
+    }],
+    blocked:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User',
+        required:true,
+        default:[],
     }]
 });
 
