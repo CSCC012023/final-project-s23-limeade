@@ -255,6 +255,12 @@ function jaroWinklerDistance(str1, str2) {
   }
 
   usersRouter.get('/usersearch/queryString=:queryString',isAuthenticated,async (req,res)=>{
+    const user = await User.findOne({
+      _id:req.session.userId,
+    });
+    if(!user){
+      return res.status(404).json({error:"Cannot find YOU"});
+    }
     const queryString = req.params.queryString;
     if(queryString === ''){
         return res.json([]);
@@ -273,7 +279,9 @@ function jaroWinklerDistance(str1, str2) {
         },
         {
           $match: {
-            distance: { $gte: 0.8 }, // Adjust the threshold as needed
+            distance: { $gte: 0.8 },
+            _id: { $nin: user.blocked }
+             // Adjust the threshold as needed
           },
         },
         {

@@ -119,4 +119,12 @@ export class ProfileComponent implements OnInit{
     console.log(selectedInterests);
   }
 
+  blockUser(){
+    this.api.blockUser(this.user._id).subscribe(
+      (next)=>{
+        this.router.navigate(['/']);
+      }
+    )
+  }
+
 }
