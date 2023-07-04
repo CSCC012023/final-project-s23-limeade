@@ -11,41 +11,41 @@ import { EventAddComponent } from './pages/event-add/event-add.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component: IndexComponent
+    path: '',
+    component: IndexComponent,
   },
   {
-    path:'login',
-    component:LoginComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path:'signup',
-    component:SignupComponent
+    path: 'signup',
+    component: SignupComponent,
   },
   {
-    path:'profile',
-    component:ProfileComponent
+    path: 'profile',
+    component: ProfileComponent,
   },
   {
-    path:"premium-signup",
-    component:PremiumSignupComponent
+    path: 'premium-signup',
+    component: PremiumSignupComponent,
   },
   {
-    path:'event-home',
-    component: EventHomeComponent
+    path: 'event-home',
+    component: EventHomeComponent,
   },
   {
-    path:'event-info-page',
-    component: EventInfoPageComponent
+    path: 'event-info-page',
+    component: EventInfoPageComponent,
   },
   {
-    path:'event-add',
-    component: EventAddComponent
-  }
+    path: 'event-add',
+    component: EventAddComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

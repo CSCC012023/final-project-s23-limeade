@@ -1,29 +1,27 @@
-
 .navbar {
-    background-color: #ffffff;
-    padding: 10px;
-  }
-  
-  .navbar-brand {
-    color: #000000;
-    font-weight: bold;
-    text-decoration: none;
-    margin-right: 20px;
-  }
-  
-  .navbar-nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .nav-item {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  
-  .nav-link {
-    color: #000000;
-    text-decoration: none;
-  }
-  
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.navbar-brand {
+  color: #000000;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.navbar-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.nav-link {
+  color: #000000;
+  text-decoration: none;
+}

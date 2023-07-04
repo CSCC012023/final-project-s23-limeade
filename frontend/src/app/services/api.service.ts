@@ -80,6 +80,7 @@ export class ApiService {
       this.user = next;
     });
   }
+
   getUserById(userId: string) {
     if (!this.loggedIn) {
       return new Observable((observer) => {
@@ -136,7 +137,7 @@ export class ApiService {
     });
   }
 
-  getEventbyId(eventId: string) {
+  getEventById(eventId: string) {
     return this.http.get(this.apiEndPoint + '/api/events/' + eventId, {
       withCredentials: true,
     });

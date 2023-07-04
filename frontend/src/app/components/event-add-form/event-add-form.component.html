@@ -1,22 +1,32 @@
 <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
   <label for="eventName">Event Name (PLACEHOLDER FORM)</label>
-  <input type="text" formControlName="eventName" id="eventName" required>
-  
+  <input type="text" formControlName="eventName" id="eventName" required />
+
   <label for="eventDescription">Description</label>
-  <input type="text" formControlName="eventDescription" id="eventDescription" required>
+  <input
+    type="text"
+    formControlName="eventDescription"
+    id="eventDescription"
+    required
+  />
 
   <label for="eventDate">Date</label>
-  <input type="text" formControlName="eventDate" id="eventDate">
+  <input type="text" formControlName="eventDate" id="eventDate" />
 
   <label for="eventLocation">Location</label>
-  <input type="text" formControlName="eventLocation" id="eventLocation" required>
-    
+  <input
+    type="text"
+    formControlName="eventLocation"
+    id="eventLocation"
+    required
+  />
+
   <div class="error" *ngIf="eventForm.invalid">
     Please fill in all required fields.
   </div>
-  
+
   <button type="submit">Submit</button>
   <div class="error">
-      {{error}}
-    </div>
+    {{ error }}
+  </div>
 </form>

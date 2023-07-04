@@ -19,6 +19,7 @@ import { LargeEventCardComponent } from './components/large-event-card/large-eve
 import { EventInfoPageComponent } from './pages/event-info-page/event-info-page.component';
 import { EventAddComponent } from './pages/event-add/event-add.component';
 import { EventAddFormComponent } from './components/event-add-form/event-add-form.component';
+import { EventInfoComponent } from './components/event-info/event-info.component';
 import { ApiService } from './services/api.service';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
@@ -40,7 +41,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     LargeEventCardComponent,
     EventInfoPageComponent,
     EventAddComponent,
-    EventAddFormComponent
+    EventAddFormComponent,
+    EventInfoComponent
   ],
   imports: [
     FormsModule,

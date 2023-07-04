@@ -18,7 +18,8 @@ label {
   margin-top: 10px;
 }
 
-input, select {
+input,
+select {
   border: none; /* Remove the default border */
   border-bottom: 1px solid black; /* Add a black bottom border */
   background-color: transparent; /* Make the background transparent */

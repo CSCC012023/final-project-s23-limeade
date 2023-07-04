@@ -8,7 +8,7 @@ describe('EventInfoPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EventInfoPageComponent]
+      declarations: [EventInfoPageComponent],
     });
     fixture = TestBed.createComponent(EventInfoPageComponent);
     component = fixture.componentInstance;

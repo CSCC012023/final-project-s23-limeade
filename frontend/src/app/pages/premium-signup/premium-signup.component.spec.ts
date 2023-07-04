@@ -8,7 +8,7 @@ describe('PremiumSignupComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PremiumSignupComponent]
+      declarations: [PremiumSignupComponent],
     });
     fixture = TestBed.createComponent(PremiumSignupComponent);
     component = fixture.componentInstance;
