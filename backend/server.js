@@ -7,6 +7,7 @@ import { usersRouter } from "./routers/user_router.js";
 import { eventsRouter } from "./routers/event_router.js";
 import dotenv from "dotenv"
 import morgan from "morgan"
+
 const app = express();
 const port = 3000; // Choose the desired port number
 

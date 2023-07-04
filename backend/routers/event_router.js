@@ -32,7 +32,6 @@ eventsRouter.get("/:id", async (req, res) => {
   return res.json(event);
 });
 
-
 //TODO: add and remove users from interestedUsers
 eventsRouter.patch("/:id", async (req, res) => {
   const event = await limeEvent.findById(req.params.id);
