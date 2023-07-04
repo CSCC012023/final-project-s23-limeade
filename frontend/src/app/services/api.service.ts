@@ -93,6 +93,10 @@ export class ApiService {
     return this.http.get(this.apiEndPoint+`/api/users/usersearch/queryString=${queryString}`,{withCredentials:true});
   }
 
+  blockUser(userId:string){
+    return this.http.patch(this.apiEndPoint + `/api/users/block`,{blockedUserId:userId},{withCredentials:true})
+  }
+
   addEvent(eventName:string,eventDescription:string,eventDate:string,eventLocation:string, userId:string){
 
     return this.http.post(this.apiEndPoint+'/api/events',

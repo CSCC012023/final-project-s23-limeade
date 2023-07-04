@@ -45,6 +45,9 @@
     padding: 5px;
   }
 
+  .red {
+    background-color: red;
+  }
   .profile-form .form-group {
     margin-bottom: 15px;
   }

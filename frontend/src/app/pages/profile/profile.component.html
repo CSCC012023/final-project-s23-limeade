@@ -17,6 +17,7 @@
       </div>
     </div>
     <button *ngIf="myself" (click)="toggleEditMode()">Edit</button>
+    <button *ngIf="!myself" (click)="blockUser()" class = "red">Block User</button>
   </div>
   
   <div *ngIf="editMode" class="profile-container">
@@ -46,4 +47,7 @@
         <button (click)="toggleEditMode()">Cancel</button>
       </form>
     </div>
+
+
   </div>
+
