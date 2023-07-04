@@ -51,7 +51,7 @@ usersRouter.post("/login",async (req,res)=>{
     return res.json(user);
 })
 
-usersRouter.get('/logout',isAuthenticated, (req, res) => {
+usersRouter.get('/logout', (req, res) => {
     // Destroy the session
     req.session.destroy((err) => {
       if (err) {
@@ -162,4 +162,124 @@ usersRouter.patch("/block",isAuthenticated,async (req, res)=>{
 
 });
 
+function jaroWinklerDistance(str1, str2) {
+    // Implement the Jaro-Winkler distance calculation logic here
+    // You can use external libraries or implement the algorithm yourself
+    // and return the distance value
+    // Jaro similarity
+  const m = Math.min(str1.length, str2.length);
+  const matchRange = Math.floor(m / 2) - 1;
   
+  let matches = 0;
+  let transpositions = 0;
+  
+  const str1Matches = new Array(str1.length).fill(false);
+  const str2Matches = new Array(str2.length).fill(false);
+  
+  for (let i = 0; i < str1.length; i++) {
+    const start = Math.max(0, i - matchRange);
+    const end = Math.min(i + matchRange + 1, str2.length);
+    
+    for (let j = start; j < end; j++) {
+      if (!str2Matches[j] && str1[i] === str2[j]) {
+        str1Matches[i] = true;
+        str2Matches[j] = true;
+        matches++;
+        break;
+      }
+    }
+  }
+  
+  if (matches === 0) {
+    return 0;
+  }
+  
+  // Transpositions
+  let k = 0;
+  for (let i = 0; i < str1.length; i++) {
+    if (str1Matches[i]) {
+      let j = k;
+      while (!str2Matches[j] && j < str2.length) {
+        j++;
+      }
+      
+      if (str1[i] !== str2[j]) {
+        transpositions++;
+      }
+      
+      k = j + 1;
+    }
+  }
+  
+  const jaroSimilarity = (matches / str1.length + matches / str2.length + (matches - transpositions / 2) / matches) / 3;
+  
+  // Jaro-Winkler distance
+  const prefixLength = Math.min(4, Math.max(0, m));
+  let commonPrefix = 0;
+  
+  for (let i = 0; i < prefixLength; i++) {
+    if (str1[i] === str2[i]) {
+      commonPrefix++;
+    } else {
+      break;
+    }
+  }
+  
+  const jaroWinklerDistance = jaroSimilarity + commonPrefix * 0.1 * (1 - jaroSimilarity);
+  
+  return jaroWinklerDistance;
+  }
+  
+  // Function to search users based on Jaro-Winkler distance
+  async function searchUsersByJaroWinkler(queryString) {
+    const users = await User.aggregate([
+      {
+        $addFields: {
+          distance: {
+            $function: {
+              body: jaroWinklerDistance,
+              args: ['$username', queryString],
+              lang: 'js',
+            },
+          },
+        },
+      },
+      {
+        $match: {
+          distance: { $gte: 0.8 }, // Adjust the threshold as needed
+        },
+      },
+    ]);
+  
+    return users;
+  }
+
+  usersRouter.get('/usersearch/queryString=:queryString',isAuthenticated,async (req,res)=>{
+    const queryString = req.params.queryString;
+    if(queryString === ''){
+        return res.json([]);
+    }
+    const users = await User.aggregate([
+        {
+          $addFields: {
+            distance: {
+              $function: {
+                body: jaroWinklerDistance,
+                args: ['$username', queryString],
+                lang: 'js',
+              },
+            },
+          },
+        },
+        {
+          $match: {
+            distance: { $gte: 0.8 }, // Adjust the threshold as needed
+          },
+        },
+        {
+            $limit:10,
+        }
+      ]);
+    
+    return res.json(users);
+  })

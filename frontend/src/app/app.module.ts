@@ -21,6 +21,9 @@ import { EventAddComponent } from './pages/event-add/event-add.component';
 import { EventAddFormComponent } from './components/event-add-form/event-add-form.component';
 import { ApiService } from './services/api.service';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { UsersearchComponent } from './pages/usersearch/usersearch.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { ProfilecardComponent } from './components/profilecard/profilecard.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     LargeEventCardComponent,
     EventInfoPageComponent,
     EventAddComponent,
-    EventAddFormComponent
+    EventAddFormComponent,
+    UsersearchComponent,
+    LoadingSpinnerComponent,
+    ProfilecardComponent
   ],
   imports: [
     FormsModule,
