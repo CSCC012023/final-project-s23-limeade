@@ -1,6 +1,19 @@
-<input type="text" [(ngModel)]="searchQuery" (input)="search()">
-<ul>
-  <li *ngFor="let result of searchResults">
-    {{ result }}
-  </li>
-</ul>
+<div class="search-container">
+  <input type="text" [(ngModel)]="searchText" (input)="onInputChange()" placeholder="Search..." />
+  <button *ngIf="searchText" class="clear-btn" (click)="clearSearch()">
+    X
+  </button>
+</div>
+
+<div *ngIf = "loading">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div *ngIf = "!loading">
+  <ul>
+    <li *ngFor="let result of searchResults">
+      <app-profilecard [user] = "result"></app-profilecard>
+    </li>
+  </ul>
+
+</div>
+

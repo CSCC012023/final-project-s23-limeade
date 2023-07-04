@@ -41,6 +41,10 @@ export class ApiService {
   };
 
   signOut(){
+    this.loggedIn = false;
+    this.userId = '';
+    this.type = '';
+    this.user = {};
     return this.http.get(this.apiEndPoint+'/api/users/logout',{withCredentials:true});
   }
 
@@ -83,6 +87,10 @@ export class ApiService {
       interests:interests,
     },
     {withCredentials:true});
+  }
+
+  userSearch(queryString:string){
+    return this.http.get(this.apiEndPoint+`/api/users/usersearch/queryString=${queryString}`,{withCredentials:true});
   }
 
   addEvent(eventName:string,eventDescription:string,eventDate:string,eventLocation:string, userId:string){

@@ -22,6 +22,8 @@ import { EventAddFormComponent } from './components/event-add-form/event-add-for
 import { ApiService } from './services/api.service';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { UsersearchComponent } from './pages/usersearch/usersearch.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { ProfilecardComponent } from './components/profilecard/profilecard.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { UsersearchComponent } from './pages/usersearch/usersearch.component';
     EventInfoPageComponent,
     EventAddComponent,
     EventAddFormComponent,
-    UsersearchComponent
+    UsersearchComponent,
+    LoadingSpinnerComponent,
+    ProfilecardComponent
   ],
   imports: [
     FormsModule,
