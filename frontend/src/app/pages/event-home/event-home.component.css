@@ -4,15 +4,12 @@
 }
 
 .event-card {
-  flex-basis: 40%;
-  flex-grow: 1;
+  flex: 1 1 300px;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 1;
+.large-event-container {
+  height: 50%;
+  min-height: min(300px, 80vh);
 }
 
 .small-card-list {

@@ -1,7 +1,12 @@
-<div>
-  <div>Name: {{ event.eventName }}</div>
-  <div>Description: {{ event.eventDescription }}</div>
-  <div>Date: {{ event.eventDate }}</div>
-  <div>Location: {{ event.eventLocation }}</div>
-  <div>Owner: {{ event.user.username }}</div>
+<div class="event-info-card">
+  <label>Name</label>
+  <div>{{ event.eventName }}</div>
+  <label>Date</label>
+  <div>{{ event.eventDate }}</div>
+  <label>Location</label>
+  <div>{{ event.eventLocation }}</div>
+  <label>Description</label>
+  <div>{{ event.eventDescription }}</div>
+  <label>Owner</label>
+  <div>{{ event.user.username }}</div>
 </div>

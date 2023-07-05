@@ -21,7 +21,7 @@ label {
 input,
 select {
   border: none; /* Remove the default border */
-  border-bottom: 1px solid black; /* Add a black bottom border */
+  border-bottom: 1px solid var(--color-base); /* Add a dark bottom border */
   background-color: transparent; /* Make the background transparent */
   padding: 5px;
   width: 100%;
@@ -39,11 +39,7 @@ select {
 }
 
 button {
-  margin-top: 10px;
   width: 100%;
-  background-color: white;
-  border: 1px solid black;
-  padding: 5px;
 }
 
 div.error {
