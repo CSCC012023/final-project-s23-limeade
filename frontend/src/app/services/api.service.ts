@@ -53,7 +53,7 @@ export class ApiService {
     });
   }
 
-  getme() {
+  getMe() {
     return this.http.get<any>(this.apiEndPoint + '/api/users/getMe', {
       withCredentials: true,
     });
@@ -74,7 +74,7 @@ export class ApiService {
   }
 
   updateUserInfo(): void {
-    this.getme().subscribe((next) => {
+    this.getMe().subscribe((next) => {
       this.userId = next.userId;
       this.type = next.type;
       this.user = next;
@@ -131,8 +131,12 @@ export class ApiService {
     );
   }
 
-  getEvents() {
-    return this.http.get(this.apiEndPoint + '/api/events', {
+  getEvents(userId: string = '') {
+    let filter = '';
+    if (userId !== '') {
+      filter = '?userId=' + userId;
+    }
+    return this.http.get(this.apiEndPoint + '/api/events/' + filter, {
       withCredentials: true,
     });
   }

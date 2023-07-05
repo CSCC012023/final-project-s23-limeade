@@ -10,7 +10,7 @@ export class EventHomeComponent {
   events: any;
   largeEvent: any;
 
-  constructor(private api: ApiService) {}
+  constructor(protected api: ApiService) {}
 
   ngOnInit(): void {
     this.api.getEvents().subscribe((next) => {
@@ -27,5 +27,19 @@ export class EventHomeComponent {
     } else {
       console.log('No events found');
     }
+  }
+
+  getMyEvents() {
+    this.api.getEvents(this.api.userId).subscribe((next) => {
+      this.events = next;
+      this.updateEventsList();
+    });
+  }
+
+  getAllEvents() {
+    this.api.getEvents().subscribe((next) => {
+      this.events = next;
+      this.updateEventsList();
+    });
   }
 }

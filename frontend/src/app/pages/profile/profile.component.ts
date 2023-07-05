@@ -37,18 +37,20 @@ export class ProfileComponent implements OnInit {
   firstName: string = '';
   lastName: string = '';
   editMode: boolean = false;
+
   constructor(
     public api: ApiService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
+
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       const userId = params['userId'];
       console.log(userId);
       if (userId === this.api.userId) {
         this.myself = true;
-        this.api.getme().subscribe(
+        this.api.getMe().subscribe(
           (next) => {
             this.user = next;
             console.log(this.user);
@@ -73,6 +75,7 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
+
   toggleEditMode(): void {
     this.error = '';
     this.editMode = !this.editMode;

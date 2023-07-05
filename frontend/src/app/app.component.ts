@@ -9,7 +9,7 @@ import { ApiService } from './services/api.service';
 export class AppComponent implements OnInit {
   constructor(private api: ApiService) {}
   ngOnInit(): void {
-    this.api.getme().subscribe(
+    this.api.getMe().subscribe(
       (next) => {
         this.api.loggedIn = true;
         this.api.userId = next._id;
