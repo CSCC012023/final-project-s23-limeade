@@ -42,6 +42,9 @@ a {
   margin: 5px 0;
 }
 
+  .red {
+    background-color: red;
+  }
 .profile-form .form-group {
   margin-bottom: 15px;
 }
@@ -57,5 +60,5 @@ a {
 
 .error {
   margin-top: 10px;
-  color: red;
-}
+  color: red;}
+
