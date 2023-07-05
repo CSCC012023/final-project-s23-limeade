@@ -13,10 +13,10 @@
 }
 
 :root {
-  --color-base: #26201B;
-  --color-secondary: #73A626;
-  --color-tertiary: #5C8C3A;
-  --color-accent: #C9D955;
+  --color-base: #26201b;
+  --color-secondary: #73a626;
+  --color-tertiary: #5c8c3a;
+  --color-accent: #c9d955;
 }
 
 *,
@@ -35,7 +35,11 @@ body {
 nav {
   margin-bottom: 20px;
   padding: 10px 20px;
-  background: linear-gradient(to right, var(--color-accent), var(--color-secondary));
+  background: linear-gradient(
+    to right,
+    var(--color-accent),
+    var(--color-secondary)
+  );
 }
 
 button {

@@ -24,6 +24,9 @@
       <a class="nav-link" routerLink="/event-add">Add Event</a>
     </li>
     <li *ngIf="api.loggedIn" class="nav-item">
+      <a class="nav-link" routerLink="/user-search">User Search</a>
+    </li>
+    <li *ngIf="api.loggedIn" class="nav-item">
       <div (click)="logout()">Logout</div>
     </li>
   </ul>

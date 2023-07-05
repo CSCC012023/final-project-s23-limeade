@@ -48,6 +48,10 @@ export class ApiService {
   }
 
   signOut() {
+    this.loggedIn = false;
+    this.userId = '';
+    this.type = '';
+    this.user = {};
     return this.http.get(this.apiEndPoint + '/api/users/logout', {
       withCredentials: true,
     });
@@ -107,6 +111,21 @@ export class ApiService {
         lastName: lastName,
         interests: interests,
       },
+      { withCredentials: true }
+    );
+  }
+
+  userSearch(queryString: string) {
+    return this.http.get(
+      this.apiEndPoint + `/api/users/usersearch/queryString=${queryString}`,
+      { withCredentials: true }
+    );
+  }
+
+  blockUser(userId: string) {
+    return this.http.patch(
+      this.apiEndPoint + `/api/users/block`,
+      { blockedUserId: userId },
       { withCredentials: true }
     );
   }

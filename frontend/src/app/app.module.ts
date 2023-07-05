@@ -22,7 +22,9 @@ import { EventAddFormComponent } from './components/event-add-form/event-add-for
 import { EventInfoComponent } from './components/event-info/event-info.component';
 import { ApiService } from './services/api.service';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-
+import { UsersearchComponent } from './pages/usersearch/usersearch.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { ProfilecardComponent } from './components/profilecard/profilecard.component';
 
 @NgModule({
   declarations: [
@@ -42,16 +44,22 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     EventInfoPageComponent,
     EventAddComponent,
     EventAddFormComponent,
-    EventInfoComponent
+    EventInfoComponent,
+    UsersearchComponent,
+    LoadingSpinnerComponent,
+    ProfilecardComponent,
   ],
   imports: [
     FormsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [ApiService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
-  bootstrap: [AppComponent]
+  providers: [
+    ApiService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

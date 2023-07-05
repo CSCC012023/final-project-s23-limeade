@@ -8,6 +8,7 @@ import { PremiumSignupComponent } from './pages/premium-signup/premium-signup.co
 import { EventHomeComponent } from './pages/event-home/event-home.component';
 import { EventInfoPageComponent } from './pages/event-info-page/event-info-page.component';
 import { EventAddComponent } from './pages/event-add/event-add.component';
+import { UsersearchComponent } from './pages/usersearch/usersearch.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'event-add',
     component: EventAddComponent,
+  },
+  {
+    path: 'user-search',
+    component: UsersearchComponent,
   },
 ];
 
