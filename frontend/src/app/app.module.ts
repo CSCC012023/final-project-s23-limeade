@@ -26,7 +26,6 @@ import { UsersearchComponent } from './pages/usersearch/usersearch.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { ProfilecardComponent } from './components/profilecard/profilecard.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,16 +47,19 @@ import { ProfilecardComponent } from './components/profilecard/profilecard.compo
     EventInfoComponent,
     UsersearchComponent,
     LoadingSpinnerComponent,
-    ProfilecardComponent
+    ProfilecardComponent,
   ],
   imports: [
     FormsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [ApiService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
-  bootstrap: [AppComponent]
+  providers: [
+    ApiService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

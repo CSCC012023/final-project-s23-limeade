@@ -4,31 +4,31 @@
 <a *ngIf="api.type === 'Premium'" routerLink="/">Switch to Basic</a>
 
 <div *ngIf="!editMode" class="profile-container">
-    <!-- Display profile information -->
-    <div class="profile-box">
-      <h2>{{ user.username }}</h2>
-      <div class="profile-details">
-        <p><strong>First Name:</strong> {{ user.firstName }}</p>
-        <p><strong>Last Name:</strong> {{ user.lastName }}</p>
-        <div class="interests">
-            <strong>Interests:</strong>
-            <ul>
-              <li *ngFor="let interest of user.interests">{{ interest }}</li>
-            </ul>
-          </div>
+  <!-- Display profile information -->
+  <div class="profile-box">
+    <h2>{{ user.username }}</h2>
+    <div class="profile-details">
+      <p><strong>First Name:</strong> {{ user.firstName }}</p>
+      <p><strong>Last Name:</strong> {{ user.lastName }}</p>
+      <div class="interests">
+        <strong>Interests:</strong>
+        <ul>
+          <li *ngFor="let interest of user.interests">{{ interest }}</li>
+        </ul>
       </div>
     </div>
-    <button *ngIf="myself" (click)="toggleEditMode()">Edit</button>
-    <button *ngIf="!myself" (click)="blockUser()" class = "red">Block User</button>
   </div>
-  
-  <div *ngIf="editMode" class="profile-container">
-    <!-- Display editable form -->
-    <div class="profile-box">
-      <form (submit)="saveChanges()">
-        <h2>Editing Profile</h2>
-        <div class="profile-details">
-            <div class = 'form-group'>
+  <button *ngIf="myself" (click)="toggleEditMode()">Edit</button>
+  <button *ngIf="!myself" (click)="blockUser()" class="red">Block User</button>
+</div>
+
+<div *ngIf="editMode" class="profile-container">
+  <!-- Display editable form -->
+  <div class="profile-box">
+    <form (submit)="saveChanges()">
+      <h2>Editing Profile</h2>
+      <div class="profile-details">
+        <div class="form-group">
           <label for="firstName">First Name:</label>
           <input
             type="text"

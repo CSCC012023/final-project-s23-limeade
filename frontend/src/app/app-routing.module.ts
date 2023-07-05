@@ -40,13 +40,13 @@ const routes: Routes = [
     component: EventInfoPageComponent,
   },
   {
-    path:'event-add',
-    component: EventAddComponent
+    path: 'event-add',
+    component: EventAddComponent,
   },
   {
-    path:'user-search',
-    component:UsersearchComponent
-  }
+    path: 'user-search',
+    component: UsersearchComponent,
+  },
 ];
 
 @NgModule({
