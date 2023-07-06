@@ -8,7 +8,7 @@ describe('LoginformComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginformComponent]
+      declarations: [LoginformComponent],
     });
     fixture = TestBed.createComponent(LoginformComponent);
     component = fixture.componentInstance;

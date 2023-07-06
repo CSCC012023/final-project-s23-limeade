@@ -5,25 +5,28 @@ import session from "express-session";
 import cors from "cors";
 import { usersRouter } from "./routers/user_router.js";
 import { eventsRouter } from "./routers/event_router.js";
-import dotenv from "dotenv"
-import morgan from "morgan"
+import dotenv from "dotenv";
+import morgan from "morgan";
+
 const app = express();
 const port = 3000; // Choose the desired port number
 
-app.use(session({
-  secret: 'YourSecretKey',
-  resave: false,
-  saveUninitialized: true
-}));
+app.use(
+  session({
+    secret: "YourSecretKey",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 dotenv.config();
 // Middleware
 const corsOptions = {
-    origin:process.env.FRONTEND,
-    credentials:true
-}
+  origin: process.env.FRONTEND,
+  credentials: true,
+};
 app.use(cors(corsOptions));
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(
   session({
@@ -46,10 +49,10 @@ mongoose.connect(mongoURI, {
   useUnifiedTopology: true,
 });
 
-mongoose.connection.on('connected', () => {
-  console.log('Connected to MongoDB');
+mongoose.connection.on("connected", () => {
+  console.log("Connected to MongoDB");
 });
 
-mongoose.connection.on('error', (err) => {
-  console.error('Failed to connect to MongoDB:', err);
+mongoose.connection.on("error", (err) => {
+  console.error("Failed to connect to MongoDB:", err);
 });

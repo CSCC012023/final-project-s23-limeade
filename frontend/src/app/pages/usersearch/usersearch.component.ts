@@ -4,28 +4,28 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-usersearch',
   templateUrl: './usersearch.component.html',
-  styleUrls: ['./usersearch.component.css']
+  styleUrls: ['./usersearch.component.css'],
 })
 export class UsersearchComponent {
-  loading:boolean = false;
-  searchText:string = '';
-  searchResults:any = [];
+  loading: boolean = false;
+  searchText: string = '';
+  searchResults: any = [];
 
-  constructor(private api:ApiService){};
+  constructor(private api: ApiService) {}
 
   onInputChange() {
     this.loading = true;
     // Perform search logic here
     console.log('Search text:', this.searchText);
     this.api.userSearch(this.searchText).subscribe(
-      (next)=>{
+      (next) => {
         this.loading = false;
         this.searchResults = next;
       },
-      (error)=>{
+      (error) => {
         this.loading = false;
       }
-    )
+    );
   }
 
   clearSearch() {

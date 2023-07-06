@@ -5,7 +5,12 @@ import { limeEvent } from "../models/limeEvents.js";
 export const eventsRouter = Router();
 
 eventsRouter.get("/", async (req, res) => {
-  const events = await limeEvent.find({});
+  let filter = {};
+  if (req.query.userId) {
+    filter.userId = req.query.userId;
+  }
+
+  const events = await limeEvent.find(filter);
   return res.json(events);
 });
 
@@ -31,7 +36,6 @@ eventsRouter.get("/:id", async (req, res) => {
   const event = await limeEvent.findById(req.params.id);
   return res.json(event);
 });
-
 
 //TODO: add and remove users from interestedUsers
 eventsRouter.patch("/:id", async (req, res) => {

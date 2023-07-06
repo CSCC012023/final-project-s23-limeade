@@ -19,12 +19,12 @@ import { LargeEventCardComponent } from './components/large-event-card/large-eve
 import { EventInfoPageComponent } from './pages/event-info-page/event-info-page.component';
 import { EventAddComponent } from './pages/event-add/event-add.component';
 import { EventAddFormComponent } from './components/event-add-form/event-add-form.component';
+import { EventInfoComponent } from './components/event-info/event-info.component';
 import { ApiService } from './services/api.service';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { UsersearchComponent } from './pages/usersearch/usersearch.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { ProfilecardComponent } from './components/profilecard/profilecard.component';
-
 
 @NgModule({
   declarations: [
@@ -44,18 +44,22 @@ import { ProfilecardComponent } from './components/profilecard/profilecard.compo
     EventInfoPageComponent,
     EventAddComponent,
     EventAddFormComponent,
+    EventInfoComponent,
     UsersearchComponent,
     LoadingSpinnerComponent,
-    ProfilecardComponent
+    ProfilecardComponent,
   ],
   imports: [
     FormsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [ApiService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
-  bootstrap: [AppComponent]
+  providers: [
+    ApiService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
