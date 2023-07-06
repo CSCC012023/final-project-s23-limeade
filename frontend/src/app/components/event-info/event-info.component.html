@@ -12,4 +12,10 @@
   </div>
   <label>Description</label>
   <div class="field">{{ event.eventDescription }}</div>
+  <div class="row">
+    <label>Interested Users</label>
+    <div class="field users" *ngFor="let username of userInterestedUsernames">{{ username }}</div>
+  </div>
+  <button *ngIf="!userJoined" (click)="joinEvent()">Join</button>
+  <button *ngIf="userJoined" (click)="leaveEvent()">Leave</button>
 </div>

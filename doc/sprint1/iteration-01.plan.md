@@ -17,12 +17,21 @@ _This entire section is optional. Note that you will have to fill it out and mor
 
 Describe the different roles on the team and the responsibilities associated with each role.
 
+* Web developer
+  * work on the main work (frontend/backend)
+  * help new web developers
+* New web developer
+  * work on smaller parts 
+* Documentation writer
+  * write documentation
 #### Events
 
 Describe meetings (and other events) you are planning to have:
 
  * When and where? In-person or online?
+   * meetings will be hosted online on discord
  * What's the purpose of each meeting?
+   * planning and reviewing the current progress
  * Other events could be coding sessions, code reviews, quick weekly sync' meeting online, etc.
 
 #### Artifacts
@@ -30,10 +39,12 @@ Describe meetings (and other events) you are planning to have:
 List/describe the artifacts you will produce in order to organize your team.       
 
  * Artifacts can be To-do lists, Task boards, schedule(s), etc.
+   * Jira task board
  * We want to understand:
    * How do you keep track of what needs to get done?
    * How do you prioritize tasks?
    * How do tasks get assigned to team members?
+     * assigning tasks based on availability and what can be achieved by each member in the timeframe
 
 ## Product
 
@@ -48,7 +59,7 @@ _This entire section is mandatory._
 -----
 
 * Implement users and register/sign in/sign out actions
-* Add basic events
+* Add basic event functionality (creation, event board, details)
 
 #### Artifacts
 
@@ -61,4 +72,4 @@ List/describe the artifacts you will produce in order to present your project id
 
 ------
 
-* Building an interactive website demo that can be built and run
+* Building an interactive website demo that can be built and run as a demo
