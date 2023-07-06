@@ -17,14 +17,16 @@
         </ul>
       </div>
     </div>
+    <button *ngIf="myself" (click)="toggleEditMode()">Edit</button>
+    <button *ngIf="!myself" (click)="blockUser()" class="red">
+      Block User
+    </button>
   </div>
-  <button *ngIf="myself" (click)="toggleEditMode()">Edit</button>
-  <button *ngIf="!myself" (click)="blockUser()" class="red">Block User</button>
 </div>
 
 <div *ngIf="editMode" class="profile-container">
   <!-- Display editable form -->
-  <div class="profile-box">
+  <div class="profile-box profile-form">
     <form (submit)="saveChanges()">
       <h2>Editing Profile</h2>
       <div class="profile-details">
@@ -61,9 +63,11 @@
           </label>
         </div>
       </div>
-      <button type="submit">Save</button>
+      <div class="row">
+        <button type="submit">Save</button>
+        <button (click)="toggleEditMode()">Cancel</button>
+      </div>
       <div class="error">{{ error }}</div>
-      <button (click)="toggleEditMode()">Cancel</button>
     </form>
   </div>
 </div>

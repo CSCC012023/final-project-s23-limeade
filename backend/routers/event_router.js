@@ -58,7 +58,7 @@ eventsRouter.get("/:id", async (req, res) => {
 eventsRouter.patch("/joinEvent", async (req, res) => {
   const event = await limeEvent.findById(req.body.eventId);
 
-  if(!event.interestedUsers.includes(req.body.userId))
+  if (!event.interestedUsers.includes(req.body.userId))
     event.interestedUsers.push(req.body.userId);
 
   try {
