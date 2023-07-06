@@ -14,8 +14,7 @@ export class EventInfoComponent {
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
-    
-    if(this.event.interestedUsers.includes(this.api.userId)){
+    if (this.event.interestedUsers.includes(this.api.userId)) {
       this.userJoined = true;
     }
 
@@ -27,27 +26,22 @@ export class EventInfoComponent {
   }
 
   joinEvent() {
-    this.api
-      .joinEvent(this.event._id, this.api.userId)
-      .subscribe((next) => {
-        this.userJoined = true;
-        this.api.getUserById(this.api.userId).subscribe((next) => {
-          this.userInterestedUsernames.push(next.username);
-        });
+    this.api.joinEvent(this.event._id, this.api.userId).subscribe((next) => {
+      this.userJoined = true;
+      this.api.getUserById(this.api.userId).subscribe((next) => {
+        this.userInterestedUsernames.push(next.username);
       });
+    });
   }
 
   leaveEvent() {
-    this.api
-      .leaveEvent(this.event._id, this.api.userId)
-      .subscribe((next) => {
-        this.userJoined = false;
-        this.api.getUserById(this.api.userId).subscribe((next) => {
-          this.userInterestedUsernames = this.userInterestedUsernames.filter(
-            (username) => username != next.username
-          );
-        });
+    this.api.leaveEvent(this.event._id, this.api.userId).subscribe((next) => {
+      this.userJoined = false;
+      this.api.getUserById(this.api.userId).subscribe((next) => {
+        this.userInterestedUsernames = this.userInterestedUsernames.filter(
+          (username) => username != next.username
+        );
       });
+    });
   }
-
 }

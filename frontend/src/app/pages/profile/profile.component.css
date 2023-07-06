@@ -30,7 +30,8 @@ a {
   text-align: left;
 }
 
-label[for="lastName"], label[for="firstName"] {
+label[for="lastName"],
+label[for="firstName"] {
   margin-right: 5px;
   font-weight: bold;
 }
