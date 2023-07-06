@@ -35,11 +35,6 @@ label::after {
   margin-right: 20px;
 }
 
-#eventInfoName {
-  font-size: 1.8em;
-  font-weight: bold;
-}
-
 button {
   margin-top: 0px;
   padding: 4px;
