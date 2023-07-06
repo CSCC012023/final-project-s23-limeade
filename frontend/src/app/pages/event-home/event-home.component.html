@@ -1,3 +1,8 @@
+<div *ngIf="api.loggedIn" class="button-bar">
+  <button (click)="getAllEvents()">All Events</button>
+  <button (click)="getMyEvents()">My Events</button>
+</div>
+
 <div class="row event-body">
   <div class="col-10 col-sm-12">
     <div class="large-event-container" *ngIf="largeEvent">

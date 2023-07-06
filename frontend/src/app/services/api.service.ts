@@ -12,7 +12,6 @@ export class ApiService {
   loggedIn: boolean = false;
   userId: string = '';
   type: string = '';
-  user: any;
   constructor(private http: HttpClient) {}
 
   signUp(
@@ -52,13 +51,12 @@ export class ApiService {
     this.loggedIn = false;
     this.userId = '';
     this.type = '';
-    this.user = {};
     return this.http.get(this.apiEndPoint + '/api/users/logout', {
       withCredentials: true,
     });
   }
 
-  getme() {
+  getMe() {
     return this.http.get<any>(this.apiEndPoint + '/api/users/getMe', {
       withCredentials: true,
     });
@@ -79,10 +77,10 @@ export class ApiService {
   }
 
   updateUserInfo(): void {
-    this.getme().subscribe((next) => {
-      this.userId = next.userId;
+    this.getMe().subscribe((next) => {
+      this.loggedIn = true;
+      this.userId = next._id;
       this.type = next.type;
-      this.user = next;
     });
   }
 
@@ -151,8 +149,12 @@ export class ApiService {
     );
   }
 
-  getEvents() {
-    return this.http.get(this.apiEndPoint + '/api/events', {
+  getEvents(userId: string = '') {
+    let filter = '';
+    if (userId !== '') {
+      filter = '?userId=' + userId;
+    }
+    return this.http.get(this.apiEndPoint + '/api/events/' + filter, {
       withCredentials: true,
     });
   }
