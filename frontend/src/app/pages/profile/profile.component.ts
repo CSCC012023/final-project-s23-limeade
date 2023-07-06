@@ -47,13 +47,11 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       const userId = params['userId'];
-      console.log(userId);
       if (userId === this.api.userId) {
         this.myself = true;
         this.api.getMe().subscribe(
           (next) => {
             this.user = next;
-            console.log(this.user);
             this.firstName = next.firstName;
             this.lastName = next.lastName;
           },
@@ -83,13 +81,9 @@ export class ProfileComponent implements OnInit {
 
   saveChanges(): void {
     this.error = '';
-    console.log('saved');
     const selectedInterests = this.interestsEnum
       .filter((interest) => interest.selected)
       .map((interest) => interest.name);
-    console.log(selectedInterests);
-    console.log(this.firstName);
-    console.log(this.lastName);
     if (this.firstName === '' || this.lastName === '') {
       this.error = 'firstname and lastname are required';
       return;
@@ -123,7 +117,6 @@ export class ProfileComponent implements OnInit {
     const selectedInterests = this.interestsEnum
       .filter((interest) => interest.selected)
       .map((interest) => interest.name);
-    console.log(selectedInterests);
   }
 
   blockUser() {

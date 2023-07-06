@@ -35,7 +35,7 @@ export class LoginformComponent {
       .subscribe(
         (next) => {
           this.api.loggedIn = true;
-          this.api.userId = next.userId;
+          this.api.userId = next._id;
           this.api.type = next.type;
           this.router.navigate(['/']);
         },

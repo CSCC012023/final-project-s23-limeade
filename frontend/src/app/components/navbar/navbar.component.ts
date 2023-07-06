@@ -11,7 +11,6 @@ export class NavbarComponent {
   constructor(public api: ApiService, private router: Router) {}
 
   logout() {
-    console.log('logout');
     this.api.signOut().subscribe((next) => {
       this.api.loggedIn = false;
       this.router.navigate(['/']);

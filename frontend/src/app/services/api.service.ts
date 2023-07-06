@@ -11,7 +11,6 @@ export class ApiService {
   loggedIn: boolean = false;
   userId: string = '';
   type: string = '';
-  user: any;
   constructor(private http: HttpClient) {}
 
   signUp(
@@ -51,7 +50,6 @@ export class ApiService {
     this.loggedIn = false;
     this.userId = '';
     this.type = '';
-    this.user = {};
     return this.http.get(this.apiEndPoint + '/api/users/logout', {
       withCredentials: true,
     });
@@ -79,9 +77,9 @@ export class ApiService {
 
   updateUserInfo(): void {
     this.getMe().subscribe((next) => {
-      this.userId = next.userId;
+      this.loggedIn = true;
+      this.userId = next._id;
       this.type = next.type;
-      this.user = next;
     });
   }
 
