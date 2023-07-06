@@ -34,3 +34,9 @@ label::after {
   font-size: 1.8em;
   font-weight: bold;
 }
+
+button {
+  margin-top: 0px;
+  padding: 4px;
+  border: 1px solid var(--color-base);
+}

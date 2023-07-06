@@ -115,6 +115,22 @@ export class ApiService {
     );
   }
 
+  joinEvent(eventId: string, userId: string) {
+    return this.http.patch(
+      this.apiEndPoint + '/api/events/joinEvent',
+      { eventId: eventId, userId: userId },
+      { withCredentials: true }
+    );
+  }
+
+  leaveEvent(eventId: string, userId: string) {
+    return this.http.patch(
+      this.apiEndPoint + '/api/events/leaveEvent',
+      { eventId: eventId, userId: userId },
+      { withCredentials: true }
+    );
+  }
+
   userSearch(queryString: string) {
     return this.http.get(
       this.apiEndPoint + `/api/users/usersearch/queryString=${queryString}`,

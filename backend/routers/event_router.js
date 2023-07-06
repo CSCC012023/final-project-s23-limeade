@@ -37,7 +37,53 @@ eventsRouter.get("/:id", async (req, res) => {
   return res.json(event);
 });
 
-//TODO: add and remove users from interestedUsers
+/*eventsRouter.patch("/interested", async (req, res) => {
+  const event = await limeEvent.findById(req.body.eventId);
+  
+  if(req.body.action === "add" && !event.interestedUsers.includes(req.body.userId)){
+    event.interestedUsers.push(req.body.userId);
+  } else if(req.body.action === "remove"){
+    event.interestedUsers = event.interestedUsers.filter((userId) => userId !== req.body.userId);
+  }
+
+  try {
+    await event.save();
+  } catch (err) {
+    return res.status(422).json(err);
+  }
+
+  return res.json(event);
+});*/
+
+eventsRouter.patch("/joinEvent", async (req, res) => {
+  const event = await limeEvent.findById(req.body.eventId);
+
+  if(!event.interestedUsers.includes(req.body.userId))
+    event.interestedUsers.push(req.body.userId);
+
+  try {
+    await event.save();
+  } catch (err) {
+    return res.status(422).json(err);
+  }
+
+  return res.json(event);
+});
+
+eventsRouter.patch("/leaveEvent", async (req, res) => {
+  const event = await limeEvent.findById(req.body.eventId);
+
+  event.interestedUsers.pull(req.body.userId);
+
+  try {
+    await event.save();
+  } catch (err) {
+    return res.status(422).json(err);
+  }
+
+  return res.json(event);
+});
+
 eventsRouter.patch("/:id", async (req, res) => {
   const event = await limeEvent.findById(req.params.id);
   event.eventName = req.body.eventName;
