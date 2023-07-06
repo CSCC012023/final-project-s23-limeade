@@ -11,7 +11,7 @@
     <div class="field">{{ event.user.username }}</div>
   </div>
   <label>Description</label>
-  <div class="field">{{ event.eventDescription }}</div>
+  <div class="field row-spacing">{{ event.eventDescription }}</div>
   <div class="row">
     <label>Interested Users</label>
     <div class="field users" *ngFor="let username of userInterestedUsernames">{{ username }}</div>

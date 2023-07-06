@@ -18,6 +18,10 @@
   align-items: center;
 }
 
+.row-spacing {
+  margin-bottom: 10px;
+}
+
 label {
   margin-right: 5px;
   font-weight: bold;
@@ -39,12 +43,10 @@ label::after {
 button {
   margin-top: 0px;
   padding: 4px;
-  border: 1px solid var(--color-base);
 }
 
 .users {
   padding: 5px;
   background-color: lightcoral;
   border: 1px solid var(--color-base);
-  color: var(--color-base);
 }
