@@ -9,6 +9,8 @@
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   text-align: center;
+  font-size: 1.8em;
+  font-weight: bold;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;

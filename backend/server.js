@@ -25,6 +25,7 @@ const corsOptions = {
   origin: process.env.FRONTEND,
   credentials: true,
 };
+
 app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(express.json());

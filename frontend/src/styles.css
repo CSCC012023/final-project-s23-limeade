@@ -14,6 +14,7 @@
 
 :root {
   --color-base: #26201b;
+  --color-light: #f5f5f5;
   --color-secondary: #73a626;
   --color-tertiary: #5c8c3a;
   --color-accent: #c9d955;
@@ -61,6 +62,10 @@ a:link {
 
 a:visited {
   color: var(--color-tertiary);
+}
+
+form {
+  margin: 0 auto;
 }
 
 .container {

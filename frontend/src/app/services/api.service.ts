@@ -6,11 +6,13 @@ import { environment } from '../../environments/environment.development';
 @Injectable({
   providedIn: 'root',
 })
+
 export class ApiService {
   apiEndPoint = environment.apiEndpoint;
   loggedIn: boolean = false;
   userId: string = '';
   type: string = '';
+
   constructor(private http: HttpClient) {}
 
   signUp(
