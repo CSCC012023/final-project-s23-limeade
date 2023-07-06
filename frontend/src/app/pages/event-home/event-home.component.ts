@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class EventHomeComponent {
   events: any;
   largeEvent: any;
+  allEvents: boolean = true;
 
   constructor(protected api: ApiService) {}
 
@@ -33,6 +34,7 @@ export class EventHomeComponent {
     this.api.getEvents(this.api.userId).subscribe((next) => {
       this.events = next;
       this.updateEventsList();
+      this.allEvents = false;
     });
   }
 
@@ -40,6 +42,7 @@ export class EventHomeComponent {
     this.api.getEvents().subscribe((next) => {
       this.events = next;
       this.updateEventsList();
+      this.allEvents = true;
     });
   }
 }

@@ -5,8 +5,13 @@
   width: fit-content;
   padding: 0px 20px;
 }
+
 .button-bar button {
   margin-right: 10px;
+}
+
+.button-bar .selected {
+  background-color: var(--color-secondary);
 }
 
 .event-body {

@@ -1,6 +1,10 @@
 <div *ngIf="api.loggedIn" class="button-bar">
-  <button (click)="getAllEvents()">All Events</button>
-  <button (click)="getMyEvents()">My Events</button>
+  <button [ngClass]="{ selected: allEvents }" (click)="getAllEvents()">
+    All Events
+  </button>
+  <button [ngClass]="{ selected: !allEvents }" (click)="getMyEvents()">
+    My Events
+  </button>
 </div>
 
 <div class="row event-body">

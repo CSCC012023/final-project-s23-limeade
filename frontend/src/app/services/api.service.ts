@@ -12,6 +12,7 @@ export class ApiService {
   loggedIn: boolean = false;
   userId: string = '';
   type: string = '';
+
   constructor(private http: HttpClient) {}
 
   signUp(
