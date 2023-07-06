@@ -15,6 +15,7 @@
 
 .row {
   margin-bottom: 10px;
+  align-items: center;
 }
 
 label {
@@ -39,4 +40,11 @@ button {
   margin-top: 0px;
   padding: 4px;
   border: 1px solid var(--color-base);
+}
+
+.users {
+  padding: 5px;
+  background-color: lightcoral;
+  border: 1px solid var(--color-base);
+  color: var(--color-base);
 }

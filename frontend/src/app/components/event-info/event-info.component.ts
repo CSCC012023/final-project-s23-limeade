@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class EventInfoComponent {
   @Input() event: any;
   userJoined: boolean = false;
+  userInterestedUsernames: string[] = [];
 
   constructor(private api: ApiService) {}
 
@@ -17,6 +18,12 @@ export class EventInfoComponent {
     if(this.event.interestedUsers.includes(this.api.userId)){
       this.userJoined = true;
     }
+
+    this.event.interestedUsers.forEach((userId: string) => {
+      this.api.getUserById(userId).subscribe((next) => {
+        this.userInterestedUsernames.push(next.username);
+      });
+    });
   }
 
   joinEvent() {
@@ -24,7 +31,9 @@ export class EventInfoComponent {
       .joinEvent(this.event._id, this.api.userId)
       .subscribe((next) => {
         this.userJoined = true;
-        this.event.interestedUsers.push(this.api.userId);
+        this.api.getUserById(this.api.userId).subscribe((next) => {
+          this.userInterestedUsernames.push(next.username);
+        });
       });
   }
 
@@ -33,7 +42,11 @@ export class EventInfoComponent {
       .leaveEvent(this.event._id, this.api.userId)
       .subscribe((next) => {
         this.userJoined = false;
-        this.event.interestedUsers.splice(this.event.interestedUsers.indexOf(this.api.userId), 1);
+        this.api.getUserById(this.api.userId).subscribe((next) => {
+          this.userInterestedUsernames = this.userInterestedUsernames.filter(
+            (username) => username != next.username
+          );
+        });
       });
   }
 
