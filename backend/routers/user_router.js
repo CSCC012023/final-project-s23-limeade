@@ -43,6 +43,7 @@ usersRouter.post("/login", async (req, res) => {
     return res.status(401).json({ error: "Credentials not found" });
   }
   req.session.userId = user._id;
+  req.session.username = user.username;
   user.message = "login successful";
   return res.json(user);
 });

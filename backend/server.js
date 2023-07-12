@@ -7,17 +7,28 @@ import { usersRouter } from "./routers/user_router.js";
 import { eventsRouter } from "./routers/event_router.js";
 import dotenv from "dotenv";
 import morgan from "morgan";
-
+import http from 'http';
+import { Server as SocketIOServer } from 'socket.io';
+import handleChatEvents from './chatService.js';
 const app = express();
 const port = 3000; // Choose the desired port number
+const server = http.createServer(app);
+const io = new SocketIOServer(server);
+const sessionMiddleware = session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: true
+});
 
-app.use(
-  session({
-    secret: "YourSecretKey",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
+app.use(sessionMiddleware);
+
+io.use((socket, next) => {
+  sessionMiddleware(socket.request, {}, next);
+});
+
+io.on('connection', (socket) => {
+  handleChatEvents(io, socket);
+});
 
 dotenv.config();
 // Middleware
@@ -40,8 +51,8 @@ app.use(
 app.use("/api/users", usersRouter);
 app.use("/api/events", eventsRouter);
 // Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+server.listen(3000, () => {
+  console.log('Server is running on port 3000');
 });
 const mongoURI = process.env.MONGO_URI; // Replace with your MongoDB connection URI
 
