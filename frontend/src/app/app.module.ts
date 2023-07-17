@@ -25,6 +25,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { UsersearchComponent } from './pages/usersearch/usersearch.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { ProfilecardComponent } from './components/profilecard/profilecard.component';
+import { ChatRoomComponent } from './components/chat-room/chat-room.component';
+import { MessageListComponent } from './components/message-list/message-list.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { ProfilecardComponent } from './components/profilecard/profilecard.compo
     UsersearchComponent,
     LoadingSpinnerComponent,
     ProfilecardComponent,
+    ChatRoomComponent,
+    MessageListComponent,
   ],
   imports: [
     FormsModule,
