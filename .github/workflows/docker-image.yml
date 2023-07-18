@@ -12,8 +12,6 @@ name: Publish Docker image
 on:
   push:
     branches:
-      - main
-      - development
       - a2/docker-test
 
 jobs:
