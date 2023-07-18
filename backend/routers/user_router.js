@@ -287,3 +287,36 @@ usersRouter.get(
     return res.json(users);
   }
 );
+
+
+usersRouter.post(
+  "/report",
+  isAuthenticated,
+  async(req,res)=>{
+    const reporterId = req.session.userId;
+    const reportMsg = req.body.reportMsg;
+    const reportedUsername = req.body.reportedUsername;
+
+    const reportedUser = await User.findOne({
+      username:reportedUsername,
+
+    });
+
+    const reportedUserId = reportedUser._id;
+
+    const report = new Report({
+      reporterId:reporterId,
+      reportedId:reportedUserId,
+      reportMsg:reportMsg
+    });
+
+    try{
+      await report.save();
+    }
+    catch{
+      return res.status(422).json({error:"Report creation failed"});
+    }
+
+
+  }
+)
