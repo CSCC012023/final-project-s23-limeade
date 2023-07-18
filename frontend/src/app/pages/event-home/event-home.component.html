@@ -1,0 +1,22 @@
+<div *ngIf="api.loggedIn" class="button-bar">
+  <button [ngClass]="{ selected: allEvents }" (click)="getAllEvents()">
+    All Events
+  </button>
+  <button [ngClass]="{ selected: !allEvents }" (click)="getMyEvents()">
+    My Events
+  </button>
+</div>
+
+<div class="row event-body">
+  <div class="col-10 col-sm-12">
+    <div class="large-event-container" *ngIf="largeEvent">
+      <app-large-event-card [event]="largeEvent"></app-large-event-card>
+    </div>
+
+    <div class="small-card-list">
+      <div *ngFor="let event of events" class="event-card">
+        <app-event-card [event]="event"></app-event-card>
+      </div>
+    </div>
+  </div>
+</div>
