@@ -7,6 +7,13 @@
 
 @font-face {
   font-family: "Roboto";
+  src: url("assets/Roboto/Roboto-Medium.ttf");
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Roboto";
   src: url("assets/Roboto/Roboto-Bold.ttf");
   font-style: normal;
   font-weight: 700;
@@ -15,8 +22,8 @@
 :root {
   --color-base: #26201b;
   --color-light: #f5f5f5;
-  --color-secondary: #73a626;
-  --color-tertiary: #5c8c3a;
+  --color-1: #73a626;
+  --color-2: #5c8c3a;
   --color-accent: #c9d955;
 }
 
@@ -25,12 +32,12 @@
 ::before {
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing */
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-  color: var(--color-base);
 }
 
 body {
   margin: 0;
+  color: var(--color-base);
+  font-family: "Roboto", sans-serif;
 }
 
 nav {
@@ -39,7 +46,7 @@ nav {
   background: linear-gradient(
     to right,
     var(--color-accent),
-    var(--color-secondary)
+    var(--color-1)
   );
 }
 
@@ -56,12 +63,16 @@ button:active {
   color: var(--color-accent);
 }
 
+button:enabled {
+  cursor: pointer;
+}
+
 a:link {
-  color: var(--color-secondary);
+  color: var(--color-1);
 }
 
 a:visited {
-  color: var(--color-tertiary);
+  color: var(--color-2);
 }
 
 form {

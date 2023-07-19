@@ -1,4 +1,11 @@
 <div *ngIf="api.loggedIn" class="button-bar">
+  <button
+    class="filter-button"
+    [ngClass]="{ 'filter-selected': showFilterForm }"
+    (click)="showFilterForm = !showFilterForm"
+  >
+    Filter <fa-icon id="filter-icon" icon="sliders" size="1x"></fa-icon>
+  </button>
   <button [ngClass]="{ selected: allEvents }" (click)="getAllEvents()">
     All Events
   </button>
@@ -9,6 +16,9 @@
 
 <div class="row event-body">
   <div class="col-10 col-sm-12">
+    <div class="filter-form">
+      <app-event-filter-form *ngIf="showFilterForm"></app-event-filter-form>
+    </div>
     <div class="large-event-container" *ngIf="largeEvent">
       <app-large-event-card [event]="largeEvent"></app-large-event-card>
     </div>

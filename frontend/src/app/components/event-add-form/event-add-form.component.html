@@ -10,7 +10,13 @@
   ></textarea>
 
   <label for="eventDate">Date</label>
-  <input type="text" formControlName="eventDate" id="eventDate" />
+  <input
+    type="datetime-local"
+    formControlName="eventDate"
+    id="eventDate"
+    min="2000-01-01T00:00"
+    required
+  />
 
   <label for="eventLocation">Location</label>
   <input

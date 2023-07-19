@@ -4,6 +4,9 @@
   width: -moz-fit-content;
   width: fit-content;
   padding: 0px 20px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
 }
 
 .button-bar button {
@@ -11,12 +14,39 @@
 }
 
 .button-bar .selected {
-  background-color: var(--color-secondary);
+  background-color: var(--color-1);
+}
+
+.filter-button {
+  border: none;
+  background: none;
+  color: var(--color-2);
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+.filter-button:hover {
+  color: var(--color-accent);
+}
+
+.filter-selected {
+  color: var(--color-accent);
+}
+
+#filter-icon {
+  margin-left: 5px;
 }
 
 .event-body {
   justify-content: center;
   padding: 32px 16px 16px 16px;
+}
+
+.filter-form {
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 30px;
+  max-width: 500px;
 }
 
 .event-card {
