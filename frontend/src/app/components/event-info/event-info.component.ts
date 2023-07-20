@@ -23,6 +23,11 @@ export class EventInfoComponent {
         this.userInterestedUsernames.push(next.username);
       });
     });
+
+    const date: Date = new Date(this.event.eventDate);
+    if (date.toISOString() === this.event.eventDate) {
+      this.event.eventDate = date.toLocaleString();
+    }
   }
 
   joinEvent() {

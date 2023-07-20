@@ -12,7 +12,7 @@ export class EventInfoPageComponent {
   event: any;
   id: any;
 
-  constructor(private api: ApiService, private route: ActivatedRoute) {}
+  constructor(protected api: ApiService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {

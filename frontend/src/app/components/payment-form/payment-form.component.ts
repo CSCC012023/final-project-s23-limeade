@@ -13,7 +13,7 @@ export class PaymentFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public api: ApiService,
+    private api: ApiService,
     private router: Router
   ) {}
 
