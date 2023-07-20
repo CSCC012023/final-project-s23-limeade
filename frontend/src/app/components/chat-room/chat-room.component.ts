@@ -16,6 +16,7 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
   @Input() roomId!: string;
   private webSocket!: WebSocket;
   private readonly serverUrl = `ws://localhost:3000/chatroom`; // Replace with your server URL
+ 
   ngOnInit() {
     this.api.getMe().subscribe((next) => {
       this.user = next;
@@ -33,7 +34,7 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
       console.log(this.messages);
       console.log('Received message:', message);
       for (const item of message) {
-        this.messages.unshift(item);
+        this.messages.push(item);
       }
       this.messageText = '';
     };
@@ -47,11 +48,6 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
       console.error('WebSocket error:', error);
       // Handle any errors that occur during the WebSocket connection
     };
-  }
-
-  showText() {
-    console.log('htllo');
-    console.log(this.messageText);
   }
 
   ngOnDestroy() {

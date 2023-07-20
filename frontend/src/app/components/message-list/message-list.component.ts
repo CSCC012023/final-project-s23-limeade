@@ -9,30 +9,8 @@ import {
 
 @Component({
   selector: 'app-message-list',
-  template: `
-    <div class="message-list" #messageList>
-      <div class="message" *ngFor="let message of messages">
-        <div class="sender">
-          {{ message.senderName }}<small> sent at {{ message.date }}</small>
-        </div>
-        <div class="content">{{ message.message }}</div>
-      </div>
-    </div>
-  `,
-  styles: [
-    `
-      .message-list {
-        height: 300px;
-        overflow-y: auto;
-      }
-      .message {
-        margin-bottom: 10px;
-      }
-      .sender {
-        font-weight: bold;
-      }
-    `,
-  ],
+  templateUrl: './message-list.component.html',
+  styleUrls: ['./message-list.component.css'],
 })
 export class MessageListComponent implements OnChanges {
   @Input() messages: any[] = [];
@@ -46,10 +24,5 @@ export class MessageListComponent implements OnChanges {
       ].slice(totalMessages - 10 >= 0 ? totalMessages - 10 : 0);
       this.messages = lastTenMessages;
     }
-  }
-
-  private scrollToBottom() {
-    this.messageList.nativeElement.scrollTop =
-      this.messageList.nativeElement.scrollHeight;
   }
 }
