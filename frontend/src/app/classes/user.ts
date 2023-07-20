@@ -1,11 +1,9 @@
-export class User {
-  public firstName: string;
-  public lastName: string;
-  public type: string;
-
-  constructor(firstName: string, lastName: string, type: string) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.type = type;
-  }
+export interface User {
+  _id: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  type: string;
+  interests: string[];
+  blocked: string[];
 }

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const interestsEnum = [
+export const interestsEnum = [
   "Music concerts",
   "Art exhibitions",
   "Film screenings",

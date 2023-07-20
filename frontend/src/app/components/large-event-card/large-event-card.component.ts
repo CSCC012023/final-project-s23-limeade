@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { LimeEvent } from 'src/app/classes/limeEvent';
 
 @Component({
   selector: 'app-large-event-card',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./large-event-card.component.css'],
 })
 export class LargeEventCardComponent {
-  @Input() event: any;
+  @Input() event!: LimeEvent;
 
   constructor(private router: Router) {}
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { LimeEvent } from 'src/app/classes/limeEvent';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,8 +10,8 @@ import { faSliders } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./event-home.component.css'],
 })
 export class EventHomeComponent {
-  events: any;
-  largeEvent: any;
+  events!: LimeEvent[];
+  largeEvent!: LimeEvent;
   allEvents: boolean = true;
   showFilterForm: boolean = false;
 

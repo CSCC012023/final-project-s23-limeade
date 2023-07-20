@@ -21,7 +21,10 @@
     <button *ngIf="!myself" (click)="blockUser()" class="red">
       Block User
     </button>
-    <app-profile-report-form [user]="user" *ngIf="!myself"></app-profile-report-form>
+    <app-profile-report-form
+      [user]="user"
+      *ngIf="!myself"
+    ></app-profile-report-form>
   </div>
 </div>
 
@@ -57,7 +60,7 @@
           <label>
             <input
               type="checkbox"
-              name="interests"
+              [name]="interest.name"
               [(ngModel)]="interest.selected"
             />
             {{ interest.name }}

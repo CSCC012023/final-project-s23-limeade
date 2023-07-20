@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { User } from "../models/users.js";
+import { User, interestsEnum } from "../models/users.js";
 import bcrypt from "bcrypt";
 import { isAuthenticated } from "../middleware/auth.js";
 export const usersRouter = Router();
-import {Report} from '../models/report.js'
+import { Report } from "../models/report.js";
 
 usersRouter.post("/signup", async (req, res) => {
   const plaintextPassword = req.body.password;
@@ -124,7 +124,7 @@ usersRouter.patch("/profile", isAuthenticated, async (req, res) => {
   user.firstName = firstName;
   user.lastName = lastName;
   user.save();
-  return res.json({ message: "save complete" });
+  return res.json({ message: "Profile changed" });
 });
 
 usersRouter.patch("/block", isAuthenticated, async (req, res) => {
@@ -145,9 +145,9 @@ usersRouter.patch("/block", isAuthenticated, async (req, res) => {
   try {
     me.save();
   } catch {
-    return res.status(422).json({ error: "Blocked didn't work" });
+    return res.status(422).json({ error: "Block didn't work" });
   }
-  return res.json({ message: "block successful" });
+  return res.json({ message: "Block successful" });
 });
 
 function jaroWinklerDistance(str1, str2) {
@@ -289,40 +289,35 @@ usersRouter.get(
   }
 );
 
+usersRouter.post("/report", isAuthenticated, async (req, res) => {
+  const reporterId = req.session.userId;
+  const reportMsg = req.body.reportMsg;
+  const reportedUsername = req.body.reportedUsername;
+  const messageTxt = req.body.messageTxt;
 
-usersRouter.post(
-  "/report",
-  isAuthenticated,
-  async(req,res)=>{
-    const reporterId = req.session.userId;
-    const reportMsg = req.body.reportMsg;
-    const reportedUsername = req.body.reportedUsername;
-    const messageTxt = req.body.messageTxt;
-
-    const reportedUser = await User.findOne({
-      username:reportedUsername,
-
-    });
-    if(!reportedUser){
-      return res.status(404).json({error:"reported User not found"});
-    }
-    const reportedUserId = reportedUser._id;
-
-    const report = new Report({
-      reporterId:reporterId,
-      reportedId:reportedUserId,
-      reportMsg:reportMsg,
-      messageText:messageTxt,
-    });
-
-    try{
-      await report.save();
-      return res.json({message:"completed"});
-    }
-    catch{
-      return res.status(422).json({error:"Report creation failed"});
-    }
-
-
+  const reportedUser = await User.findOne({
+    username: reportedUsername,
+  });
+  if (!reportedUser) {
+    return res.status(404).json({ error: "Reported User not found" });
   }
-)
+  const reportedUserId = reportedUser._id;
+
+  const report = new Report({
+    reporterId: reporterId,
+    reportedId: reportedUserId,
+    reportMsg: reportMsg,
+    messageText: messageTxt,
+  });
+
+  try {
+    await report.save();
+    return res.json({ message: "Reported" });
+  } catch {
+    return res.status(422).json({ error: "Report creation failed" });
+  }
+});
+
+usersRouter.get("/interests", isAuthenticated, async (req, res) => {
+  return res.json(interestsEnum);
+});
