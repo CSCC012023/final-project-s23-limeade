@@ -50,4 +50,27 @@ export class EventHomeComponent {
       this.allEvents = true;
     });
   }
+
+  filterEvents(filter: {
+    filterDateMin: string;
+    filterDateMax: string;
+    filterLocation: string;
+  }) {
+    let userId = '';
+    if (!this.allEvents) {
+      userId = this.api.userId;
+    }
+    this.api
+      .getEvents(
+        userId,
+        [],
+        filter.filterDateMin,
+        filter.filterDateMax,
+        filter.filterLocation
+      )
+      .subscribe((next) => {
+        this.events = next;
+        this.updateEventsList();
+      });
+  }
 }

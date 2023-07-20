@@ -1,11 +1,18 @@
-<form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
-  <label for="filterDate">Date</label>
+<form [formGroup]="filterForm">
+  <label for="filterDateMin">Date</label>
   <input
     type="datetime-local"
-    formControlName="filterDate"
-    id="filterDate"
+    formControlName="filterDateMin"
+    id="filterDateMin"
     min="2000-01-01T00:00"
-    required
+  />
+
+  <label for="filterDateMax">Date</label>
+  <input
+    type="datetime-local"
+    formControlName="filterDateMax"
+    id="filterDateMax"
+    min="2000-01-01T00:00"
   />
 
   <label for="filterLocation">Location</label>
@@ -13,6 +20,7 @@
     type="text"
     formControlName="filterLocation"
     id="filterLocation"
-    required
   />
+
+  <button type="submit" (click)="onFilter()">Filter</button>
 </form>

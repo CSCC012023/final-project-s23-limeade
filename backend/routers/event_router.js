@@ -10,7 +10,39 @@ eventsRouter.get("/", async (req, res) => {
     filter.userId = req.query.userId;
   }
 
-  const events = await limeEvent.find(filter);
+  let sort = {};
+  if (req.query.sort) {
+    const sortArray = req.query.sort.split("-");
+    if (sortArray[0] !== "" && sortArray[1] === "asc") {
+      sort[sortArray[0]] = 1;
+    } else if (sortArray[0] !== "" && sortArray[1] === "desc") {
+      sort[sortArray[0]] = -1;
+    } else {
+      return res.status(400).json({ error: "Invalid sort parameter" });
+    }
+  }
+
+  if (req.query.eventDateMin) {
+    if (!filter.eventDate) {
+      filter.eventDate = {};
+    }
+    filter.eventDate.$gte = req.query.eventDateMin + ":00.000Z";
+  }
+
+  if (req.query.eventDateMax) {
+    if (!filter.eventDate) {
+      filter.eventDate = {};
+    }
+    filter.eventDate.$lte = req.query.eventDateMax + ":00.000Z";
+  }
+
+  let events;
+  if (sort === "") {
+    events = await limeEvent.find(filter);
+  } else {
+    events = await limeEvent.find(filter).sort(sort);
+  }
+
   return res.json(events);
 });
 
