@@ -311,7 +311,8 @@ usersRouter.post(
     const report = new Report({
       reporterId:reporterId,
       reportedId:reportedUserId,
-      reportMsg:reportMsg
+      reportMsg:reportMsg,
+      messageText:messageTxt,
     });
 
     try{

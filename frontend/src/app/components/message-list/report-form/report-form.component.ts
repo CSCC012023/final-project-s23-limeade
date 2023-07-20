@@ -19,18 +19,18 @@ export class ReportFormComponent{
     if(this.messageTxt === ''){
       return;
     }
-    this.api.submitChatReport(this.message.senderName,this.messageTxt,this.message.message).subscribe(
-      (next)=>{
-        alert("your report was submitted");
-      },
-      (error)=>{
-        alert("Your report was failed to be submitted")
-      },
-      ()=>{
-        this.messageTxt = '';
-      }
-
-    );
-    console.log(this.message,this.messageTxt);
+      this.api.submitChatReport(this.message.senderName,this.messageTxt,this.message.message).subscribe(
+        (next)=>{
+          alert("your report was submitted");
+        },
+        (error)=>{
+          alert("Your report was failed to be submitted")
+        },
+        ()=>{
+          this.messageTxt = '';
+        }
+  
+      );
+  
   }
 }

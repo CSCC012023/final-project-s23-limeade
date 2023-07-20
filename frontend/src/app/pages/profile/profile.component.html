@@ -21,6 +21,7 @@
     <button *ngIf="!myself" (click)="blockUser()" class="red">
       Block User
     </button>
+    <app-profile-report-form [user]="user" *ngIf="!myself"></app-profile-report-form>
   </div>
 </div>
 

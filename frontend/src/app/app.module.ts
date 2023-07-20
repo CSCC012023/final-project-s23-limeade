@@ -30,6 +30,7 @@ import { MessageListComponent } from './components/message-list/message-list.com
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReportFormComponent } from './components/message-list/report-form/report-form.component';
+import { ProfileReportFormComponent } from './components/profile-report-form/profile-report-form.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ReportFormComponent } from './components/message-list/report-form/repor
     ChatRoomComponent,
     MessageListComponent,
     ReportFormComponent,
+    ProfileReportFormComponent,
   ],
   imports: [
     FormsModule,
