@@ -21,8 +21,8 @@ export class ApiService {
     type: string,
     password: string,
     username: string
-  ) {
-    return this.http.post<any>(
+  ): Observable<User> {
+    return this.http.post<User>(
       this.apiEndPoint + '/api/users/signup',
       {
         username: username,
@@ -37,8 +37,8 @@ export class ApiService {
     );
   }
 
-  signIn(username: string, password: string) {
-    return this.http.post<any>(
+  signIn(username: string, password: string): Observable<User> {
+    return this.http.post<User>(
       this.apiEndPoint + '/api/users/login',
       {
         username: username,
@@ -57,20 +57,20 @@ export class ApiService {
     });
   }
 
-  getMe() {
-    return this.http.get<any>(this.apiEndPoint + '/api/users/getMe', {
+  getMe(): Observable<User> {
+    return this.http.get<User>(this.apiEndPoint + '/api/users/getMe', {
       withCredentials: true,
     });
   }
 
-  switchToPremium() {
+  switchToPremium(): Observable<User> {
     if (!this.loggedIn) {
       return new Observable((observer) => {
         observer.error('Not logged in');
       });
     }
 
-    return this.http.patch(
+    return this.http.patch<User>(
       this.apiEndPoint + '/api/users/switchToPremium',
       {},
       { withCredentials: true }
@@ -85,14 +85,14 @@ export class ApiService {
     });
   }
 
-  getUserById(userId: string) {
+  getUserById(userId: string): Observable<User> {
     if (!this.loggedIn) {
       return new Observable((observer) => {
         observer.error('Not logged in');
       });
     }
 
-    return this.http.get<any>(this.apiEndPoint + `/api/users/id=${userId}`, {
+    return this.http.get<User>(this.apiEndPoint + `/api/users/id=${userId}`, {
       withCredentials: true,
     });
   }
@@ -115,24 +115,24 @@ export class ApiService {
     );
   }
 
-  joinEvent(eventId: string, userId: string) {
-    return this.http.patch(
+  joinEvent(eventId: string, userId: string): Observable<LimeEvent> {
+    return this.http.patch<LimeEvent>(
       this.apiEndPoint + '/api/events/joinEvent',
       { eventId: eventId, userId: userId },
       { withCredentials: true }
     );
   }
 
-  leaveEvent(eventId: string, userId: string) {
-    return this.http.patch(
+  leaveEvent(eventId: string, userId: string): Observable<LimeEvent> {
+    return this.http.patch<LimeEvent>(
       this.apiEndPoint + '/api/events/leaveEvent',
       { eventId: eventId, userId: userId },
       { withCredentials: true }
     );
   }
 
-  userSearch(queryString: string) {
-    return this.http.get(
+  userSearch(queryString: string): Observable<User[]> {
+    return this.http.get<User[]>(
       this.apiEndPoint + `/api/users/usersearch/queryString=${queryString}`,
       { withCredentials: true }
     );
@@ -152,8 +152,8 @@ export class ApiService {
     eventDate: string,
     eventLocation: string,
     userId: string
-  ) {
-    return this.http.post(
+  ): Observable<LimeEvent> {
+    return this.http.post<LimeEvent>(
       this.apiEndPoint + '/api/events',
       {
         eventName: eventName,
@@ -204,8 +204,8 @@ export class ApiService {
     );
   }
 
-  getEventById(eventId: string) {
-    return this.http.get(this.apiEndPoint + '/api/events/' + eventId, {
+  getEventById(eventId: string): Observable<LimeEvent> {
+    return this.http.get<LimeEvent>(this.apiEndPoint + '/api/events/' + eventId, {
       withCredentials: true,
     });
   }

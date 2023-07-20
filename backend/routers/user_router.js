@@ -123,7 +123,7 @@ usersRouter.patch("/profile", isAuthenticated, async (req, res) => {
   user.firstName = firstName;
   user.lastName = lastName;
   user.save();
-  return res.json({ message: "save complete" });
+  return res.json({ message: "Profile changed" });
 });
 
 usersRouter.patch("/block", isAuthenticated, async (req, res) => {
@@ -144,9 +144,9 @@ usersRouter.patch("/block", isAuthenticated, async (req, res) => {
   try {
     me.save();
   } catch {
-    return res.status(422).json({ error: "Blocked didn't work" });
+    return res.status(422).json({ error: "Block didn't work" });
   }
-  return res.json({ message: "block successful" });
+  return res.json({ message: "Block successful" });
 });
 
 function jaroWinklerDistance(str1, str2) {
