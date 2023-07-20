@@ -6,25 +6,20 @@ import { NgModel } from '@angular/forms';
 @Component({
   selector: 'app-chat-room',
   templateUrl: './chat-room.component.html',
-  styleUrls: ['./chat-room.component.css']
+  styleUrls: ['./chat-room.component.css'],
 })
 export class ChatRoomComponent implements OnInit, OnDestroy {
-  
-  constructor(private api:ApiService){
-
-  }
-  messageText:string = '';
-  messages:any[] = [];
-  user:any;
+  constructor(private api: ApiService) {}
+  messageText: string = '';
+  messages: any[] = [];
+  user: any;
   @Input() roomId!: string;
   private webSocket!: WebSocket;
   private readonly serverUrl = `ws://localhost:3000/chatroom`; // Replace with your server URL
   ngOnInit() {
-    this.api.getMe().subscribe(
-      (next)=>{
-        this.user = next;
-      }
-    )
+    this.api.getMe().subscribe((next) => {
+      this.user = next;
+    });
     const websocketUrl = `${this.serverUrl}/${this.roomId}`;
     this.webSocket = new WebSocket(websocketUrl);
 
@@ -54,8 +49,8 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
     };
   }
 
-  showText(){
-    console.log("htllo");
+  showText() {
+    console.log('htllo');
     console.log(this.messageText);
   }
 
@@ -66,15 +61,16 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
   }
 
   sendMessage() {
-    if(this.messageText === ''){
+    if (this.messageText === '') {
       return;
     }
     if (this.webSocket.readyState === WebSocket.OPEN) {
-      this.webSocket.send(JSON.stringify({
-        senderName:this.user.username,
-        message:this.messageText}
-        ));
+      this.webSocket.send(
+        JSON.stringify({
+          senderName: this.user.username,
+          message: this.messageText,
+        })
+      );
     }
-
   }
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,14 +23,19 @@ import { EventInfoComponent } from './components/event-info/event-info.component
 import { ApiService } from './services/api.service';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { UsersearchComponent } from './pages/usersearch/usersearch.component';
-import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { ProfilecardComponent } from './components/profilecard/profilecard.component';
 import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReportFormComponent } from './components/message-list/report-form/report-form.component';
 import { ProfileReportFormComponent } from './components/profile-report-form/profile-report-form.component';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EventFilterFormComponent } from './components/event-filter-form/event-filter-form.component';
+
 
 @NgModule({
   declarations: [
@@ -56,8 +61,12 @@ import { ProfileReportFormComponent } from './components/profile-report-form/pro
     ProfilecardComponent,
     ChatRoomComponent,
     MessageListComponent,
+
     ReportFormComponent,
     ProfileReportFormComponent,
+
+    EventFilterFormComponent,
+
   ],
   imports: [
     FormsModule,
@@ -65,8 +74,12 @@ import { ProfileReportFormComponent } from './components/profile-report-form/pro
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+
     MatButtonModule,
     MatDialogModule
+
+    FontAwesomeModule,
+
   ],
   providers: [
     ApiService,

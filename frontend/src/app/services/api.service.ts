@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../classes/user';
 import { Observable, Subscription, last } from 'rxjs';
 import { environment } from '../../environments/environment.development';
+import { LimeEvent } from '../classes/limeEvent';
 @Injectable({
   providedIn: 'root',
 })
@@ -192,14 +193,42 @@ export class ApiService {
     );
   }
 
-  getEvents(userId: string = '') {
-    let filter = '';
-    if (userId !== '') {
-      filter = '?userId=' + userId;
+  createQueryString(filter: string, param: string, value: string | string[]) {
+    if (value !== '' && JSON.stringify(value) !== '[]') {
+      if (filter === '') {
+        filter = '?';
+      } else {
+        filter += '&';
+      }
+      if (typeof value === 'string') {
+        filter += param + '=' + value;
+      } else {
+        filter += param + '=' + value.join('-');
+      }
     }
-    return this.http.get(this.apiEndPoint + '/api/events/' + filter, {
-      withCredentials: true,
-    });
+    return filter;
+  }
+
+  getEvents(
+    userId: string = '',
+    sort: string[] = [],
+    eventDateMin: string = '',
+    eventDateMax: string = '',
+    eventLocation: string = '',
+    eventInterests: string[] = []
+  ): Observable<LimeEvent[]> {
+    let filter = this.createQueryString('', 'userId', userId);
+    filter = this.createQueryString(filter, 'sort', sort);
+    filter = this.createQueryString(filter, 'eventDateMin', eventDateMin);
+    filter = this.createQueryString(filter, 'eventDateMax', eventDateMax);
+    filter = this.createQueryString(filter, 'eventLocation', eventLocation);
+    filter = this.createQueryString(filter, 'eventInterests', eventInterests);
+    return this.http.get<LimeEvent[]>(
+      this.apiEndPoint + '/api/events/' + filter,
+      {
+        withCredentials: true,
+      }
+    );
   }
 
   getEventById(eventId: string) {

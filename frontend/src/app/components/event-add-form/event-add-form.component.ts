@@ -12,6 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class EventAddFormComponent {
   eventForm: any;
   error: string = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private api: ApiService,
@@ -22,7 +23,7 @@ export class EventAddFormComponent {
     this.eventForm = this.formBuilder.group({
       eventName: ['', [Validators.required]],
       eventDescription: ['', [Validators.required]],
-      eventDate: [''],
+      eventDate: [new Date().toISOString().slice(0, -8), [Validators.required]],
       eventLocation: ['', [Validators.required]],
     });
   }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faSliders } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-event-home',
@@ -10,8 +12,11 @@ export class EventHomeComponent {
   events: any;
   largeEvent: any;
   allEvents: boolean = true;
+  showFilterForm: boolean = false;
 
-  constructor(protected api: ApiService) {}
+  constructor(protected api: ApiService, private library: FaIconLibrary) {
+    library.addIcons(faSliders);
+  }
 
   ngOnInit(): void {
     this.api.getEvents().subscribe((next) => {
@@ -44,5 +49,28 @@ export class EventHomeComponent {
       this.updateEventsList();
       this.allEvents = true;
     });
+  }
+
+  filterEvents(filter: {
+    filterDateMin: string;
+    filterDateMax: string;
+    filterLocation: string;
+  }) {
+    let userId = '';
+    if (!this.allEvents) {
+      userId = this.api.userId;
+    }
+    this.api
+      .getEvents(
+        userId,
+        [],
+        filter.filterDateMin,
+        filter.filterDateMax,
+        filter.filterLocation
+      )
+      .subscribe((next) => {
+        this.events = next;
+        this.updateEventsList();
+      });
   }
 }

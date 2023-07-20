@@ -8,7 +8,7 @@ describe('MessageListComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MessageListComponent]
+      declarations: [MessageListComponent],
     });
     fixture = TestBed.createComponent(MessageListComponent);
     component = fixture.componentInstance;

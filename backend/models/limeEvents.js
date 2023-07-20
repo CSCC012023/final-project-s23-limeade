@@ -11,7 +11,7 @@ const limeEventSchema = new mongoose.Schema({
     type: String,
   },
   eventDate: {
-    type: String,
+    type: Date,
     //required:true,
   },
   eventLocation: {

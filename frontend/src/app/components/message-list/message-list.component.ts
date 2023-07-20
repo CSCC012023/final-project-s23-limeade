@@ -1,6 +1,8 @@
+
 import { Component, Input, OnChanges, SimpleChanges, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+
 
 @Component({
   selector: 'app-message-list',
@@ -17,6 +19,7 @@ import { ApiService } from 'src/app/services/api.service';
   `,
   styles: [
     `
+
     .message-list {
       height: 300px;
       overflow-y: auto;
@@ -35,6 +38,7 @@ import { ApiService } from 'src/app/services/api.service';
     }
     `
   ]
+
 })
 export class MessageListComponent implements OnChanges, OnInit{
   constructor(private api:ApiService,private router:Router){
@@ -55,16 +59,16 @@ export class MessageListComponent implements OnChanges, OnInit{
   ngOnChanges(changes: SimpleChanges) {
     if (changes['messages'] && changes['messages'].currentValue) {
       const totalMessages = changes['messages'].currentValue['messages'].length;
-      const lastTenMessages = changes['messages'].currentValue['messages'].slice(
-        totalMessages - 10 >= 0 ? totalMessages - 10 : 0
-      );
+      const lastTenMessages = changes['messages'].currentValue[
+        'messages'
+      ].slice(totalMessages - 10 >= 0 ? totalMessages - 10 : 0);
       this.messages = lastTenMessages;
-
     }
   }
-  
+
 
   private scrollToBottom() {
-    this.messageList.nativeElement.scrollTop = this.messageList.nativeElement.scrollHeight;
+    this.messageList.nativeElement.scrollTop =
+      this.messageList.nativeElement.scrollHeight;
   }
 }
