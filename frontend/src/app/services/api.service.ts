@@ -137,6 +137,20 @@ export class ApiService {
     );
   }
 
+  submitChatReport(reportedUsername:string,messageTxt:string,optionalMsgString:string){
+    console.log("hello");
+    return this.http.post(
+      this.apiEndPoint + `/api/users/report`,{
+        reportMsg:messageTxt,
+        reportedUsername:reportedUsername,
+        messageTxt:optionalMsgString
+      },
+      {
+        withCredentials:true,
+      }
+    )
+  }
+
   blockUser(userId: string) {
     return this.http.patch(
       this.apiEndPoint + `/api/users/block`,

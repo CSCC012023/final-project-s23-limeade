@@ -20,6 +20,9 @@ const report = new mongoose.Schema({
         type: Date,
         default: Date.now
       }
+    ,messageText:{
+        type:String,
+    }
 });
 
-export const Report = mongoose.model ('Report',report);
+export const Report = mongoose.model('Report',report);

@@ -3,6 +3,7 @@ import { User } from "../models/users.js";
 import bcrypt from "bcrypt";
 import { isAuthenticated } from "../middleware/auth.js";
 export const usersRouter = Router();
+import {Report} from '../models/report.js'
 
 usersRouter.post("/signup", async (req, res) => {
   const plaintextPassword = req.body.password;
@@ -296,12 +297,15 @@ usersRouter.post(
     const reporterId = req.session.userId;
     const reportMsg = req.body.reportMsg;
     const reportedUsername = req.body.reportedUsername;
+    const messageTxt = req.body.messageTxt;
 
     const reportedUser = await User.findOne({
       username:reportedUsername,
 
     });
-
+    if(!reportedUser){
+      return res.status(404).json({error:"reported User not found"});
+    }
     const reportedUserId = reportedUser._id;
 
     const report = new Report({
@@ -312,6 +316,7 @@ usersRouter.post(
 
     try{
       await report.save();
+      return res.json({message:"completed"});
     }
     catch{
       return res.status(422).json({error:"Report creation failed"});

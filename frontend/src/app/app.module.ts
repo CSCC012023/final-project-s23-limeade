@@ -27,6 +27,9 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { ProfilecardComponent } from './components/profilecard/profilecard.component';
 import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReportFormComponent } from './components/message-list/report-form/report-form.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,7 @@ import { MessageListComponent } from './components/message-list/message-list.com
     ProfilecardComponent,
     ChatRoomComponent,
     MessageListComponent,
+    ReportFormComponent,
   ],
   imports: [
     FormsModule,
@@ -59,6 +63,8 @@ import { MessageListComponent } from './components/message-list/message-list.com
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [
     ApiService,
