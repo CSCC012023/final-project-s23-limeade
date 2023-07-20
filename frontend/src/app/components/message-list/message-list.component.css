@@ -1,0 +1,16 @@
+.message-list {
+  height: 300px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 15px;
+}
+
+.sender {
+  font-weight: bold;
+}
+
+.message-list small {
+  font-style: italic;
+}
