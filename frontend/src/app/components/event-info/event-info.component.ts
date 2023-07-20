@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { LimeEvent } from 'src/app/classes/limeEvent';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-event-info',
@@ -7,7 +9,8 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./event-info.component.css'],
 })
 export class EventInfoComponent {
-  @Input() event: any;
+  @Input() event!: LimeEvent;
+  @Input() user!: User;
   userJoined: boolean = false;
   userInterestedUsernames: string[] = [];
 

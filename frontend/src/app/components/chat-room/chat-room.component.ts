@@ -1,8 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { User } from 'src/app/classes/user';
 @Component({
   selector: 'app-chat-room',
   templateUrl: './chat-room.component.html',
@@ -12,7 +10,7 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
   constructor(private api: ApiService) {}
   messageText: string = '';
   messages: any[] = [];
-  user: any;
+  user!: User;
   @Input() roomId!: string;
   private webSocket!: WebSocket;
   private readonly serverUrl = `ws://localhost:3000/chatroom`; // Replace with your server URL

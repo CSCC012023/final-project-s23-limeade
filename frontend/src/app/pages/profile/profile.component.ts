@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/classes/user';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -31,7 +32,7 @@ export class ProfileComponent implements OnInit {
   ];
 
   selectedInterests: string[] = [];
-  user: any;
+  user!: User;
   error: string = '';
   myself: boolean = false;
   firstName: string = '';
