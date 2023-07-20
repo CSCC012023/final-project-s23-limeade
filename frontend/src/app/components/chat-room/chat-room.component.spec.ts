@@ -8,7 +8,7 @@ describe('ChatRoomComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ChatRoomComponent]
+      declarations: [ChatRoomComponent],
     });
     fixture = TestBed.createComponent(ChatRoomComponent);
     component = fixture.componentInstance;

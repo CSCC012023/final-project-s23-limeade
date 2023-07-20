@@ -12,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class EventAddFormComponent {
   eventForm: any;
   error: string = '';
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private api: ApiService,
