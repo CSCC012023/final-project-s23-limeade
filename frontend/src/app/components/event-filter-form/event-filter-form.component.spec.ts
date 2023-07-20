@@ -8,7 +8,7 @@ describe('EventFilterFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EventFilterFormComponent]
+      declarations: [EventFilterFormComponent],
     });
     fixture = TestBed.createComponent(EventFilterFormComponent);
     component = fixture.componentInstance;

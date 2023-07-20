@@ -196,9 +196,12 @@ export class ApiService {
     filter = this.createQueryString(filter, 'eventDateMax', eventDateMax);
     filter = this.createQueryString(filter, 'eventLocation', eventLocation);
     filter = this.createQueryString(filter, 'eventInterest', eventInterest);
-    return this.http.get<LimeEvent[]>(this.apiEndPoint + '/api/events/' + filter, {
-      withCredentials: true,
-    });
+    return this.http.get<LimeEvent[]>(
+      this.apiEndPoint + '/api/events/' + filter,
+      {
+        withCredentials: true,
+      }
+    );
   }
 
   getEventById(eventId: string) {

@@ -43,11 +43,7 @@ body {
 nav {
   margin-bottom: 20px;
   padding: 10px 20px;
-  background: linear-gradient(
-    to right,
-    var(--color-accent),
-    var(--color-1)
-  );
+  background: linear-gradient(to right, var(--color-accent), var(--color-1));
 }
 
 button {
