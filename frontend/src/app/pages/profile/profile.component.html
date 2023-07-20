@@ -60,7 +60,7 @@
           <label>
             <input
               type="checkbox"
-              name="interests"
+              [name]="interest.name"
               [(ngModel)]="interest.selected"
             />
             {{ interest.name }}

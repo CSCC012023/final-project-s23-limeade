@@ -48,13 +48,16 @@ export class ApiService {
     );
   }
 
-  signOut() {
+  signOut(): Observable<{ message: string }> {
     this.loggedIn = false;
     this.userId = '';
     this.type = '';
-    return this.http.get(this.apiEndPoint + '/api/users/logout', {
-      withCredentials: true,
-    });
+    return this.http.get<{ message: string }>(
+      this.apiEndPoint + '/api/users/logout',
+      {
+        withCredentials: true,
+      }
+    );
   }
 
   getMe(): Observable<User> {
@@ -102,8 +105,8 @@ export class ApiService {
     firstName: string,
     lastName: string,
     interests: string[]
-  ) {
-    return this.http.patch(
+  ): Observable<{ message: string }> {
+    return this.http.patch<{ message: string }>(
       this.apiEndPoint + '/api/users/profile',
       {
         userId: userId,
@@ -142,9 +145,8 @@ export class ApiService {
     reportedUsername: string,
     messageTxt: string,
     optionalMsgString: string
-  ) {
-    console.log('hello');
-    return this.http.post(
+  ): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(
       this.apiEndPoint + `/api/users/report`,
       {
         reportMsg: messageTxt,
@@ -157,9 +159,11 @@ export class ApiService {
     );
   }
 
-  submitProfileReport(reportedUsername: string, messageTxt: string) {
-    console.log('hello');
-    return this.http.post(
+  submitProfileReport(
+    reportedUsername: string,
+    messageTxt: string
+  ): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(
       this.apiEndPoint + `/api/users/report`,
       {
         reportMsg: messageTxt,
@@ -171,8 +175,8 @@ export class ApiService {
     );
   }
 
-  blockUser(userId: string) {
-    return this.http.patch(
+  blockUser(userId: string): Observable<{ message: string }> {
+    return this.http.patch<{ message: string }>(
       this.apiEndPoint + `/api/users/block`,
       { blockedUserId: userId },
       { withCredentials: true }
@@ -244,5 +248,11 @@ export class ApiService {
         withCredentials: true,
       }
     );
+  }
+
+  getInterests(): Observable<string[]> {
+    return this.http.get<string[]>(this.apiEndPoint + '/api/users/interests', {
+      withCredentials: true,
+    });
   }
 }

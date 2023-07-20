@@ -8,30 +8,7 @@ import { User } from 'src/app/classes/user';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  interestsEnum: any[] = [
-    { name: 'Music concerts', selected: false },
-    { name: 'Art exhibitions', selected: false },
-    { name: 'Film screenings', selected: false },
-    { name: 'Theater performances', selected: false },
-    { name: 'Dance shows', selected: false },
-    { name: 'Stand-up comedy', selected: false },
-    { name: 'Literary readings', selected: false },
-    { name: 'Food festivals', selected: false },
-    { name: 'Wine tasting events', selected: false },
-    { name: 'Sporting events', selected: false },
-    { name: 'Outdoor adventures', selected: false },
-    { name: 'Fashion shows', selected: false },
-    { name: 'Technology conferences', selected: false },
-    { name: 'Gaming conventions', selected: false },
-    { name: 'Yoga and wellness retreats', selected: false },
-    { name: 'Photography workshops', selected: false },
-    { name: 'Charity fundraisers', selected: false },
-    { name: 'Historical reenactments', selected: false },
-    { name: 'Science fairs', selected: false },
-    { name: 'Cultural festivals', selected: false },
-  ];
-
-  selectedInterests: string[] = [];
+  interestsEnum: any[] = [];
   user!: User;
   error: string = '';
   myself: boolean = false;
@@ -55,6 +32,7 @@ export class ProfileComponent implements OnInit {
             this.user = next;
             this.firstName = next.firstName;
             this.lastName = next.lastName;
+            this.updateInterests();
           },
           (error) => {
             this.router.navigate(['/']);
@@ -66,12 +44,29 @@ export class ProfileComponent implements OnInit {
             this.user = next;
             this.firstName = next.firstName;
             this.lastName = next.lastName;
+            this.updateInterests();
           },
           (error) => {
             this.router.navigate(['/']);
           }
         );
       }
+    });
+  }
+
+  updateInterests(): void {
+    this.api.getInterests().subscribe((next) => {
+      next.forEach((interest) => {
+        let selected = false;
+        if (this.user.interests.includes(interest)) {
+          console.log(interest);
+          selected = true;
+        }
+        this.interestsEnum.push({
+          name: interest,
+          selected: selected,
+        });
+      });
     });
   }
 
@@ -112,12 +107,6 @@ export class ProfileComponent implements OnInit {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigateByUrl(currentUrl);
     });
-  }
-
-  getSelectedInterests(): void {
-    const selectedInterests = this.interestsEnum
-      .filter((interest) => interest.selected)
-      .map((interest) => interest.name);
   }
 
   blockUser() {
