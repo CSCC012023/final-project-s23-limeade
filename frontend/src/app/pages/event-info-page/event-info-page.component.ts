@@ -9,7 +9,6 @@ import { User } from 'src/app/classes/user';
   templateUrl: './event-info-page.component.html',
   styleUrls: ['./event-info-page.component.css'],
 })
-
 export class EventInfoPageComponent {
   event!: LimeEvent;
   user!: User;

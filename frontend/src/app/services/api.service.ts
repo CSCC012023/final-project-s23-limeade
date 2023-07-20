@@ -138,31 +138,37 @@ export class ApiService {
     );
   }
 
-  submitChatReport(reportedUsername:string,messageTxt:string,optionalMsgString:string){
-    console.log("hello");
+  submitChatReport(
+    reportedUsername: string,
+    messageTxt: string,
+    optionalMsgString: string
+  ) {
+    console.log('hello');
     return this.http.post(
-      this.apiEndPoint + `/api/users/report`,{
-        reportMsg:messageTxt,
-        reportedUsername:reportedUsername,
-        messageTxt:optionalMsgString
+      this.apiEndPoint + `/api/users/report`,
+      {
+        reportMsg: messageTxt,
+        reportedUsername: reportedUsername,
+        messageTxt: optionalMsgString,
       },
       {
-        withCredentials:true,
+        withCredentials: true,
       }
-    )
+    );
   }
 
-  submitProfileReport(reportedUsername:string,messageTxt:string){
-    console.log("hello");
+  submitProfileReport(reportedUsername: string, messageTxt: string) {
+    console.log('hello');
     return this.http.post(
-      this.apiEndPoint + `/api/users/report`,{
-        reportMsg:messageTxt,
-        reportedUsername:reportedUsername,
+      this.apiEndPoint + `/api/users/report`,
+      {
+        reportMsg: messageTxt,
+        reportedUsername: reportedUsername,
       },
       {
-        withCredentials:true,
+        withCredentials: true,
       }
-    )
+    );
   }
 
   blockUser(userId: string) {

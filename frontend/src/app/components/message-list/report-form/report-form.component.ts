@@ -5,32 +5,33 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-report-form',
   templateUrl: './report-form.component.html',
-  styleUrls: ['./report-form.component.css']
+  styleUrls: ['./report-form.component.css'],
 })
-export class ReportFormComponent{
+export class ReportFormComponent {
+  constructor(private api: ApiService) {}
+  @Input() message: any;
+  messageTxt: string = '';
 
-  constructor(private api:ApiService){
-
-  }
-  @Input() message:any;
-  messageTxt:string = '';
-
-  submitReport(){
-    if(this.messageTxt === ''){
+  submitReport() {
+    if (this.messageTxt === '') {
       return;
     }
-      this.api.submitChatReport(this.message.senderName,this.messageTxt,this.message.message).subscribe(
-        (next)=>{
-          alert("your report was submitted");
+    this.api
+      .submitChatReport(
+        this.message.senderName,
+        this.messageTxt,
+        this.message.message
+      )
+      .subscribe(
+        (next) => {
+          alert('your report was submitted');
         },
-        (error)=>{
-          alert("Your report was failed to be submitted")
+        (error) => {
+          alert('Your report was failed to be submitted');
         },
-        ()=>{
+        () => {
           this.messageTxt = '';
         }
-  
       );
-  
   }
 }
