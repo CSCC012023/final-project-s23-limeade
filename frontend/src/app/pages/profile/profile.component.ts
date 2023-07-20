@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit {
   editMode: boolean = false;
 
   constructor(
-    protected api: ApiService,
+    public api: ApiService,
     private route: ActivatedRoute,
     private router: Router
   ) {}

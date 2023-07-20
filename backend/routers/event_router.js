@@ -23,10 +23,7 @@ eventsRouter.get("/", async (req, res) => {
   }
 
   if (req.query.eventDateMin) {
-    if (!filter.eventDate) {
-      filter.eventDate = {};
-    }
-    filter.eventDate.$gte = req.query.eventDateMin + ":00.000Z";
+    filter.eventDate = { $gte: req.query.eventDateMin + ":00.000Z" };
   }
 
   if (req.query.eventDateMax) {
@@ -34,6 +31,10 @@ eventsRouter.get("/", async (req, res) => {
       filter.eventDate = {};
     }
     filter.eventDate.$lte = req.query.eventDateMax + ":00.000Z";
+  }
+
+  if (req.query.eventLocation) {
+    filter.eventLocation = { $regex: req.query.eventLocation, $options: "i" };
   }
 
   let events;

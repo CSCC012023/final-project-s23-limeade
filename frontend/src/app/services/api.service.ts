@@ -188,14 +188,14 @@ export class ApiService {
     eventDateMin: string = '',
     eventDateMax: string = '',
     eventLocation: string = '',
-    eventInterest: string = ''
+    eventInterests: string[] = []
   ): Observable<LimeEvent[]> {
     let filter = this.createQueryString('', 'userId', userId);
     filter = this.createQueryString(filter, 'sort', sort);
     filter = this.createQueryString(filter, 'eventDateMin', eventDateMin);
     filter = this.createQueryString(filter, 'eventDateMax', eventDateMax);
     filter = this.createQueryString(filter, 'eventLocation', eventLocation);
-    filter = this.createQueryString(filter, 'eventInterest', eventInterest);
+    filter = this.createQueryString(filter, 'eventInterests', eventInterests);
     return this.http.get<LimeEvent[]>(
       this.apiEndPoint + '/api/events/' + filter,
       {

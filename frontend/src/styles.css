@@ -81,6 +81,12 @@ form {
   padding: 0 15px;
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
 .col {
   box-sizing: border-box;
   width: 100%;
