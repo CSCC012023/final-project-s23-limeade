@@ -4,6 +4,11 @@
       <span class="sender">{{ message.senderName }} </span
       ><small>sent at {{ message.date }}</small>
     </div>
+    <app-report-form
+      *ngIf="myself.username !== message.senderName"
+      class="report-on-hover"
+      [message]="message"
+    ></app-report-form>
     <div class="content">{{ message.message }}</div>
   </div>
 </div>
