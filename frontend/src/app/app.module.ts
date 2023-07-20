@@ -76,7 +76,7 @@ import { EventFilterFormComponent } from './components/event-filter-form/event-f
     ReactiveFormsModule,
 
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
 
     FontAwesomeModule,
 
