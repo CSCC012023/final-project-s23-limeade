@@ -205,8 +205,11 @@ export class ApiService {
   }
 
   getEventById(eventId: string): Observable<LimeEvent> {
-    return this.http.get<LimeEvent>(this.apiEndPoint + '/api/events/' + eventId, {
-      withCredentials: true,
-    });
+    return this.http.get<LimeEvent>(
+      this.apiEndPoint + '/api/events/' + eventId,
+      {
+        withCredentials: true,
+      }
+    );
   }
 }

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const chatMessageSchema = new mongoose.Schema({
     senderName: String,
     message: String,
-    date:String,
+    date: String,
   });
 
   const chatRoomSchema = new mongoose.Schema({

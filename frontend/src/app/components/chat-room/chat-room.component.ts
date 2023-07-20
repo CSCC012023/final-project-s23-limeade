@@ -16,7 +16,7 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
   @Input() roomId!: string;
   private webSocket!: WebSocket;
   private readonly serverUrl = `ws://localhost:3000/chatroom`; // Replace with your server URL
- 
+
   ngOnInit() {
     this.api.getMe().subscribe((next) => {
       this.user = next;
