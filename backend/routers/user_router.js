@@ -40,6 +40,10 @@ usersRouter.post("/login", async (req, res) => {
     return res.status(404).json({ error: "Credentials not found" });
   }
 
+  if(user.banned){
+    return res.status(403).json({error:"Banned"});
+  }
+
   if (!bcrypt.compareSync(req.body.password, user.password)) {
     return res.status(401).json({ error: "Credentials not found" });
   }

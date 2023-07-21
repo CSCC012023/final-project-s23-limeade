@@ -33,6 +33,7 @@ import { ReportFormComponent } from './components/message-list/report-form/repor
 import { ProfileReportFormComponent } from './components/profile-report-form/profile-report-form.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EventFilterFormComponent } from './components/event-filter-form/event-filter-form.component';
+import { StaffComponent } from './pages/staff/staff.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { EventFilterFormComponent } from './components/event-filter-form/event-f
     ReportFormComponent,
     ProfileReportFormComponent,
     EventFilterFormComponent,
+    StaffComponent,
   ],
   imports: [
     FormsModule,

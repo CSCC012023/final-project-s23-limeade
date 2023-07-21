@@ -22,7 +22,8 @@ const report = new mongoose.Schema({
       }
     ,messageText:{
         type:String,
-    }
+    },
+    resolved:Boolean,
 });
 
 export const Report = mongoose.model('Report',report);
