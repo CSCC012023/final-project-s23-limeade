@@ -25,6 +25,27 @@
     id="eventLocation"
     required
   />
+  <ng-container *ngIf="interests.length > 0">
+    <label for="eventTypes">Event Type</label>
+    <ng-container formArrayName="eventTypes">
+      <select
+        *ngFor="let control of eventTypes.controls; let i = index"
+        [formControlName]="i"
+      >
+        <option *ngFor="let interest of interests" [value]="interest">
+          {{ interest.replace(sRegex, '') }}
+        </option>
+      </select>
+      <button
+        type="button"
+        class="add-interest-button"
+        [disabled]="eventTypes.length === interests.length"
+        (click)="addRelatedInterest()"
+      >
+        <fa-icon id="add-interest-icon" icon="plus" size="2x"></fa-icon>
+      </button>
+    </ng-container>
+  </ng-container>
 
   <div class="error" *ngIf="eventForm.invalid">
     Please fill in all required fields.

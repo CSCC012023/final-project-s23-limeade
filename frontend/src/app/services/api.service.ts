@@ -188,6 +188,7 @@ export class ApiService {
     eventDescription: string,
     eventDate: string,
     eventLocation: string,
+    eventTypes: string[],
     userId: string
   ): Observable<LimeEvent> {
     return this.http.post<LimeEvent>(
@@ -197,6 +198,7 @@ export class ApiService {
         eventDescription: eventDescription,
         eventDate: eventDate,
         eventLocation: eventLocation,
+        eventTypes: eventTypes,
         userId: userId,
       },
       { withCredentials: true }

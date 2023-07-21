@@ -25,6 +25,8 @@
   --color-1: #73a626;
   --color-2: #5c8c3a;
   --color-accent: #c9d955;
+  --color-user: lightcoral;
+  --color-type: skyblue;
 }
 
 *,
@@ -44,6 +46,10 @@ nav {
   margin-bottom: 20px;
   padding: 10px 20px;
   background: linear-gradient(to right, var(--color-accent), var(--color-1));
+}
+
+textarea {
+  font-family: 'Roboto', sans-serif;
 }
 
 button {

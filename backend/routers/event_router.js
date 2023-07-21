@@ -53,6 +53,7 @@ eventsRouter.post("/", async (req, res) => {
     eventDescription: req.body.eventDescription,
     eventDate: req.body.eventDate,
     eventLocation: req.body.eventLocation,
+    eventTypes: req.body.eventTypes,
     userId: req.body.userId,
   });
 

@@ -4,6 +4,7 @@ export interface LimeEvent {
   eventDescription: string;
   eventDate: string;
   eventLocation: string;
+  eventTypes: string[];
   interestedUsers: string[];
   userId: string;
 }
