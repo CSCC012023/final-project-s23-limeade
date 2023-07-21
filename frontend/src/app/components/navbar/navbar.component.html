@@ -17,7 +17,7 @@
         >Profile</a
       >
     </li>
-    <li class="nav-item">
+    <li *ngIf="api.loggedIn" class="nav-item">
       <a class="nav-link" routerLink="/event-home">Events</a>
     </li>
     <li *ngIf="api.loggedIn" class="nav-item">

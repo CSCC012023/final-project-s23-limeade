@@ -1,4 +1,14 @@
-<div *ngIf="api.loggedIn" class="button-bar">
+<div class="button-bar">
+  <div class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Search..."
+      class="search-bar"
+    />
+  </div>
+  <button class="search-btn" (click)="getEventsByName()">Search</button>
+  <button class="clear-btn" (click)="clearSearch()"></button>
   <button
     class="filter-button"
     [ngClass]="{ 'filter-selected': showFilterForm }"
