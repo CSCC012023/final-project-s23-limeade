@@ -132,3 +132,20 @@ eventsRouter.patch("/:id", async (req, res) => {
 
   return res.json(event);
 });
+
+eventsRouter.get("/eventSearch/queryString=:queryString", async (req, res) => {
+  let events = [];
+  const queryString = req.params.queryString;
+  if (queryString === "") {
+    return res.json(events);
+  }
+
+  console.log(req.query.userId);
+
+  if(req.query.userId)
+    events = await limeEvent.find({ eventName : { $regex: queryString, $options: "i" }, userId: req.query.userId });
+  else
+    events = await limeEvent.find({ eventName : { $regex: queryString, $options: "i" } });
+
+  return res.json(events);
+});
