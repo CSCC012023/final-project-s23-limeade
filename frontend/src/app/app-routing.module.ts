@@ -9,6 +9,7 @@ import { EventHomeComponent } from './pages/event-home/event-home.component';
 import { EventInfoPageComponent } from './pages/event-info-page/event-info-page.component';
 import { EventAddComponent } from './pages/event-add/event-add.component';
 import { UsersearchComponent } from './pages/usersearch/usersearch.component';
+import { StaffComponent } from './pages/staff/staff.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
     path: 'user-search',
     component: UsersearchComponent,
   },
+  {
+    path:'staff',
+    component:StaffComponent,
+  }
 ];
 
 @NgModule({

@@ -10,6 +10,7 @@ import WebSocket from 'ws';
 import { usersRouter } from './routers/user_router.js';
 import { eventsRouter } from './routers/event_router.js';
 import { ChatRoom } from './models/chat.js';
+import {staffRouter} from './routers/staff_router.js';
 const app = express();
 const appWs = expressWs(app);
 
@@ -36,6 +37,7 @@ app.use(express.json());
 
 app.use('/api/users', usersRouter);
 app.use('/api/events', eventsRouter);
+app.use('/api/staff',staffRouter);
 const chatRoomClientsMap = new Map(); // Map to store chat rooms and their respective clients
 
 // WebSocket endpoint for chat rooms
