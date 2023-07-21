@@ -34,6 +34,8 @@ import { ProfileReportFormComponent } from './components/profile-report-form/pro
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EventFilterFormComponent } from './components/event-filter-form/event-filter-form.component';
 import { StaffComponent } from './pages/staff/staff.component';
+import { ReportedUserCardComponent } from './components/reported-user-card/reported-user-card.component';
+import { BannedUserCardComponent } from './components/banned-user-card/banned-user-card.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { StaffComponent } from './pages/staff/staff.component';
     ProfileReportFormComponent,
     EventFilterFormComponent,
     StaffComponent,
+    ReportedUserCardComponent,
+    BannedUserCardComponent,
   ],
   imports: [
     FormsModule,

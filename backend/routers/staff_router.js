@@ -32,12 +32,13 @@ staffRouter.post("/signup", async (req, res) => {
     return res.json(user);
 });
 
-staffRouter.get('/usersandreports/page=:page',async(req,res)=>{
+staffRouter.get('/usersandreports',async(req,res)=>{
 
         User.aggregate([
             {
               $match: {
-                type: { $ne: "staff" } // Filter users where the type is not "staff"
+                type: { $ne: "staff" },
+                banned:false // Filter users where the type is not "staff"
               }
             },
             {
@@ -75,6 +76,7 @@ staffRouter.patch('/ban',async(req,res)=>{
         return res.status(404).json({error:"Cannot find user"});
     }
     user.banned = true;
+    user.bannedDate = Date.now()
     try{
         await user.save();
         return res.json(user);
@@ -85,7 +87,7 @@ staffRouter.patch('/ban',async(req,res)=>{
 })
 
 staffRouter.patch('/unban',async(req,res)=>{
-    const unbannedId = req.body.bannedId;
+    const unbannedId = req.body.unbannedId;
     const user = await User.findOne({
          _id:unbannedId,
     })
@@ -93,6 +95,7 @@ staffRouter.patch('/unban',async(req,res)=>{
         return res.status(404).json({error:"Cannot find user"});
     }
     user.banned = false;
+    user.bannedDate = null;
     try{
         await user.save();
         return res.json(user);
@@ -114,7 +117,9 @@ staffRouter.patch('/resolve',async(req,res)=>{
         })
     }
 
-    user.reports = [];
+    await Report.deleteMany({
+        reportedId:user._id,
+    });
 
     try{
         await user.save();
@@ -130,7 +135,7 @@ staffRouter.patch('/resolve',async(req,res)=>{
 staffRouter.get("/banned",async(req,res)=>{
     const users = await User.find({
         banned:true
-    });
+    }).sort({bannedDate:1});
 
     return res.json(users);
 })
