@@ -14,6 +14,7 @@
     <label>{{
       event.eventTypes.length > 1 ? "Event Types" : "Event Type"
     }}</label>
+    <div *ngIf="event.eventTypes.length === 0" class="field">N/A</div>
     <div class="field-small type" *ngFor="let interest of event.eventTypes">
       {{ interest.replace(sRegex, "") }}
     </div>
