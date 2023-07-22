@@ -36,7 +36,6 @@ import { EventFilterFormComponent } from './components/event-filter-form/event-f
 import { StaffComponent } from './pages/staff/staff.component';
 import { ReportedUserCardComponent } from './components/reported-user-card/reported-user-card.component';
 import { BannedUserCardComponent } from './components/banned-user-card/banned-user-card.component';
-import { EventRecommendedCarouselComponent } from './components/event-recommended-carousel/event-recommended-carousel.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +67,6 @@ import { EventRecommendedCarouselComponent } from './components/event-recommende
     StaffComponent,
     ReportedUserCardComponent,
     BannedUserCardComponent,
-    EventRecommendedCarouselComponent,
   ],
   imports: [
     FormsModule,

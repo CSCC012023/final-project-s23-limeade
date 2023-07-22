@@ -183,18 +183,11 @@ export class ApiService {
     );
   }
 
-  getInterests(): Observable<string[]> {
-    return this.http.get<string[]>(this.apiEndPoint + '/api/users/interests', {
-      withCredentials: true,
-    });
-  }
-
   addEvent(
     eventName: string,
     eventDescription: string,
     eventDate: string,
     eventLocation: string,
-    eventTypes: string[],
     userId: string
   ): Observable<LimeEvent> {
     return this.http.post<LimeEvent>(
@@ -204,7 +197,6 @@ export class ApiService {
         eventDescription: eventDescription,
         eventDate: eventDate,
         eventLocation: eventLocation,
-        eventTypes: eventTypes,
         userId: userId,
       },
       { withCredentials: true }
@@ -233,14 +225,14 @@ export class ApiService {
     eventDateMin: string = '',
     eventDateMax: string = '',
     eventLocation: string = '',
-    eventTypes: string[] = []
+    eventInterests: string[] = []
   ): Observable<LimeEvent[]> {
     let filter = this.createQueryString('', 'userId', userId);
     filter = this.createQueryString(filter, 'sort', sort);
     filter = this.createQueryString(filter, 'eventDateMin', eventDateMin);
     filter = this.createQueryString(filter, 'eventDateMax', eventDateMax);
     filter = this.createQueryString(filter, 'eventLocation', eventLocation);
-    filter = this.createQueryString(filter, 'eventTypes', eventTypes);
+    filter = this.createQueryString(filter, 'eventInterests', eventInterests);
     return this.http.get<LimeEvent[]>(
       this.apiEndPoint + '/api/events/' + filter,
       {
@@ -249,29 +241,11 @@ export class ApiService {
     );
   }
 
-  getRecommendedEvents(): Observable<LimeEvent[]> {
-    return this.http.get<LimeEvent[]>(
-      this.apiEndPoint + '/api/events/recommended',
-      {
-        withCredentials: true,
-      }
-    );
-  }
-
-  getEventsByName(
-    eventName: string,
-    allEvents: boolean
-  ): Observable<LimeEvent[]> {
-    let filter = allEvents
-      ? ''
-      : this.createQueryString('', 'userId', this.userId);
+  getEventsByName(eventName: string, allEvents: boolean): Observable<LimeEvent[]> {
+    let filter = allEvents ? '' : this.createQueryString('', 'userId', this.userId);
 
     return this.http.get<LimeEvent[]>(
-      this.apiEndPoint +
-        '/api/events/eventSearch/queryString=' +
-        eventName +
-        '/' +
-        filter,
+      this.apiEndPoint + '/api/events/eventSearch/queryString=' + eventName + '/' + filter,
       {
         withCredentials: true,
       }
@@ -285,5 +259,11 @@ export class ApiService {
         withCredentials: true,
       }
     );
+  }
+
+  getInterests(): Observable<string[]> {
+    return this.http.get<string[]>(this.apiEndPoint + '/api/users/interests', {
+      withCredentials: true,
+    });
   }
 }

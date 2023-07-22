@@ -34,23 +34,13 @@ label::after {
   margin-right: 20px;
 }
 
-.field-small {
-  margin: 5px 0;
-  margin-right: 10px;
-  padding: 4px 5px;
-  border: 1px solid var(--color-base);
-  font-size: 0.9em;
-}
-
 button {
   margin-top: 0px;
   padding: 4px;
 }
 
-.type {
-  background-color: var(--color-type);
-}
-
-.user {
-  background-color: var(--color-user);
+.users {
+  padding: 5px;
+  background-color: lightcoral;
+  border: 1px solid var(--color-base);
 }
