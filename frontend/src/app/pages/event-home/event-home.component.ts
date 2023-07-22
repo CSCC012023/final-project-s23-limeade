@@ -11,9 +11,10 @@ import { faSliders } from '@fortawesome/free-solid-svg-icons';
 })
 export class EventHomeComponent {
   events!: LimeEvent[];
-  largeEvent!: LimeEvent;
+  largeEvent!: LimeEvent | false;
   allEvents: boolean = true;
   showFilterForm: boolean = false;
+  searchText: string = '';
 
   constructor(protected api: ApiService, private library: FaIconLibrary) {
     library.addIcons(faSliders);
@@ -32,6 +33,7 @@ export class EventHomeComponent {
       this.largeEvent = this.events[0];
       this.events = this.events.slice(1);
     } else {
+      this.largeEvent = false;
       console.log('No events found');
     }
   }
@@ -50,6 +52,27 @@ export class EventHomeComponent {
       this.updateEventsList();
       this.allEvents = true;
     });
+  }
+
+  getEventsByName() {
+    if(this.searchText == ''){
+      this.getAllEvents();
+      return;
+    }
+    this.api.getEventsByName(this.searchText, this.allEvents).subscribe((next) => {
+      this.events = next;
+      console.log(this.events);
+      this.updateEventsList();
+    });
+  }
+
+  clearSearch() {
+    this.searchText = '';
+    if(this.allEvents){
+      this.getAllEvents();
+    } else {
+      this.getMyEvents();
+    }
   }
 
   filterEvents(filter: {

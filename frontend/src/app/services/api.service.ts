@@ -258,6 +258,17 @@ export class ApiService {
     );
   }
 
+  getEventsByName(eventName: string, allEvents: boolean): Observable<LimeEvent[]> {
+    let filter = allEvents ? '' : this.createQueryString('', 'userId', this.userId);
+
+    return this.http.get<LimeEvent[]>(
+      this.apiEndPoint + '/api/events/eventSearch/queryString=' + eventName + '/' + filter,
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
   getEventById(eventId: string): Observable<LimeEvent> {
     return this.http.get<LimeEvent>(
       this.apiEndPoint + '/api/events/' + eventId,
