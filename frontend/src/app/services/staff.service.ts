@@ -6,32 +6,44 @@ import { environment } from '../../environments/environment.development';
 import { LimeEvent } from '../classes/limeEvent';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StaffService {
   apiEndPoint = environment.apiEndpoint + '/api/staff';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getReportedUsers(){
+  getReportedUsers() {
     return this.http.get(this.apiEndPoint + '/usersandreports');
   }
 
-  banUser(userId:string){
-    return this.http.patch(this.apiEndPoint + "/ban",{bannedId:userId},{withCredentials:true});
+  banUser(userId: string) {
+    return this.http.patch(
+      this.apiEndPoint + '/ban',
+      { bannedId: userId },
+      { withCredentials: true }
+    );
   }
 
-  unbanUser(userId:string){
-    return this.http.patch(this.apiEndPoint + '/unban',{unbannedId:userId},{withCredentials:true});
+  unbanUser(userId: string) {
+    return this.http.patch(
+      this.apiEndPoint + '/unban',
+      { unbannedId: userId },
+      { withCredentials: true }
+    );
   }
 
-  resolveUser(userId:string){
-    return this.http.patch(this.apiEndPoint + '/resolve',{userId:userId},{withCredentials:true});
+  resolveUser(userId: string) {
+    return this.http.patch(
+      this.apiEndPoint + '/resolve',
+      { userId: userId },
+      { withCredentials: true }
+    );
   }
 
-  getBannedUsers(){
-    return this.http.get(this.apiEndPoint+'/banned',{withCredentials:true});
+  getBannedUsers() {
+    return this.http.get(this.apiEndPoint + '/banned', {
+      withCredentials: true,
+    });
   }
-
-  
 }

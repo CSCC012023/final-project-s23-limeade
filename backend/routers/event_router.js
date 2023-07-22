@@ -179,10 +179,15 @@ eventsRouter.get("/eventSearch/queryString=:queryString", async (req, res) => {
 
   console.log(req.query.userId);
 
-  if(req.query.userId)
-    events = await limeEvent.find({ eventName : { $regex: queryString, $options: "i" }, userId: req.query.userId });
+  if (req.query.userId)
+    events = await limeEvent.find({
+      eventName: { $regex: queryString, $options: "i" },
+      userId: req.query.userId,
+    });
   else
-    events = await limeEvent.find({ eventName : { $regex: queryString, $options: "i" } });
+    events = await limeEvent.find({
+      eventName: { $regex: queryString, $options: "i" },
+    });
 
   return res.json(events);
 });

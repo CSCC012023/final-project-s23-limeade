@@ -8,7 +8,7 @@ describe('BannedUserCardComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BannedUserCardComponent]
+      declarations: [BannedUserCardComponent],
     });
     fixture = TestBed.createComponent(BannedUserCardComponent);
     component = fixture.componentInstance;

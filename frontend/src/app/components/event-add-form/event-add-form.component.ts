@@ -38,7 +38,9 @@ export class EventAddFormComponent {
       eventDescription: ['', [Validators.required]],
       eventDate: [new Date().toISOString().slice(0, -8), [Validators.required]],
       eventLocation: ['', [Validators.required]],
-      eventTypes: this.formBuilder.array([new FormControl('', [Validators.required])]),
+      eventTypes: this.formBuilder.array([
+        new FormControl('', [Validators.required]),
+      ]),
     });
 
     this.api.getInterests().subscribe((next) => {
@@ -47,9 +49,7 @@ export class EventAddFormComponent {
   }
 
   get eventTypes() {
-    return this.eventForm.controls[
-      'eventTypes'
-    ] as FormArray<FormControl>;
+    return this.eventForm.controls['eventTypes'] as FormArray<FormControl>;
   }
 
   addRelatedInterest() {
@@ -65,12 +65,8 @@ export class EventAddFormComponent {
       return;
     }
     const values = this.eventForm.value;
-    let uniqueTypes = [
-      ...new Set(values.eventTypes),
-    ] as string[];
-    uniqueTypes = uniqueTypes.filter(
-      (interest) => interest !== ''
-    );
+    let uniqueTypes = [...new Set(values.eventTypes)] as string[];
+    uniqueTypes = uniqueTypes.filter((interest) => interest !== '');
     this.api
       .addEvent(
         values.eventName,

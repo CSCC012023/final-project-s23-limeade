@@ -8,7 +8,7 @@ describe('EventRecommendedCarouselComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EventRecommendedCarouselComponent]
+      declarations: [EventRecommendedCarouselComponent],
     });
     fixture = TestBed.createComponent(EventRecommendedCarouselComponent);
     component = fixture.componentInstance;

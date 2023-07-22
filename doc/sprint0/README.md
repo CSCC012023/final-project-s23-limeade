@@ -1,8 +1,6 @@
-CSCC01 Project - Limeade / GoGo
-========================================================================
+# CSCC01 Project - Limeade / GoGo
 
 ## Introduction
-
 
 This project will be a web-based version of the GoGo app, which aims to allow users to find other people to attend events with.
 
@@ -19,10 +17,10 @@ The motivation behind the project is to let people be able to experience events 
 1. Open a terminal window and run the following commands to clone the repository:
 
 ```shell
-$ git clone https://github.com/CSCC012023/final-project-s23-limeade.git  
+$ git clone https://github.com/CSCC012023/final-project-s23-limeade.git
 $ cd [into created directory]
 ```
- 
+
 2. Run the following commands to start the backend server:
 
 ```shell
@@ -47,17 +45,18 @@ $ npm install
 $ ng generate environments
 ```
 
-Then edit `./src/environments/environment.development.ts` just like the example file `./src/environments/environment.development.ts.example` 
+Then edit `./src/environments/environment.development.ts` just like the example file `./src/environments/environment.development.ts.example`
 
 Run the following command to start the frontend:
 
 ```shell
-$ ng serve       
+$ ng serve
 ```
 
 Then the app should be ready to go on http://localhost:4200!
 
 ## Contribution
+
 The contribution will be based on git flow.
 
 Branches will be named based on their feature name/Jira issue.
