@@ -59,6 +59,7 @@ export class ProfileComponent implements OnInit {
       next.forEach((interest) => {
         let selected = false;
         if (this.user.interests.includes(interest)) {
+          console.log(interest);
           selected = true;
         }
         this.interestsEnum.push({

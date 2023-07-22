@@ -42,26 +42,6 @@ button {
   width: 100%;
 }
 
-.add-interest-button {
-  display: block;
-  margin: auto;
-  margin-top: 10px;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 0;
-  background: none;
-  border: none;
-  transition: opacity 0.3s;
-}
-
-.add-interest-button:disabled {
-  opacity: 0.5;
-}
-
-#add-interest-icon {
-  color: var(--color-1);
-}
-
 div.error {
   margin-top: 10px;
   color: red;

@@ -1,29 +1,27 @@
 # Product Backlog
 
 ### Payment
-
-- no need for payment tiers
-- for now, everything free
-- Separate freemium and premium in theory
-
+* no need for payment tiers
+* for now, everything free
+* Separate freemium and premium in theory
+ 
 ### Features
-
-- signin/login/signout
-- editing/viewing profiles
-  - interests
-  - filtering
-- create experiences and events \* On-Me – creator of event covers cost of experience
-  interact and join experiences and events
-- chat feature between users after invitation acceptance
-- search function
-- searching for experiences (related to interests)
-- searching for users within experiences (based on profiles)
-- UI/UX design
-- UI artifact: base on the pitch presentation?
-- see if enough stories, if not enough, go to business features
+* signin/login/signout
+* editing/viewing profiles
+    * interests
+    * filtering
+* create experiences and events
+    * On-Me – creator of event covers cost of experience
+interact and join experiences and events
+* chat feature between users after invitation acceptance
+* search function
+* searching for experiences (related to interests)
+* searching for users within experiences (based on profiles)
+* UI/UX design
+* UI artifact: base on the pitch presentation?
+* see if enough stories, if not enough, go to business features
 
 ### Stories
-
 1. As a new user, I want to be able to sign up to become a premium user so that I can have access to premium features
 2. As a new user, I want to be able to sign up as a normal user so that I can use the app with the basic features
 3. As a user, I want to be able to log in so that I can access my account and experiences

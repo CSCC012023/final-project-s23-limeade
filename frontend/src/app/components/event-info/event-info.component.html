@@ -10,22 +10,11 @@
     <label>Owner</label>
     <div class="field">{{ user.username }}</div>
   </div>
-  <div class="row">
-    <label>{{
-      event.eventTypes.length > 1 ? "Event Types" : "Event Type"
-    }}</label>
-    <div class="field-small type" *ngFor="let interest of event.eventTypes">
-      {{ interest.replace(sRegex, "") }}
-    </div>
-  </div>
   <label>Description</label>
   <div class="field row-spacing">{{ event.eventDescription }}</div>
   <div class="row">
     <label>Interested Users</label>
-    <div
-      class="field-small user"
-      *ngFor="let username of userInterestedUsernames"
-    >
+    <div class="field users" *ngFor="let username of userInterestedUsernames">
       {{ username }}
     </div>
   </div>
