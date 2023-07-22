@@ -62,6 +62,9 @@ eventsRouter.get("/recommended", isAuthenticated, async (req, res) => {
         eventTypes: {
           $in: user.interests,
         },
+        userId: {
+          $ne: user._id,
+        },
       },
     },
     {
@@ -77,6 +80,9 @@ eventsRouter.get("/recommended", isAuthenticated, async (req, res) => {
       $sort: {
         similarity: -1,
       },
+    },
+    {
+      $limit: 10,
     },
   ]);
 
