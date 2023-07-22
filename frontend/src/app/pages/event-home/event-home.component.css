@@ -37,8 +37,9 @@
 }
 
 .event-body {
+  margin-bottom: 30px;
   justify-content: center;
-  padding: 32px 16px 16px 16px;
+  padding: 16px;
 }
 
 .filter-form {

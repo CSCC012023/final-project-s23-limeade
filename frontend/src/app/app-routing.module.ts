@@ -49,9 +49,9 @@ const routes: Routes = [
     component: UsersearchComponent,
   },
   {
-    path:'staff',
-    component:StaffComponent,
-  }
+    path: 'staff',
+    component: StaffComponent,
+  },
 ];
 
 @NgModule({

@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ["Basic", "Premium","Staff"],
+    enum: ["Basic", "Premium", "Staff"],
     required: true,
   },
   password: {
@@ -61,13 +61,13 @@ const userSchema = new mongoose.Schema({
       default: [],
     },
   ],
-  banned:{
-    type:Boolean,
-    default:false,
+  banned: {
+    type: Boolean,
+    default: false,
   },
-  bannedDate:{
-    type:Date,
-  }
+  bannedDate: {
+    type: Date,
+  },
 });
 
 export const User = mongoose.model("User", userSchema);

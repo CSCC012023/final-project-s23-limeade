@@ -1,3 +1,9 @@
+<div *ngIf="api.loggedIn" class="row event-body">
+  <div class="col-10 col-sm-12">
+    <app-event-recommended-carousel></app-event-recommended-carousel>
+  </div>
+</div>
+
 <div class="button-bar">
   <div class="search-container">
     <input
@@ -32,6 +38,8 @@
         (filter)="filterEvents($event)"
       ></app-event-filter-form>
     </div>
+    <h2 *ngIf="allEvents">All Events</h2>
+    <h2 *ngIf="!allEvents">My Events</h2>
     <div class="large-event-container" *ngIf="largeEvent">
       <app-large-event-card [event]="largeEvent"></app-large-event-card>
     </div>

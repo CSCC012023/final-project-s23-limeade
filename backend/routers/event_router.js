@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { User } from "../models/users.js";
 import { limeEvent } from "../models/limeEvents.js";
+import { isAuthenticated } from "../middleware/auth.js";
 
 export const eventsRouter = Router();
 
@@ -47,12 +48,48 @@ eventsRouter.get("/", async (req, res) => {
   return res.json(events);
 });
 
+eventsRouter.get("/recommended", isAuthenticated, async (req, res) => {
+  const user = await User.findOne({
+    _id: req.session.userId,
+  });
+  if (!user) {
+    return res.status(404).json({ error: "Cannot find YOU" });
+  }
+
+  const events = await limeEvent.aggregate([
+    {
+      $match: {
+        eventTypes: {
+          $in: user.interests,
+        },
+      },
+    },
+    {
+      $addFields: {
+        similarity: {
+          $size: {
+            $setIntersection: ["$eventTypes", user.interests],
+          },
+        },
+      },
+    },
+    {
+      $sort: {
+        similarity: -1,
+      },
+    },
+  ]);
+
+  return res.json(events);
+});
+
 eventsRouter.post("/", async (req, res) => {
   const event = new limeEvent({
     eventName: req.body.eventName,
     eventDescription: req.body.eventDescription,
     eventDate: req.body.eventDate,
     eventLocation: req.body.eventLocation,
+    eventTypes: req.body.eventTypes,
     userId: req.body.userId,
   });
 
@@ -142,10 +179,15 @@ eventsRouter.get("/eventSearch/queryString=:queryString", async (req, res) => {
 
   console.log(req.query.userId);
 
-  if(req.query.userId)
-    events = await limeEvent.find({ eventName : { $regex: queryString, $options: "i" }, userId: req.query.userId });
+  if (req.query.userId)
+    events = await limeEvent.find({
+      eventName: { $regex: queryString, $options: "i" },
+      userId: req.query.userId,
+    });
   else
-    events = await limeEvent.find({ eventName : { $regex: queryString, $options: "i" } });
+    events = await limeEvent.find({
+      eventName: { $regex: queryString, $options: "i" },
+    });
 
   return res.json(events);
 });
