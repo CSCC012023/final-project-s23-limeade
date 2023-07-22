@@ -13,6 +13,7 @@ export class EventInfoComponent {
   @Input() user!: User;
   userJoined: boolean = false;
   userInterestedUsernames: string[] = [];
+  sRegex: RegExp = /s$/i;
 
   constructor(private api: ApiService) {}
 

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { User } from "./users.js";
+import { interestsEnum } from "./users.js";
 
 const limeEventSchema = new mongoose.Schema({
   eventName: {
@@ -18,6 +18,13 @@ const limeEventSchema = new mongoose.Schema({
     required: true,
     type: String,
   },
+  eventTypes: [
+    {
+      type: String,
+      enum: interestsEnum,
+      default: [],
+    },
+  ],
   interestedUsers: [
     {
       type: mongoose.Schema.Types.ObjectId,

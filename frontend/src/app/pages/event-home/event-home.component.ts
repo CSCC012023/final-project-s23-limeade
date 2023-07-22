@@ -55,20 +55,22 @@ export class EventHomeComponent {
   }
 
   getEventsByName() {
-    if(this.searchText == ''){
+    if (this.searchText == '') {
       this.getAllEvents();
       return;
     }
-    this.api.getEventsByName(this.searchText, this.allEvents).subscribe((next) => {
-      this.events = next;
-      console.log(this.events);
-      this.updateEventsList();
-    });
+    this.api
+      .getEventsByName(this.searchText, this.allEvents)
+      .subscribe((next) => {
+        this.events = next;
+        console.log(this.events);
+        this.updateEventsList();
+      });
   }
 
   clearSearch() {
     this.searchText = '';
-    if(this.allEvents){
+    if (this.allEvents) {
       this.getAllEvents();
     } else {
       this.getMyEvents();
