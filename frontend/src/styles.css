@@ -48,7 +48,7 @@ nav {
   background: linear-gradient(to right, var(--color-accent), var(--color-1));
 }
 
-textarea {
+textarea, input {
   font-family: 'Roboto', sans-serif;
 }
 

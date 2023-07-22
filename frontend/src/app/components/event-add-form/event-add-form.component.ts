@@ -38,7 +38,7 @@ export class EventAddFormComponent {
       eventDescription: ['', [Validators.required]],
       eventDate: [new Date().toISOString().slice(0, -8), [Validators.required]],
       eventLocation: ['', [Validators.required]],
-      eventTypes: this.formBuilder.array([new FormControl('')]),
+      eventTypes: this.formBuilder.array([new FormControl('', [Validators.required])]),
     });
 
     this.api.getInterests().subscribe((next) => {

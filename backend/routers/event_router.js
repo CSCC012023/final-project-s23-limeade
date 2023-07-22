@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { User } from "../models/users.js";
 import { limeEvent } from "../models/limeEvents.js";
+import { isAuthenticated } from "../middleware/auth.js";
 
 export const eventsRouter = Router();
 
@@ -43,6 +44,41 @@ eventsRouter.get("/", async (req, res) => {
   } else {
     events = await limeEvent.find(filter).sort(sort);
   }
+
+  return res.json(events);
+});
+
+eventsRouter.get("/recommended", isAuthenticated, async (req, res) => {
+  const user = await User.findOne({
+    _id: req.session.userId,
+  });
+  if (!user) {
+    return res.status(404).json({ error: "Cannot find YOU" });
+  }
+
+  const events = await limeEvent.aggregate([
+    {
+      $match: {
+        eventTypes: {
+          $in: user.interests,
+        },
+      },
+    },
+    {
+      $addFields: {
+        similarity: {
+          $size: {
+            $setIntersection: ["$eventTypes", user.interests],
+          },
+        },
+      },
+    },
+    {
+      $sort: {
+        similarity: -1,
+      },
+    },
+  ]);
 
   return res.json(events);
 });

@@ -183,6 +183,12 @@ export class ApiService {
     );
   }
 
+  getInterests(): Observable<string[]> {
+    return this.http.get<string[]>(this.apiEndPoint + '/api/users/interests', {
+      withCredentials: true,
+    });
+  }
+
   addEvent(
     eventName: string,
     eventDescription: string,
@@ -227,16 +233,25 @@ export class ApiService {
     eventDateMin: string = '',
     eventDateMax: string = '',
     eventLocation: string = '',
-    eventInterests: string[] = []
+    eventTypes: string[] = []
   ): Observable<LimeEvent[]> {
     let filter = this.createQueryString('', 'userId', userId);
     filter = this.createQueryString(filter, 'sort', sort);
     filter = this.createQueryString(filter, 'eventDateMin', eventDateMin);
     filter = this.createQueryString(filter, 'eventDateMax', eventDateMax);
     filter = this.createQueryString(filter, 'eventLocation', eventLocation);
-    filter = this.createQueryString(filter, 'eventInterests', eventInterests);
+    filter = this.createQueryString(filter, 'eventTypes', eventTypes);
     return this.http.get<LimeEvent[]>(
       this.apiEndPoint + '/api/events/' + filter,
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
+  getRecommendedEvents(): Observable<LimeEvent[]> {
+    return this.http.get<LimeEvent[]>(
+      this.apiEndPoint + '/api/events/recommended',
       {
         withCredentials: true,
       }
@@ -250,11 +265,5 @@ export class ApiService {
         withCredentials: true,
       }
     );
-  }
-
-  getInterests(): Observable<string[]> {
-    return this.http.get<string[]>(this.apiEndPoint + '/api/users/interests', {
-      withCredentials: true,
-    });
   }
 }
