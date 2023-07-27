@@ -4,10 +4,10 @@
  > It does not really make sense for you to edit this document much (if at all) while working on the project - Instead, at the end of the planning phase, you can refer back to this document and decide which parts of your plan you are happy with and which parts you would like to change.
 
 
-## Iteration 3
+## Iteration 4
 
- * Start date: 2023 July 11
- * End date: 2023 July 21
+ * Start date: 2023 July 24
+ * End date: 2023 August 4
 
 ## Process
 
@@ -25,17 +25,23 @@ List the most significant changes you made to your process (if any).
  > *Note:* If you are not making any changes to your process, it means that you are happy with all of the decisions you made in the previous iterations.
  > In this case, list what you consider to be the most significant process decisions your team made. For each decision, explain why you consider it successful, and what success metric you are using (or could use) to assert that the decision is successful.
 
-A significant process decision we made last sprint was to not do a standup every day when we weren’t making significant changes, but still trying to meet all 5 with the progress we had up to each day. We did end up meeting all our standups on time which was a success and we will try to keep this consistency in the future.
+We removed inviting people to chats as a potential feature, this is because events are tied one to one with chat rooms so it would be redundant to do this feature. We have an invite to event feature that will basically cover both invite to event and chat room. Our clear defined success metric is that we will have this feature done and not the other feature. 
 
-We could not connect Jira to GitHub directly because we needed to be admins of the whole organization which was not possible.
+We removed chat listing feature since chat rooms are tied to events so it is redundant just as described previously. A success metric is that this feature will be done but not the other one. 
+
+We are adding a feature to unblock users. Users should be able to unblock a user after they have been blocked. 
+
 
 #### Roles & responsibilities
 
 Describe the different roles on the team and the responsibilities associated with each role.
-Youngjae and Lukas - user chat and user profiles
-Kai - implementing event search
-Ami - implement event location/time filtering and recommended events
-Gary - working on documentation and jira
+
+ * Amy: implementing event interest filtering + premium user event advertising
+ * Kai: implementing event cost covering feature + making the website look nicer, if there’s time
+ * Youngjae: filter users using interests
+ * Lukas: invite people to events
+ * Gary: unblock users + documentation
+
 
 #### Events
 
@@ -72,7 +78,7 @@ For example, "we use pull-requests" is not a precise statement since it leaves t
 
  * Don't forget to **explain why** you chose this workflow.
 
-We have a main branch and a development branch. During the sprint, changes should be merged to the development branch and then at the end of the sprint, the main branch should merge with the development branch. This is to protect the integrity of the main branch during sprint and while changes are still being made. Changes would be made to the development branch using pull-requests. People review pull requests and merge them by themselves. As for naming conventions we will name them after our tickets on jira as soon as we get the jira to github repo connection worked out. This is so jira can track our branches. 
+We have a main branch and a development branch. During the sprint, any features and fixes should be merged to the development branch and then at the end of the sprint, the main branch should merge with the development branch. This is to protect the integrity of the main branch during the sprint and while changes are still being made. Changes are made to the development branch by creating a new branch per feature (Jira story) or bug fix and using pull-requests to merge. People review pull requests and merge them by themselves. As for naming conventions we name them after our tickets on Jira. This is so we can track our branches based on ticket number. 
 
 
 ## Product
@@ -88,10 +94,12 @@ _This entire section is mandatory._
 
 -----
 
- * Event search, implement functions in backend that allow users to search by event name
- * User chat, implement ability to directly message other users on the platform
- * Event filtering, be able to filter events on the events page by date and/or time
- * Event recommendations, sort events by matching interests with the user and order by most recent event date
+ * Premium user event advertising
+ * Event interest filtering  
+ * Event cost covering feature
+ * Unblock users
+ * Invite users to events
+
 
 
 #### Artifacts
@@ -105,4 +113,4 @@ List/describe the artifacts you will produce in order to present your project id
 
 -----
 
- * Build an interactive website demo that can be run locally
+ * Build an interactive website demo that can be deployed using a CI/CD pipeline
