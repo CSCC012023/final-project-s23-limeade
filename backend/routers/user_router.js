@@ -154,6 +154,29 @@ usersRouter.patch("/block", isAuthenticated, async (req, res) => {
   return res.json({ message: "Block successful" });
 });
 
+usersRouter.patch("/unblock", isAuthenticated, async (req, res) => {
+  const blockedUserId = req.body.blockedUserId;
+  if (blockedUserId === req.session.userId) {
+    return res.status(401).json({
+      error: "Cannot unblock yourself",
+    });
+  }
+  const me = await User.findOne({
+    _id: req.session.userId,
+  });
+
+  if (me.blocked.indexOf(blockedUserId) !== -1) {
+    me.blocked.splice(me.blocked.indexOf(blockedUserId), 1);
+  }
+
+  try {
+    me.save();
+  } catch {
+    return res.status(422).json({ error: "Unblock didn't work" });
+  }
+  return res.json({ message: "Unblock successful" });
+});
+
 function jaroWinklerDistance(str1, str2) {
   // Implement the Jaro-Winkler distance calculation logic here
   // You can use external libraries or implement the algorithm yourself

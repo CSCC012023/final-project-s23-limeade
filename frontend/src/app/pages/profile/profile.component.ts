@@ -9,6 +9,7 @@ import { User } from 'src/app/classes/user';
 })
 export class ProfileComponent implements OnInit {
   interestsEnum: any[] = [];
+  blockedUsers: User[] = [];
   user!: User;
   error: string = '';
   myself: boolean = false;
@@ -33,6 +34,7 @@ export class ProfileComponent implements OnInit {
             this.firstName = next.firstName;
             this.lastName = next.lastName;
             this.updateInterests();
+            this.updateBlockedUsers();
           },
           (error) => {
             this.router.navigate(['/']);
@@ -65,6 +67,14 @@ export class ProfileComponent implements OnInit {
           name: interest,
           selected: selected,
         });
+      });
+    });
+  }
+
+  updateBlockedUsers(): void {
+    this.user.blocked.forEach((userId: string) => {
+      this.api.getUserById(userId).subscribe((next) => {
+        this.blockedUsers.push(next);
       });
     });
   }
@@ -113,4 +123,11 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['/']);
     });
   }
+
+  unblockUser(userID: string) {
+    this.api.unblockUser(userID).subscribe((next) => {
+      this.router.navigate(['/']);
+    });
+  }
+
 }

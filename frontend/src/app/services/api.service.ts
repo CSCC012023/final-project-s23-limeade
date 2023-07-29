@@ -183,6 +183,14 @@ export class ApiService {
     );
   }
 
+  unblockUser(userId: string): Observable<{ message: string }> {
+    return this.http.patch<{ message: string }>(
+      this.apiEndPoint + `/api/users/unblock`,
+      { blockedUserId: userId },
+      { withCredentials: true }
+    );
+  }
+
   getInterests(): Observable<string[]> {
     return this.http.get<string[]>(this.apiEndPoint + '/api/users/interests', {
       withCredentials: true,
