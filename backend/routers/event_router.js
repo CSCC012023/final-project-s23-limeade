@@ -13,7 +13,7 @@ eventsRouter.get("/", async (req, res) => {
 
   let sort = {};
   if (req.query.sort) {
-    const sortArray = req.query.sort.split("-");
+    const sortArray = req.query.sort.split("_");
     if (sortArray[0] !== "" && sortArray[1] === "asc") {
       sort[sortArray[0]] = 1;
     } else if (sortArray[0] !== "" && sortArray[1] === "desc") {
@@ -36,6 +36,10 @@ eventsRouter.get("/", async (req, res) => {
 
   if (req.query.eventLocation) {
     filter.eventLocation = { $regex: req.query.eventLocation, $options: "i" };
+  }
+
+  if (req.query.eventTypes) {
+    filter.eventTypes = { $all: req.query.eventTypes.split("_") };
   }
 
   let events;

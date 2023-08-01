@@ -18,5 +18,34 @@
   <label for="filterLocation">Location</label>
   <input type="text" formControlName="filterLocation" id="filterLocation" />
 
+  <ng-container *ngIf="interests.length > 0">
+    <label for="filterTypes">Event Type</label>
+    <ng-container formArrayName="filterTypes">
+      <div
+        class="filter-type-container"
+        *ngFor="let control of filterTypes.controls; let i = index"
+      >
+        <select [formControlName]="i">
+          <option *ngFor="let interest of interests" [value]="interest">
+            {{ interest.replace(sRegex, "") }}
+          </option>
+        </select>
+        <button
+          type="button"
+          class="remove-interest-button"
+          (click)="removeRelatedInterest(i)"
+        ></button>
+      </div>
+      <button
+        type="button"
+        class="add-interest-button"
+        [disabled]="filterTypes.length === interests.length"
+        (click)="addRelatedInterest()"
+      >
+        <fa-icon id="filter-interest-icon" icon="plus" size="1x"></fa-icon>
+      </button>
+    </ng-container>
+  </ng-container>
+
   <button type="submit" (click)="onFilter()">Filter</button>
 </form>

@@ -3,13 +3,61 @@ label {
   margin-top: 10px;
 }
 
-input {
+input, select {
   display: block;
   margin-top: 5px;
-  margin-right: 20px;
   border: none; /* Remove the default border */
   border-bottom: 1px solid var(--color-base); /* Add a dark bottom border */
   background-color: transparent; /* Make the background transparent */
   padding: 5px;
   width: 100%;
+}
+
+select {
+  /* Customize select dropdown appearance */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><polygon fill='black' points='0,0 10,0 5,6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+.filter-type-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.remove-interest-button {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  background-image: url(../../../assets/x.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 55%;
+}
+
+.add-interest-button {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0;
+  background: none;
+  border: none;
+  transition: opacity 0.3s;
+}
+
+.add-interest-button:disabled {
+  opacity: 0.5;
+}
+
+#filter-interest-icon {
+  color: var(--color-2);
+  font-size: 1.5em;
 }

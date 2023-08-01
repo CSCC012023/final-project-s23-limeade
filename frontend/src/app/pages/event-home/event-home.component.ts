@@ -81,18 +81,22 @@ export class EventHomeComponent {
     filterDateMin: string;
     filterDateMax: string;
     filterLocation: string;
+    filterTypes: string[];
   }) {
     let userId = '';
     if (!this.allEvents) {
       userId = this.api.userId;
     }
+    let uniqueTypes = [...new Set(filter.filterTypes)] as string[];
+    uniqueTypes = uniqueTypes.filter((interest) => interest !== '');
     this.api
       .getEvents(
         userId,
         [],
         filter.filterDateMin,
         filter.filterDateMax,
-        filter.filterLocation
+        filter.filterLocation,
+        uniqueTypes
       )
       .subscribe((next) => {
         this.events = next;

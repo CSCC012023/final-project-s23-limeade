@@ -4,30 +4,36 @@
   </div>
 </div>
 
-<div class="button-bar">
-  <div class="search-container">
-    <input
-      type="text"
-      [(ngModel)]="searchText"
-      placeholder="Search..."
-      class="search-bar"
-    />
+<div class="row button-bar">
+  <div class="col-10 col-sm-12 row inner-button-bar">
+    <div class="search-container">
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search..."
+        class="search-bar"
+      />
+      <button
+        *ngIf="searchText"
+        id="event-clear-btn"
+        (click)="clearSearch()"
+      ></button>
+      <button id="event-search-btn" (click)="getEventsByName()">Search</button>
+    </div>
+    <button
+      class="filter-button"
+      [ngClass]="{ 'filter-selected': showFilterForm }"
+      (click)="showFilterForm = !showFilterForm"
+    >
+      Filter <fa-icon id="filter-icon" icon="sliders" size="1x"></fa-icon>
+    </button>
+    <button [ngClass]="{ selected: allEvents }" (click)="getAllEvents()">
+      All Events
+    </button>
+    <button [ngClass]="{ selected: !allEvents }" (click)="getMyEvents()">
+      My Events
+    </button>
   </div>
-  <button class="search-btn" (click)="getEventsByName()">Search</button>
-  <button class="clear-btn" (click)="clearSearch()"></button>
-  <button
-    class="filter-button"
-    [ngClass]="{ 'filter-selected': showFilterForm }"
-    (click)="showFilterForm = !showFilterForm"
-  >
-    Filter <fa-icon id="filter-icon" icon="sliders" size="1x"></fa-icon>
-  </button>
-  <button [ngClass]="{ selected: allEvents }" (click)="getAllEvents()">
-    All Events
-  </button>
-  <button [ngClass]="{ selected: !allEvents }" (click)="getMyEvents()">
-    My Events
-  </button>
 </div>
 
 <div class="row event-body">
