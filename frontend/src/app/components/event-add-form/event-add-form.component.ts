@@ -52,6 +52,13 @@ export class EventAddFormComponent {
     return this.eventForm.controls['eventTypes'] as FormArray<FormControl>;
   }
 
+  removeRelatedInterest(index: number) {
+    const eventTypes = this.eventForm.get(
+      'eventTypes'
+    ) as FormArray<FormControl>;
+    eventTypes.removeAt(index);
+  }
+
   addRelatedInterest() {
     const eventTypes = this.eventForm.get(
       'eventTypes'
