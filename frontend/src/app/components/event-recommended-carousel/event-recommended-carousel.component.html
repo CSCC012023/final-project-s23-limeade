@@ -1,7 +1,7 @@
 <ng-container *ngIf="events">
   <h2>Recommended Events</h2>
   <div class="carousel-container">
-    <div *ngFor="let event of events" class="slide hidden slideAnimation">
+    <div *ngFor="let event of events; let i = index" [ngClass]="{ hidden : slideHidden[i] }" class="slide slideAnimation">
       <app-large-event-card [event]="event"></app-large-event-card>
     </div>
 
@@ -23,7 +23,7 @@
 
   <div class="dot-container">
     <ng-container *ngFor="let event of events; let i = index">
-      <span class="dot" (click)="showSlide(i)"></span>
+      <span [ngClass]="{ active : dotActive[i] }" class="dot" (click)="showSlide(i)"></span>
     </ng-container>
   </div>
 </ng-container>
