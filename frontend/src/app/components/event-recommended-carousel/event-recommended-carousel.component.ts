@@ -14,8 +14,10 @@ import {
 })
 export class EventRecommendedCarouselComponent {
   events!: LimeEvent[];
+  slideHidden: boolean[] = [];
   slideIndex: number = 0;
   slideInit: boolean = false;
+  dotActive: boolean[] = [];
 
   constructor(
     private api: ApiService,
@@ -28,6 +30,10 @@ export class EventRecommendedCarouselComponent {
   ngOnInit(): void {
     this.api.getRecommendedEvents().subscribe((next) => {
       this.events = next;
+      this.events.forEach((event) => {
+        this.slideHidden.push(true);
+        this.dotActive.push(false);
+      });
     });
   }
 
@@ -54,13 +60,13 @@ export class EventRecommendedCarouselComponent {
     }
     let i;
     for (i = 0; i < slides.length; i++) {
-      slides[i].classList.add('hidden');
+      this.slideHidden[i] = true;
     }
     for (i = 0; i < dots.length; i++) {
-      dots[i].classList.remove('active');
+      this.dotActive[i] = false;
     }
 
-    slides[this.slideIndex].classList.remove('hidden');
-    dots[this.slideIndex].classList.add('active');
+    this.slideHidden[this.slideIndex] = false;
+    this.dotActive[this.slideIndex] = true;
   }
 }
