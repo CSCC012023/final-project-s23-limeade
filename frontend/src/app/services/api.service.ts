@@ -60,6 +60,10 @@ export class ApiService {
     );
   }
 
+  getUserByUsername(username:string):Observable<any>{
+    return this.http.get<any>(this.apiEndPoint+`/api/users/username=${username}`,{withCredentials:true});
+  }
+
   getMe(): Observable<User> {
     return this.http.get<User>(this.apiEndPoint + '/api/users/getMe', {
       withCredentials: true,

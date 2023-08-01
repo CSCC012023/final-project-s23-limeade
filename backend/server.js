@@ -11,6 +11,8 @@ import { usersRouter } from "./routers/user_router.js";
 import { eventsRouter } from "./routers/event_router.js";
 import { ChatRoom } from "./models/chat.js";
 import { staffRouter } from "./routers/staff_router.js";
+import { Invitation } from "./models/invite.js";
+import { isAuthenticated } from "./middleware/auth.js";
 const app = express();
 const appWs = expressWs(app);
 
@@ -114,6 +116,68 @@ app.ws("/chatroom/:id", async (ws, req) => {
     }
   });
 });
+
+const activeUsers = {};
+//invite notifications
+app.ws('/invitenotis', async (ws,req)=>{
+  console.log("user connected");
+
+  const userId = req.session.userId;
+  if(!userId){
+    return ws.close();
+  }
+
+  activeUsers[userId] = ws;
+  
+  ws.on('close', () => {
+    console.log('A user disconnected');
+    // Clean up the user's data when they disconnect
+    for (const userId in activeUsers) {
+      if (activeUsers[userId] === ws) {
+        delete activeUsers[userId];
+        break;
+      }
+    }
+  });
+
+});
+
+app.post('/api/invites/',isAuthenticated,async(req,res)=>{
+  const {invitedId,eventId} = req.body;
+  const existing = await  Invitation.findOne({
+    invitedId:invitedId,
+    inviterId:req.session.userId,
+    eventId:eventId,
+  });
+  if(existing){
+    return res.status(409).json({error:"You already sent an invitation similar to this"});
+  }
+  const invitation = new Invitation ({invitedId,
+    inviterId:req.session.userId
+    ,eventId});
+  const ws = activeUsers[invitedId];
+  try{
+    await invitation.save();
+  }
+  catch(err){
+    return res.status(422).json({error:err});
+  }
+  if(ws){
+    const data = Invitation.findOne({inviterId:req.session.userId
+      ,eventId}).populate('inviterId').populate('eventId').exec().then(
+        (result)=>{
+          ws.send(JSON.stringify(result));
+        }
+      )
+  }
+  
+
+  return res.json({success:true});
+});
+
+app.get('/api/invites/recieved',isAuthenticated,async(req,res)=>{
+
+})
 
 const port = 3000;
 app.listen(port, () => {
