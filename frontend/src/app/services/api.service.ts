@@ -229,7 +229,7 @@ export class ApiService {
       if (typeof value === 'string') {
         filter += param + '=' + value;
       } else {
-        filter += param + '=' + value.join('-');
+        filter += param + '=' + value.join('_');
       }
     }
     return filter;
