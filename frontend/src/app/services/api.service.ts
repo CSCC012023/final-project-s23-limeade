@@ -58,6 +58,10 @@ export class ApiService {
         withCredentials: true,
       }
     );
+  };
+
+  deleteInvite(inviteId:string){
+    return this.http.delete<any>(this.apiEndPoint + `/api/invites/id=${inviteId}`,{withCredentials:true});
   }
 
   getUserByUsername(username:string):Observable<any>{

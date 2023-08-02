@@ -10,6 +10,7 @@ import { EventInfoPageComponent } from './pages/event-info-page/event-info-page.
 import { EventAddComponent } from './pages/event-add/event-add.component';
 import { UsersearchComponent } from './pages/usersearch/usersearch.component';
 import { StaffComponent } from './pages/staff/staff.component';
+import { MyInvitesComponent } from './pages/my-invites/my-invites.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
     path: 'staff',
     component: StaffComponent,
   },
+  {
+    path:'my-invites',
+    component:MyInvitesComponent
+  }
 ];
 
 @NgModule({

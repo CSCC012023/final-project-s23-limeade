@@ -26,6 +26,9 @@
     <li *ngIf="api.loggedIn" class="nav-item">
       <a class="nav-link" routerLink="/user-search">User Search</a>
     </li>
+    <li *ngIf="api.loggedIn" class="nav-item">
+      <a class="nav-link" routerLink="/my-invites">My Invites</a>
+    </li>
     <li *ngIf="api.loggedIn && api.type === 'Staff'" class="nav-item">
       <a class="nav-link" routerLink="/staff">Staff</a>
     </li>

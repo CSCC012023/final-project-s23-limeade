@@ -175,8 +175,25 @@ app.post('/api/invites/',isAuthenticated,async(req,res)=>{
   return res.json({success:true});
 });
 
-app.get('/api/invites/recieved',isAuthenticated,async(req,res)=>{
+app.get('/api/invites/received',isAuthenticated,async(req,res)=>{
+  const userId = req.session.userId;
+  const invites = await Invitation.find({
+    invitedId:userId
+  }).populate('eventId').populate('inviterId').exec().then(
+    results =>{
+      return res.json(results);
+    }
+  );
+});
 
+app.delete('/api/invites/id=:id',isAuthenticated,async(req,res)=>{
+  const inviteId = req.params.id;
+
+  const deleted = await Invitation.deleteOne({
+    _id:inviteId,
+  });
+
+  return res.json(deleted);
 })
 
 const port = 3000;
