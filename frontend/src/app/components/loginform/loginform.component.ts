@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { InvitationServiceService } from 'src/app/services/invitation-service.service';
 
 @Component({
   selector: 'app-loginform',
@@ -15,7 +16,8 @@ export class LoginformComponent {
   constructor(
     private formBuilder: FormBuilder,
     private api: ApiService,
-    private router: Router
+    private router: Router,
+    private invitesNotis:InvitationServiceService
   ) {}
 
   ngOnInit() {
@@ -37,6 +39,7 @@ export class LoginformComponent {
           this.api.loggedIn = true;
           this.api.userId = next._id;
           this.api.type = next.type;
+          this.invitesNotis.initiate();
           this.router.navigate(['/']);
         },
         (error) => {

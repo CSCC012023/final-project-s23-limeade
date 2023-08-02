@@ -58,6 +58,14 @@ export class ApiService {
         withCredentials: true,
       }
     );
+  };
+
+  deleteInvite(inviteId:string){
+    return this.http.delete<any>(this.apiEndPoint + `/api/invites/id=${inviteId}`,{withCredentials:true});
+  }
+
+  getUserByUsername(username:string):Observable<any>{
+    return this.http.get<any>(this.apiEndPoint+`/api/users/username=${username}`,{withCredentials:true});
   }
 
   getMe(): Observable<User> {
