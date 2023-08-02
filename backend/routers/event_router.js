@@ -6,9 +6,20 @@ import { isAuthenticated } from "../middleware/auth.js";
 export const eventsRouter = Router();
 
 eventsRouter.get("/", async (req, res) => {
+  const user = await User.findOne({
+    _id: req.session.userId,
+  });
+  if (!user) {
+    return res.status(404).json({ error: "Cannot find YOU" });
+  }
+
   let filter = {};
   if (req.query.userId) {
     filter.userId = req.query.userId;
+  }
+
+  if (!req.query.userId) {
+    filter.userId = { $nin: user.blocked };
   }
 
   let sort = {};
@@ -67,7 +78,7 @@ eventsRouter.get("/recommended", isAuthenticated, async (req, res) => {
           $in: user.interests,
         },
         userId: {
-          $ne: user._id,
+          $nin: [user._id, ...user.blocked],
         },
       },
     },
