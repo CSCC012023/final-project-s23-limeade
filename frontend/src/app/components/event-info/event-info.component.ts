@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { LimeEvent } from 'src/app/classes/limeEvent';
 import { User } from 'src/app/classes/user';
+import { InvitationServiceService } from 'src/app/services/invitation-service.service';
 
 @Component({
   selector: 'app-event-info',
@@ -14,8 +15,11 @@ export class EventInfoComponent {
   userJoined: boolean = false;
   userInterestedUsernames: string[] = [];
   sRegex: RegExp = /s$/i;
+  invUsername:string = '';
+  inviteError:string = '';
+  inviteFeedback:string = '';
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService,private invitationService:InvitationServiceService) {}
 
   ngOnInit(): void {
     if (this.event.interestedUsers.includes(this.api.userId)) {
@@ -52,5 +56,22 @@ export class EventInfoComponent {
         );
       });
     });
+  }
+
+  sendInvite(){
+    console.log('invited username: ' + this.invUsername);
+    console.log('event_id: ' + this.event._id);
+    this.api.getUserByUsername(
+      this.invUsername
+    ).subscribe(
+      (next)=>{
+        console.log("user: ", next);
+        const user = next;
+        this.invitationService.sendInvite(user._id,this.event._id).subscribe();
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 }

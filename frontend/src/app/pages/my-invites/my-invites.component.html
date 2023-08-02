@@ -1,0 +1,3 @@
+<h1>My Invites</h1>
+
+<app-invite-card *ngFor="let invite of messages" [eventName]="invite.eventId.eventName" [inviteId]="invite._id" [inviterName]="invite.inviterId.username" [eventId]="invite.eventId._id" (delete)="handleDelete($event)"></app-invite-card>

@@ -37,6 +37,8 @@ import { StaffComponent } from './pages/staff/staff.component';
 import { ReportedUserCardComponent } from './components/reported-user-card/reported-user-card.component';
 import { BannedUserCardComponent } from './components/banned-user-card/banned-user-card.component';
 import { EventRecommendedCarouselComponent } from './components/event-recommended-carousel/event-recommended-carousel.component';
+import { MyInvitesComponent } from './pages/my-invites/my-invites.component';
+import { InviteCardComponent } from './components/invite-card/invite-card.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { EventRecommendedCarouselComponent } from './components/event-recommende
     ReportedUserCardComponent,
     BannedUserCardComponent,
     EventRecommendedCarouselComponent,
+    MyInvitesComponent,
+    InviteCardComponent,
   ],
   imports: [
     FormsModule,

@@ -32,4 +32,10 @@
   </div>
   <button *ngIf="!userJoined" (click)="joinEvent()">Join</button>
   <button *ngIf="userJoined" (click)="leaveEvent()">Leave</button>
+  <form (submit)="sendInvite()">
+    <input type = 'text' [(ngModel)]="invUsername" name="invUsername" placeholder="enter your friend's username">
+    <button type = 'submit'>Send Invite</button>
+    <p [(ngModel)]="inviteError" name = "inviteError"></p>
+    <p [(ngModel)]="inviteFeedback" name = "inviteFeedback"></p>
+  </form>
 </div>
