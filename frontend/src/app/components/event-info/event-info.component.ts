@@ -25,7 +25,7 @@ export class EventInfoComponent {
 
   ngOnInit(): void {
     if (this.event.interestedUsers.includes(this.api.userId)) {
-      this.userJoined = true;
+      this.userJoined = true;  
     }
 
     this.event.interestedUsers.forEach((userId: string) => {
