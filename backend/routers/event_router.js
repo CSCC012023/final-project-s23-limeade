@@ -6,19 +6,19 @@ import { isAuthenticated } from "../middleware/auth.js";
 export const eventsRouter = Router();
 
 eventsRouter.get("/", async (req, res) => {
-  const user = await User.findOne({
-    _id: req.session.userId,
-  });
-  if (!user) {
-    return res.status(404).json({ error: "Cannot find YOU" });
-  }
-
   let filter = {};
   if (req.query.userId) {
     filter.userId = req.query.userId;
   }
 
   if (!req.query.userId) {
+    const user = await User.findOne({
+      _id: req.session.userId,
+    });
+    if (!user) {
+      return res.status(404).json({ error: "Cannot find YOU" });
+    }
+
     filter.userId = { $nin: user.blocked };
   }
 
