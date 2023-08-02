@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,6 +13,7 @@ import { InvitationServiceService } from 'src/app/services/invitation-service.se
 export class LoginformComponent {
   userForm: any;
   error: string = '';
+  @Input() returnUrl:string = '';
   constructor(
     private formBuilder: FormBuilder,
     private api: ApiService,
@@ -40,7 +41,7 @@ export class LoginformComponent {
           this.api.userId = next._id;
           this.api.type = next.type;
           this.invitesNotis.initiate();
-          this.router.navigate(['/']);
+          this.router.navigateByUrl(this.returnUrl);
         },
         (error) => {
           this.error = error.error.error;
