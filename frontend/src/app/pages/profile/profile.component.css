@@ -2,6 +2,10 @@ a {
   margin-left: 20px;
 }
 
+.blocked-users {
+  margin-top: 15px;
+}
+
 .profile-container {
   margin-top: 20px;
   display: flex;

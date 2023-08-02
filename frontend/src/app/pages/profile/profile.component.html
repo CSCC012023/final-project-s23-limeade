@@ -25,7 +25,7 @@
       [user]="user"
       *ngIf="!myself"
     ></app-profile-report-form>
-    <div class="blockedUsers" *ngIf="myself">
+    <div class="blocked-users" *ngIf="myself">
       <strong>Blocked Users:</strong>
       <ul>
         <li *ngFor="let blockeduser of blockedUsers ">{{ blockeduser.username }}
