@@ -34,7 +34,7 @@ export class EventInfoComponent {
 
   ngOnInit(): void {
     if (this.event.interestedUsers.includes(this.api.userId)) {
-      this.userJoined = true;
+      this.userJoined = true;  
     }
 
     this.event.interestedUsers.forEach((userId: string) => {
@@ -103,5 +103,17 @@ export class EventInfoComponent {
 
   isSubset(subset: any[], superset: any[]) {
     return subset.every((item) => superset.includes(item));
+  }
+
+  filterUsersByInterest(selectedInterest:any){
+    this.interestedUsers = [...this.permanentInterestedUsers];
+    this.interestedUsers = this.interestedUsers.filter(
+      (user)=> (this.isSubset(selectedInterest,user.interests))
+    )
+
+  }
+
+  isSubset(subset:any[], superset:any[]) {
+    return subset.every(item => superset.includes(item));
   }
 }
