@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     public api: ApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -128,6 +128,16 @@ export class ProfileComponent implements OnInit {
     this.api.unblockUser(userID).subscribe((next) => {
       this.router.navigate(['/']);
     });
-  }
+  };
+
+  setToBasic(){
+    console.log("clicked set to basic");
+    this.api.switchToBasic().subscribe(
+      (next)=>{
+        this.user = next;
+        this.api.type = this.user.type;
+      }
+    )
+  };
 
 }

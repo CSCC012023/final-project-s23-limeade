@@ -40,6 +40,9 @@ export class LoginformComponent {
           this.api.loggedIn = true;
           this.api.userId = next._id;
           this.api.type = next.type;
+          localStorage.setItem('loggedin','true');
+          localStorage.setItem('userId',`${next._id}`);
+          localStorage.setItem('type',`${next.type}`);
           this.invitesNotis.initiate();
           this.router.navigateByUrl(this.returnUrl);
         },

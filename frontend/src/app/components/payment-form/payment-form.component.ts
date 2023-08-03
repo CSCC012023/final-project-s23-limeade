@@ -32,7 +32,8 @@ export class PaymentFormComponent implements OnInit {
       this.api.switchToPremium().subscribe(
         (next) => {
           this.api.type = 'Premium';
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/profile'],{queryParams:{userId:this.api.userId}});
+          //this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
         },
         (error) => {
           console.log(error);
