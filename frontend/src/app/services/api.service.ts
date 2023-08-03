@@ -13,7 +13,12 @@ export class ApiService {
   userId: string = '';
   type: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.loggedIn = localStorage.getItem('loggedin')==='true';
+    this.userId = localStorage.getItem('userId') || '';
+    this.type = localStorage.getItem('type') || '';
+
+  }
 
   signUp(
     firstName: string,
@@ -80,17 +85,20 @@ export class ApiService {
     });
   }
 
-  switchToPremium(): Observable<User> {
-    if (!this.loggedIn) {
-      return new Observable((observer) => {
-        observer.error('Not logged in');
-      });
-    }
+  switchToPremium() {
 
-    return this.http.patch<User>(
+    return this.http.patch<any>(
       this.apiEndPoint + '/api/users/switchToPremium',
       {},
       { withCredentials: true },
+    );
+  };
+
+  switchToBasic(){
+    return this.http.patch<any>(
+      this.apiEndPoint + '/api/users/switchToBasic',
+      {},
+      { withCredentials: true }
     );
   }
 

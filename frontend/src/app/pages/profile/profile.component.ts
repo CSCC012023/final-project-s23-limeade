@@ -128,5 +128,17 @@ export class ProfileComponent implements OnInit {
     this.api.unblockUser(userID).subscribe((next) => {
       this.router.navigate(['/']);
     });
-  }
+
+  };
+
+  setToBasic(){
+    console.log("clicked set to basic");
+    this.api.switchToBasic().subscribe(
+      (next)=>{
+        this.user = next;
+        this.api.type = this.user.type;
+      }
+    )
+  };
+
 }

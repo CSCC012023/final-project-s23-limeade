@@ -24,7 +24,9 @@ export class AppComponent implements OnInit {
         this.api.loggedIn = false;
         this.api.userId = '';
         this.api.type = '';
-
+        localStorage.setItem('loggedin','false');
+        localStorage.setItem('userId','');
+        localStorage.setItem('type','');
         this.api.signOut().subscribe();
         this.invitesNotis.close();
       },

@@ -16,6 +16,9 @@ export class NavbarComponent {
   logout() {
     this.api.signOut().subscribe((next) => {
       this.api.loggedIn = false;
+      localStorage.setItem('loggedin','false');
+      localStorage.setItem('userId','');
+      localStorage.setItem('type','');
       this.router.navigate(['/']);
     });
   }
