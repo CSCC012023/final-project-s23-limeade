@@ -39,6 +39,7 @@ import { BannedUserCardComponent } from './components/banned-user-card/banned-us
 import { EventRecommendedCarouselComponent } from './components/event-recommended-carousel/event-recommended-carousel.component';
 import { MyInvitesComponent } from './pages/my-invites/my-invites.component';
 import { InviteCardComponent } from './components/invite-card/invite-card.component';
+import { InterestFilterFormComponent } from './components/interest-filter-form/interest-filter-form.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { InviteCardComponent } from './components/invite-card/invite-card.compon
     EventRecommendedCarouselComponent,
     MyInvitesComponent,
     InviteCardComponent,
+    InterestFilterFormComponent,
   ],
   imports: [
     FormsModule,

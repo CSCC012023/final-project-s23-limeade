@@ -25,11 +25,12 @@
     <label>Interested Users</label>
     <div
       class="field-small user"
-      *ngFor="let username of userInterestedUsernames"
+      *ngFor="let user of interestedUsers"
     >
-      {{ username }}
+      {{ user.username }}
     </div>
   </div>
+  <app-interest-filter-form (selected)="filterUsersByInterest($event)"></app-interest-filter-form>
   <button *ngIf="!userJoined" (click)="joinEvent()">Join</button>
   <button *ngIf="userJoined" (click)="leaveEvent()">Leave</button>
   <form (submit)="sendInvite()">
