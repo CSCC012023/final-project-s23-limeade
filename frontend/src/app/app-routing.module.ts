@@ -28,7 +28,7 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'premium-signup',
@@ -37,32 +37,32 @@ const routes: Routes = [
   {
     path: 'event-home',
     component: EventHomeComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'event-info-page',
     component: EventInfoPageComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'event-add',
     component: EventAddComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'user-search',
     component: UsersearchComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'staff',
     component: StaffComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'my-invites',
     component: MyInvitesComponent,
-    canActivate:[AuthGuard],
+    canActivate: [AuthGuard],
   },
 ];
 

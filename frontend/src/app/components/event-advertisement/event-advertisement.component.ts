@@ -6,13 +6,16 @@ import { LimeEvent } from 'src/app/classes/limeEvent';
 @Component({
   selector: 'app-event-advertisement',
   templateUrl: './event-advertisement.component.html',
-  styleUrls: ['./event-advertisement.component.css']
+  styleUrls: ['./event-advertisement.component.css'],
 })
 export class EventAdvertisementComponent {
   event!: LimeEvent;
   sRegex: RegExp = /s$/i;
-  
-  constructor(private router: Router, private api: ApiService) {}
+
+  constructor(
+    private router: Router,
+    private api: ApiService,
+  ) {}
 
   ngOnInit() {
     this.api.getAdvertisedEvent().subscribe((next) => {
