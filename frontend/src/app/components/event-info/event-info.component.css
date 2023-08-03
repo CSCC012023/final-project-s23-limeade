@@ -1,15 +1,7 @@
 .event-info-card {
-  margin: 0px 20px;
+  margin: 0px 0px;
   position: relative;
   padding: 20px;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
-}
-
-.event-info-card:hover {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .row {
@@ -95,6 +87,15 @@ form input::placeholder {
 }
 
 .invite-form {
-  margin: 0;
+  margin: 20px 0 0;
   max-width: 400px;
+}
+
+.error {
+  color: var(--color-error);
+}
+
+.msg {
+  margin: 5px 0;
+  font-size: 0.9em;
 }

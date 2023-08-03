@@ -14,6 +14,7 @@ export class LoginformComponent {
   userForm: any;
   error: string = '';
   @Input() returnUrl:string = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private api: ApiService,

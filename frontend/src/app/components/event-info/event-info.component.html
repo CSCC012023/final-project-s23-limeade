@@ -1,4 +1,4 @@
-<div class="event-info-card">
+<div class="event-info-card card">
   <h2 class="row-spacing">{{ event.eventName }}</h2>
   <div class="row">
     <label>Date</label>
@@ -54,7 +54,7 @@
       placeholder="Enter a username"
     />
     <button type="submit">Send Invite</button>
-    <p [(ngModel)]="inviteError" name="inviteError"></p>
-    <p [(ngModel)]="inviteFeedback" name="inviteFeedback"></p>
+    <p *ngIf="inviteError" class="error msg" name="inviteError">{{ inviteError }}</p>
+    <p *ngIf="inviteFeedback" class="msg" name="inviteFeedback">{{ inviteFeedback }}</p>
   </form>
 </div>
