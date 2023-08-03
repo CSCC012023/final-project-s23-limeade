@@ -27,7 +27,7 @@ export class EventInfoComponent {
   constructor(
     private api: ApiService,
     private invitationService: InvitationServiceService,
-    private library: FaIconLibrary
+    private library: FaIconLibrary,
   ) {
     library.addIcons(faSliders);
   }
@@ -69,10 +69,10 @@ export class EventInfoComponent {
       this.userJoined = false;
       this.api.getUserById(this.api.userId).subscribe((next) => {
         this.userInterestedUsernames = this.userInterestedUsernames.filter(
-          (username) => username != next.username
+          (username) => username != next.username,
         );
         this.interestedUsers = this.interestedUsers.filter(
-          (user) => user.username != next.username
+          (user) => user.username != next.username,
         );
         this.permanentInterestedUsers = [...this.interestedUsers];
       });
@@ -95,20 +95,20 @@ export class EventInfoComponent {
           (error) => {
             console.log(error);
             this.inviteError = error.error.error;
-          }
+          },
         );
       },
       (error) => {
         console.log(error);
         this.inviteError = error.error.error;
-      }
+      },
     );
   }
 
   filterUsersByInterest(selectedInterest: any) {
     this.interestedUsers = [...this.permanentInterestedUsers];
     this.interestedUsers = this.interestedUsers.filter((user) =>
-      this.isSubset(selectedInterest, user.interests)
+      this.isSubset(selectedInterest, user.interests),
     );
   }
 

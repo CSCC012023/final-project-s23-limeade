@@ -43,7 +43,7 @@ export class EventAddFormComponent {
       ]),
     });
 
-    if (this.api.type === "Premium") {  
+    if (this.api.type === 'Premium') {
       this.eventForm.addControl('advertise', new FormControl(false));
     }
 

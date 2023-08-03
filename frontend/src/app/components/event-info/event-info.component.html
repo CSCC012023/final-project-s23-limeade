@@ -54,7 +54,11 @@
       placeholder="Enter a username"
     />
     <button type="submit">Send Invite</button>
-    <p *ngIf="inviteError" class="error msg" name="inviteError">{{ inviteError }}</p>
-    <p *ngIf="inviteFeedback" class="msg" name="inviteFeedback">{{ inviteFeedback }}</p>
+    <p *ngIf="inviteError" class="error msg" name="inviteError">
+      {{ inviteError }}
+    </p>
+    <p *ngIf="inviteFeedback" class="msg" name="inviteFeedback">
+      {{ inviteFeedback }}
+    </p>
   </form>
 </div>
