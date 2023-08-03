@@ -92,29 +92,25 @@ usersRouter.patch("/switchToPremium", isAuthenticated, async (req, res) => {
   return res.json(user);
 });
 
-usersRouter.patch('/switchToBasic',isAuthenticated,async(req,res)=>{
+usersRouter.patch("/switchToBasic", isAuthenticated, async (req, res) => {
   const user = await User.findOne({
-    _id:req.session.userId,
+    _id: req.session.userId,
   });
 
-  if(!user){
-    return res.status(404).json({error:"User not found"});
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
   }
 
   user.type = "Basic";
 
-  try{
+  try {
     await user.save();
-
-  }
-  catch(err){
+  } catch (err) {
     return res.status(422).json(err);
-
   }
 
   return res.json(user);
-
-})
+});
 
 usersRouter.get("/getMe", isAuthenticated, async (req, res) => {
   const user = await User.findOne({
