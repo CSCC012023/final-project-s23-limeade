@@ -63,7 +63,7 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
         JSON.stringify({
           senderName: this.user.username,
           message: this.messageText,
-        })
+        }),
       );
     }
   }

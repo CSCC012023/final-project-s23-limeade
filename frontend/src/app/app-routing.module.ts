@@ -60,10 +60,10 @@ const routes: Routes = [
     canActivate:[AuthGuard]
   },
   {
-    path:'my-invites',
-    component:MyInvitesComponent,
-    canActivate:[AuthGuard]
-  }
+    path: 'my-invites',
+    component: MyInvitesComponent,
+    canActivate:[AuthGuard],
+  },
 ];
 
 @NgModule({

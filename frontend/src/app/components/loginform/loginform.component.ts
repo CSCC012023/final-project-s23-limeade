@@ -18,7 +18,7 @@ export class LoginformComponent {
     private formBuilder: FormBuilder,
     private api: ApiService,
     private router: Router,
-    private invitesNotis:InvitationServiceService
+    private invitesNotis: InvitationServiceService,
   ) {}
 
   ngOnInit() {
@@ -45,7 +45,7 @@ export class LoginformComponent {
         },
         (error) => {
           this.error = error.error.error;
-        }
+        },
       );
   }
 }

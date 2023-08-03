@@ -25,7 +25,7 @@
       [ngClass]="{ 'filter-selected': showFilterForm }"
       (click)="showFilterForm = !showFilterForm"
     >
-      Filter <fa-icon id="filter-icon" icon="sliders" size="1x"></fa-icon>
+      Filter <fa-icon class="filter-icon" icon="sliders" size="1x"></fa-icon>
     </button>
     <button [ngClass]="{ selected: allEvents }" (click)="getAllEvents()">
       All Events

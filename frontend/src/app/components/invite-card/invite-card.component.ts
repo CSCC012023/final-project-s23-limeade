@@ -5,31 +5,32 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-invite-card',
   templateUrl: './invite-card.component.html',
-  styleUrls: ['./invite-card.component.css']
+  styleUrls: ['./invite-card.component.css'],
 })
 export class InviteCardComponent {
   @Input() eventName: string = '';
   @Input() inviterName: string = '';
-  @Input() inviteId:string = '';
-  @Input() eventId:string = '';
+  @Input() inviteId: string = '';
+  @Input() eventId: string = '';
   @Output() delete: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private router:Router,private api:ApiService){}
+  constructor(
+    private router: Router,
+    private api: ApiService,
+  ) {}
   // Event handler for the visit button
   onVisitClicked(): void {
     // Add your logic for the visit button click here
     this.api.deleteInvite(this.inviteId).subscribe(
-      (next)=>{
+      (next) => {
         this.router.navigate(['/event-info-page'], {
           queryParams: { id: this.eventId },
         });
       },
-      (error)=>{
+      (error) => {
         console.log(error);
-      }
-    )
-    
-    
+      },
+    );
   }
 
   // Event handler for the decline button

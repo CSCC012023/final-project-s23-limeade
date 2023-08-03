@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     public api: ApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
           },
           (error) => {
             this.router.navigate(['/']);
-          }
+          },
         );
       } else {
         this.api.getUserById(userId).subscribe(
@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
           },
           (error) => {
             this.router.navigate(['/']);
-          }
+          },
         );
       }
     });
@@ -98,7 +98,7 @@ export class ProfileComponent implements OnInit {
         this.user._id,
         this.firstName,
         this.lastName,
-        selectedInterests
+        selectedInterests,
       )
       .subscribe(
         (next) => {
@@ -107,7 +107,7 @@ export class ProfileComponent implements OnInit {
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
   }
 
@@ -129,5 +129,4 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['/']);
     });
   }
-
 }

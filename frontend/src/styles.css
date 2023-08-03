@@ -27,6 +27,8 @@
   --color-accent: #c9d955;
   --color-user: lightcoral;
   --color-type: skyblue;
+  --color-success: #64a700;
+  --color-fail: red;
 }
 
 *,

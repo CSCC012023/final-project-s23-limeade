@@ -8,7 +8,10 @@ import { InvitationServiceService } from './services/invitation-service.service'
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor(private api: ApiService,private invitesNotis:InvitationServiceService) {}
+  constructor(
+    private api: ApiService,
+    private invitesNotis: InvitationServiceService,
+  ) {}
   ngOnInit(): void {
     this.api.getMe().subscribe(
       (next) => {
@@ -24,7 +27,7 @@ export class AppComponent implements OnInit {
 
         this.api.signOut().subscribe();
         this.invitesNotis.close();
-      }
+      },
     );
   }
   title = 'frontend';

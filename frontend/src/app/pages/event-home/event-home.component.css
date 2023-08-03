@@ -32,7 +32,7 @@
   color: var(--color-accent);
 }
 
-#filter-icon {
+.filter-icon {
   margin-left: 5px;
 }
 

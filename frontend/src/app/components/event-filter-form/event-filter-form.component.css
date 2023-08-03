@@ -3,7 +3,8 @@ label {
   margin-top: 10px;
 }
 
-input, select {
+input,
+select {
   display: block;
   margin-top: 5px;
   border: none; /* Remove the default border */

@@ -1,4 +1,5 @@
 .navbar {
+  padding: 20px;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -7,7 +8,7 @@
   color: var(--color-base);
   font-weight: bold;
   text-decoration: none;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .navbar-nav {
@@ -18,7 +19,7 @@
 
 .nav-item {
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .nav-item:hover {

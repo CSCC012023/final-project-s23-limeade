@@ -27,7 +27,7 @@ export class EventAddFormComponent {
     private formBuilder: FormBuilder,
     private api: ApiService,
     private router: Router,
-    private library: FaIconLibrary
+    private library: FaIconLibrary,
   ) {
     library.addIcons(faPlus);
   }
@@ -54,14 +54,14 @@ export class EventAddFormComponent {
 
   removeRelatedInterest(index: number) {
     const eventTypes = this.eventForm.get(
-      'eventTypes'
+      'eventTypes',
     ) as FormArray<FormControl>;
     eventTypes.removeAt(index);
   }
 
   addRelatedInterest() {
     const eventTypes = this.eventForm.get(
-      'eventTypes'
+      'eventTypes',
     ) as FormArray<FormControl>;
     eventTypes.push(new FormControl(''));
   }
@@ -81,7 +81,7 @@ export class EventAddFormComponent {
         values.eventDate,
         values.eventLocation,
         uniqueTypes,
-        this.api.userId
+        this.api.userId,
       )
       .subscribe((next) => {
         this.router.navigate(['/event-home']);

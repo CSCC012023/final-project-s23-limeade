@@ -1,7 +1,18 @@
 <form (submit)="getSelectedInterests()">
-    <label *ngFor="let interest of interestEnum" [for]="interest.interest">
-      <input type="checkbox" name="{{interest.interest}}" [(ngModel)]="interest.selected" id="{{interest.interest}}">
+  <div class="grid">
+    <label
+      class="checkbox-label"
+      *ngFor="let interest of interestEnum"
+      [for]="interest.interest"
+    >
+      <input
+        type="checkbox"
+        name="{{ interest.interest }}"
+        [(ngModel)]="interest.selected"
+        id="{{ interest.interest }}"
+      />
       {{ interest.label }}
     </label>
-    <button type="submit">Filter</button>
-  </form>
+  </div>
+  <button type="submit">Filter</button>
+</form>
