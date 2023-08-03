@@ -8,7 +8,7 @@ describe('InterestFilterFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [InterestFilterFormComponent]
+      declarations: [InterestFilterFormComponent],
     });
     fixture = TestBed.createComponent(InterestFilterFormComponent);
     component = fixture.componentInstance;

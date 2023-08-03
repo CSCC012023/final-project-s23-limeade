@@ -5,17 +5,17 @@ import { isAuthenticated } from "../middleware/auth.js";
 export const usersRouter = Router();
 import { Report } from "../models/report.js";
 
-usersRouter.get('/username=:username',async(req,res)=>{
+usersRouter.get("/username=:username", async (req, res) => {
   const user = await User.findOne({
-    username:req.params.username,
+    username: req.params.username,
   });
 
-  if(!user){
-    return res.status(404).json({error:"User not found"});
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
   }
 
   return res.json(user);
-})
+});
 usersRouter.post("/signup", async (req, res) => {
   const plaintextPassword = req.body.password;
   const salt = await bcrypt.genSalt(10);
@@ -324,7 +324,7 @@ usersRouter.get(
     ]);
 
     return res.json(users);
-  }
+  },
 );
 
 usersRouter.post("/report", isAuthenticated, async (req, res) => {

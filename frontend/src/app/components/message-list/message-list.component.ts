@@ -16,7 +16,10 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./message-list.component.css'],
 })
 export class MessageListComponent implements OnChanges, OnInit {
-  constructor(private api: ApiService, private router: Router) {}
+  constructor(
+    private api: ApiService,
+    private router: Router,
+  ) {}
   ngOnInit(): void {
     this.api.getMe().subscribe(
       (next) => {
@@ -24,7 +27,7 @@ export class MessageListComponent implements OnChanges, OnInit {
       },
       (error) => {
         this.router.navigate(['/']);
-      }
+      },
     );
   }
   @Input() messages: any[] = [];

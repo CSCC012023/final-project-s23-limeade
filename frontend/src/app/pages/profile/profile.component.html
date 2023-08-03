@@ -28,8 +28,11 @@
     <div class="blocked-users" *ngIf="myself">
       <strong>Blocked Users:</strong>
       <ul>
-        <li *ngFor="let blockeduser of blockedUsers ">{{ blockeduser.username }}
-          <button (click)="unblockUser(blockeduser._id)">Unblock</button>
+        <li *ngFor="let blockeduser of blockedUsers">
+          {{ blockeduser.username }}
+          <button class="unblock-button" (click)="unblockUser(blockeduser._id)">
+            Unblock
+          </button>
         </li>
       </ul>
     </div>

@@ -16,7 +16,10 @@ export class EventHomeComponent {
   showFilterForm: boolean = false;
   searchText: string = '';
 
-  constructor(protected api: ApiService, private library: FaIconLibrary) {
+  constructor(
+    protected api: ApiService,
+    private library: FaIconLibrary,
+  ) {
     library.addIcons(faSliders);
   }
 
@@ -96,7 +99,7 @@ export class EventHomeComponent {
         filter.filterDateMin,
         filter.filterDateMax,
         filter.filterLocation,
-        uniqueTypes
+        uniqueTypes,
       )
       .subscribe((next) => {
         this.events = next;

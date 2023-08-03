@@ -21,7 +21,7 @@ export class StaffService {
     return this.http.patch(
       this.apiEndPoint + '/ban',
       { bannedId: userId },
-      { withCredentials: true }
+      { withCredentials: true },
     );
   }
 
@@ -29,7 +29,7 @@ export class StaffService {
     return this.http.patch(
       this.apiEndPoint + '/unban',
       { unbannedId: userId },
-      { withCredentials: true }
+      { withCredentials: true },
     );
   }
 
@@ -37,7 +37,7 @@ export class StaffService {
     return this.http.patch(
       this.apiEndPoint + '/resolve',
       { userId: userId },
-      { withCredentials: true }
+      { withCredentials: true },
     );
   }
 

@@ -21,22 +21,40 @@
   </div>
   <label>Description</label>
   <div class="field row-spacing">{{ event.eventDescription }}</div>
+  <button
+    class="filter-button row-spacing"
+    [ngClass]="{ 'filter-selected': showFilterForm }"
+    (click)="showFilterForm = !showFilterForm"
+  >
+    Filter Interested Users
+    <fa-icon class="filter-icon" icon="sliders" size="1x"></fa-icon>
+  </button>
+  <app-interest-filter-form
+    *ngIf="showFilterForm"
+    class="row-spacing"
+    (selected)="filterUsersByInterest($event)"
+  ></app-interest-filter-form>
   <div class="row">
     <label>Interested Users</label>
-    <div
-      class="field-small user"
-      *ngFor="let user of interestedUsers"
-    >
+    <div class="field-small user" *ngFor="let user of interestedUsers">
       {{ user.username }}
     </div>
   </div>
-  <app-interest-filter-form (selected)="filterUsersByInterest($event)"></app-interest-filter-form>
-  <button *ngIf="!userJoined" (click)="joinEvent()">Join</button>
-  <button *ngIf="userJoined" (click)="leaveEvent()">Leave</button>
-  <form (submit)="sendInvite()">
-    <input type = 'text' [(ngModel)]="invUsername" name="invUsername" placeholder="enter your friend's username">
-    <button type = 'submit'>Send Invite</button>
-    <p [(ngModel)]="inviteError" name = "inviteError"></p>
-    <p [(ngModel)]="inviteFeedback" name = "inviteFeedback"></p>
+  <button class="row-spacing" *ngIf="!userJoined" (click)="joinEvent()">
+    Join
+  </button>
+  <button class="row-spacing" *ngIf="userJoined" (click)="leaveEvent()">
+    Leave
+  </button>
+  <form class="row invite-form" (submit)="sendInvite()">
+    <input
+      type="text"
+      [(ngModel)]="invUsername"
+      name="invUsername"
+      placeholder="Enter a username"
+    />
+    <button type="submit">Send Invite</button>
+    <p [(ngModel)]="inviteError" name="inviteError"></p>
+    <p [(ngModel)]="inviteFeedback" name="inviteFeedback"></p>
   </form>
 </div>

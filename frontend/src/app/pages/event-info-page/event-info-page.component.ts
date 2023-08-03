@@ -13,7 +13,10 @@ export class EventInfoPageComponent {
   event!: LimeEvent;
   user!: User;
 
-  constructor(protected api: ApiService, private route: ActivatedRoute) {}
+  constructor(
+    protected api: ApiService,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {

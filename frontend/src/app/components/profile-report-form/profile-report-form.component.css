@@ -11,3 +11,7 @@ form textarea {
 form textarea::placeholder {
   color: var(--color-light);
 }
+
+.row {
+  margin: 10px 0;
+}

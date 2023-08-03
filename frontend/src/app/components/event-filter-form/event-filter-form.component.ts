@@ -20,14 +20,16 @@ export class EventFilterFormComponent {
   interests: string[] = [];
   sRegex: RegExp = /s$/i;
 
-  constructor(private formBuilder: FormBuilder, private api: ApiService, private library: FaIconLibrary) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private api: ApiService,
+    private library: FaIconLibrary,
+  ) {
     this.filterForm = this.formBuilder.group({
       filterDateMin: [new Date().toISOString().slice(0, -8)],
       filterDateMax: [new Date().toISOString().slice(0, -8)],
       filterLocation: [''],
-      filterTypes: this.formBuilder.array([
-        new FormControl(''),
-      ]),
+      filterTypes: this.formBuilder.array([new FormControl('')]),
     });
     library.addIcons(faPlus);
   }
@@ -53,14 +55,14 @@ export class EventFilterFormComponent {
 
   removeRelatedInterest(index: number) {
     const filterTypes = this.filterForm.get(
-      'filterTypes'
+      'filterTypes',
     ) as FormArray<FormControl>;
     filterTypes.removeAt(index);
   }
 
   addRelatedInterest() {
     const filterTypes = this.filterForm.get(
-      'filterTypes'
+      'filterTypes',
     ) as FormArray<FormControl>;
     filterTypes.push(new FormControl(''));
   }

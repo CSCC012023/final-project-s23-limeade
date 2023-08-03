@@ -54,9 +54,9 @@ const routes: Routes = [
     component: StaffComponent,
   },
   {
-    path:'my-invites',
-    component:MyInvitesComponent
-  }
+    path: 'my-invites',
+    component: MyInvitesComponent,
+  },
 ];
 
 @NgModule({

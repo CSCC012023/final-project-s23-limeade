@@ -22,7 +22,7 @@ export class EventRecommendedCarouselComponent {
   constructor(
     private api: ApiService,
     private eRef: ElementRef,
-    private library: FaIconLibrary
+    private library: FaIconLibrary,
   ) {
     library.addIcons(faChevronLeft, faChevronRight);
   }
