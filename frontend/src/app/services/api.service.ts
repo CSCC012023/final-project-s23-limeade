@@ -218,6 +218,7 @@ export class ApiService {
     eventLocation: string,
     eventTypes: string[],
     userId: string,
+    advertise: boolean = false,
   ): Observable<LimeEvent> {
     return this.http.post<LimeEvent>(
       this.apiEndPoint + '/api/events',
@@ -227,6 +228,7 @@ export class ApiService {
         eventDate: eventDate,
         eventLocation: eventLocation,
         eventTypes: eventTypes,
+        advertise: advertise,
         userId: userId,
       },
       { withCredentials: true },
@@ -274,6 +276,15 @@ export class ApiService {
   getRecommendedEvents(): Observable<LimeEvent[]> {
     return this.http.get<LimeEvent[]>(
       this.apiEndPoint + '/api/events/recommended',
+      {
+        withCredentials: true,
+      },
+    );
+  }
+
+  getAdvertisedEvent(): Observable<LimeEvent[]> {
+    return this.http.get<LimeEvent[]>(
+      this.apiEndPoint + '/api/events/advertised',
       {
         withCredentials: true,
       },

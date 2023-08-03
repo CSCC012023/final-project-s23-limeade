@@ -1,0 +1,36 @@
+.banner {
+  margin: 20px 0;
+  min-height: 80px;
+  padding: 20px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.banner:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  display: inline;
+  margin: 10px 0;
+  margin-right: 20px;
+}
+
+p {
+  margin: 5px 0;
+}
+
+.row {
+  align-items: center;
+}
+
+.type {
+  padding: 4px 5px;
+  border: 1px solid var(--color-base);
+  font-size: 0.9em;
+  background-color: var(--color-type);
+}
+
+.type + .type {
+  margin-left: 10px;
+}

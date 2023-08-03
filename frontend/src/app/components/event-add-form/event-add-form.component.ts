@@ -43,6 +43,10 @@ export class EventAddFormComponent {
       ]),
     });
 
+    if (this.api.type === "Premium") {  
+      this.eventForm.addControl('advertise', new FormControl(false));
+    }
+
     this.api.getInterests().subscribe((next) => {
       this.interests = next;
     });
@@ -82,6 +86,7 @@ export class EventAddFormComponent {
         values.eventLocation,
         uniqueTypes,
         this.api.userId,
+        values.advertise,
       )
       .subscribe((next) => {
         this.router.navigate(['/event-home']);

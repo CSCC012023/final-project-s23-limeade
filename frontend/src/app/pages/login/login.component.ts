@@ -7,9 +7,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  returnUrl:string;
-  constructor(private route:ActivatedRoute){
+  returnUrl: string;
+
+  constructor(private route: ActivatedRoute) {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-
 }

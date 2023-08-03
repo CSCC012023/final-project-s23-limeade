@@ -104,6 +104,23 @@ eventsRouter.get("/recommended", isAuthenticated, async (req, res) => {
   return res.json(events);
 });
 
+eventsRouter.get("/advertised", async (req, res) => {
+  const events = await limeEvent.aggregate([
+    {
+      $match: {
+        advertise: true,
+      },
+    },
+    {
+      $sample: {
+        size: 1,
+      },
+    },
+  ]);
+
+  return res.json(events);
+});
+
 eventsRouter.post("/", async (req, res) => {
   const event = new limeEvent({
     eventName: req.body.eventName,
@@ -113,6 +130,10 @@ eventsRouter.post("/", async (req, res) => {
     eventTypes: req.body.eventTypes,
     userId: req.body.userId,
   });
+
+  if (req.body.advertise) {
+    event.advertise = req.body.advertise;
+  }
 
   try {
     await event.save();

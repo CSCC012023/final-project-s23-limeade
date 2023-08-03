@@ -40,6 +40,7 @@ import { EventRecommendedCarouselComponent } from './components/event-recommende
 import { MyInvitesComponent } from './pages/my-invites/my-invites.component';
 import { InviteCardComponent } from './components/invite-card/invite-card.component';
 import { InterestFilterFormComponent } from './components/interest-filter-form/interest-filter-form.component';
+import { EventAdvertisementComponent } from './components/event-advertisement/event-advertisement.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { InterestFilterFormComponent } from './components/interest-filter-form/i
     MyInvitesComponent,
     InviteCardComponent,
     InterestFilterFormComponent,
+    EventAdvertisementComponent,
   ],
   imports: [
     FormsModule,
