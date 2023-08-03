@@ -1,0 +1,13 @@
+form {
+  width: 100%;
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.checkbox-label {
+  display: inline-block;
+}

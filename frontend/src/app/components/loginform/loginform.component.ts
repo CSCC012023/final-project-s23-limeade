@@ -13,12 +13,13 @@ import { InvitationServiceService } from 'src/app/services/invitation-service.se
 export class LoginformComponent {
   userForm: any;
   error: string = '';
-  @Input() returnUrl:string = '';
+  @Input() returnUrl: string = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private api: ApiService,
     private router: Router,
-    private invitesNotis:InvitationServiceService
+    private invitesNotis: InvitationServiceService,
   ) {}
 
   ngOnInit() {
@@ -48,7 +49,7 @@ export class LoginformComponent {
         },
         (error) => {
           this.error = error.error.error;
-        }
+        },
       );
   }
 }

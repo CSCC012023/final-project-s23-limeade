@@ -1,15 +1,7 @@
 .event-info-card {
-  margin: 0px 20px;
+  margin: 0px 0px;
   position: relative;
   padding: 20px;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
-}
-
-.event-info-card:hover {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .row {
@@ -53,4 +45,57 @@ button {
 
 .user {
   background-color: var(--color-user);
+}
+
+.filter-button {
+  margin-top: 10px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-2);
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+.filter-button:hover {
+  color: var(--color-accent);
+}
+
+.filter-selected {
+  color: var(--color-accent);
+}
+
+#filter-icon {
+  margin-left: 5px;
+}
+
+form {
+  gap: 10px;
+}
+
+form input {
+  flex: 1 1 300px;
+  padding: 6px 8px;
+  border: 1px solid var(--color-base);
+  border-radius: 4px;
+  background-color: var(--color-base);
+  color: var(--color-light);
+}
+
+form input::placeholder {
+  color: var(--color-light);
+}
+
+.invite-form {
+  margin: 20px 0 0;
+  max-width: 400px;
+}
+
+.error {
+  color: var(--color-error);
+}
+
+.msg {
+  margin: 5px 0;
+  font-size: 0.9em;
 }

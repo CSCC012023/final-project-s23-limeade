@@ -8,7 +8,10 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  constructor(public api: ApiService, private router: Router) {}
+  constructor(
+    public api: ApiService,
+    private router: Router,
+  ) {}
 
   logout() {
     this.api.signOut().subscribe((next) => {

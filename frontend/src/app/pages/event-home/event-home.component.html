@@ -4,6 +4,12 @@
   </div>
 </div>
 
+<div class="row event-body">
+  <div class="col-10 col-sm-12">
+    <app-event-advertisement></app-event-advertisement>
+  </div>
+</div>
+
 <div class="row button-bar">
   <div class="col-10 col-sm-12 row inner-button-bar">
     <div class="search-container">
@@ -25,7 +31,7 @@
       [ngClass]="{ 'filter-selected': showFilterForm }"
       (click)="showFilterForm = !showFilterForm"
     >
-      Filter <fa-icon id="filter-icon" icon="sliders" size="1x"></fa-icon>
+      Filter <fa-icon class="filter-icon" icon="sliders" size="1x"></fa-icon>
     </button>
     <button [ngClass]="{ selected: allEvents }" (click)="getAllEvents()">
       All Events

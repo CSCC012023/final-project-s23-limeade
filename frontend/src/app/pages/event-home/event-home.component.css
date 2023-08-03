@@ -32,14 +32,17 @@
   color: var(--color-accent);
 }
 
-#filter-icon {
+.filter-icon {
   margin-left: 5px;
 }
 
-.event-body {
-  margin-bottom: 30px;
+.row {
   justify-content: center;
-  padding: 16px;
+}
+
+.event-body {
+  margin: 16px;
+  margin-bottom: 20px;
 }
 
 .filter-form {

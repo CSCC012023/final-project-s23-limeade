@@ -24,7 +24,7 @@ export class UsersearchComponent {
       },
       (error) => {
         this.loading = false;
-      }
+      },
     );
   }
 

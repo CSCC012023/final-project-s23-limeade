@@ -55,6 +55,12 @@
     </ng-container>
   </ng-container>
 
+  <div class="row">
+    <label for="advertise">Advertise Event</label>
+    <div class="line"></div>
+    <input type="checkbox" formControlName="advertise" id="advertise" />
+  </div>
+
   <div class="error" *ngIf="eventForm.invalid">
     Please fill in all required fields.
   </div>

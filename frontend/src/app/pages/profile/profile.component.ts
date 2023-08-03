@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
           },
           (error) => {
             this.router.navigate(['/']);
-          }
+          },
         );
       } else {
         this.api.getUserById(userId).subscribe(
@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
           },
           (error) => {
             this.router.navigate(['/']);
-          }
+          },
         );
       }
     });
@@ -98,7 +98,7 @@ export class ProfileComponent implements OnInit {
         this.user._id,
         this.firstName,
         this.lastName,
-        selectedInterests
+        selectedInterests,
       )
       .subscribe(
         (next) => {
@@ -107,7 +107,7 @@ export class ProfileComponent implements OnInit {
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
   }
 
@@ -128,6 +128,7 @@ export class ProfileComponent implements OnInit {
     this.api.unblockUser(userID).subscribe((next) => {
       this.router.navigate(['/']);
     });
+
   };
 
   setToBasic(){

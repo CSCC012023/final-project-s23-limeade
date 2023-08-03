@@ -1,7 +1,7 @@
 .search-container {
   position: relative;
-  margin: 0px 20px;
-  align-items: center;
+  margin: 40px 20px 20px;
+  justify-content: center;
 }
 
 .search-container label {
@@ -21,6 +21,13 @@
 
 .search-container input::placeholder {
   color: var(--color-light);
+}
+
+.search-col {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .clear-btn {

@@ -23,7 +23,7 @@ app.use(
     secret: "YourSecretKey",
     resave: false,
     saveUninitialized: true,
-  })
+  }),
 );
 
 dotenv.config();
@@ -119,18 +119,18 @@ app.ws("/chatroom/:id", async (ws, req) => {
 
 const activeUsers = {};
 //invite notifications
-app.ws('/invitenotis', async (ws,req)=>{
+app.ws("/invitenotis", async (ws, req) => {
   console.log("user connected");
 
   const userId = req.session.userId;
-  if(!userId){
+  if (!userId) {
     return ws.close();
   }
 
   activeUsers[userId] = ws;
-  
-  ws.on('close', () => {
-    console.log('A user disconnected');
+
+  ws.on("close", () => {
+    console.log("A user disconnected");
     // Clean up the user's data when they disconnect
     for (const userId in activeUsers) {
       if (activeUsers[userId] === ws) {
@@ -139,62 +139,66 @@ app.ws('/invitenotis', async (ws,req)=>{
       }
     }
   });
-
 });
 
-app.post('/api/invites/',isAuthenticated,async(req,res)=>{
-  const {invitedId,eventId} = req.body;
-  const existing = await  Invitation.findOne({
-    invitedId:invitedId,
-    inviterId:req.session.userId,
-    eventId:eventId,
+app.post("/api/invites/", isAuthenticated, async (req, res) => {
+  const { invitedId, eventId } = req.body;
+  const existing = await Invitation.findOne({
+    invitedId: invitedId,
+    inviterId: req.session.userId,
+    eventId: eventId,
   });
-  if(existing){
-    return res.status(409).json({error:"You already sent an invitation similar to this"});
+  if (existing) {
+    return res
+      .status(409)
+      .json({ error: "You already sent an invitation similar to this" });
   }
-  const invitation = new Invitation ({invitedId,
-    inviterId:req.session.userId
-    ,eventId});
+  const invitation = new Invitation({
+    invitedId,
+    inviterId: req.session.userId,
+    eventId,
+  });
   const ws = activeUsers[invitedId];
-  try{
+  try {
     await invitation.save();
+  } catch (err) {
+    return res.status(422).json({ error: err });
   }
-  catch(err){
-    return res.status(422).json({error:err});
+  if (ws) {
+    const data = Invitation.findOne({ inviterId: req.session.userId, eventId })
+      .populate("inviterId")
+      .populate("eventId")
+      .exec()
+      .then((result) => {
+        ws.send(JSON.stringify(result));
+      });
   }
-  if(ws){
-    const data = Invitation.findOne({inviterId:req.session.userId
-      ,eventId}).populate('inviterId').populate('eventId').exec().then(
-        (result)=>{
-          ws.send(JSON.stringify(result));
-        }
-      )
-  }
-  
 
-  return res.json({success:true});
+  return res.json({ success: true });
 });
 
-app.get('/api/invites/received',isAuthenticated,async(req,res)=>{
+app.get("/api/invites/received", isAuthenticated, async (req, res) => {
   const userId = req.session.userId;
   const invites = await Invitation.find({
-    invitedId:userId
-  }).populate('eventId').populate('inviterId').exec().then(
-    results =>{
+    invitedId: userId,
+  })
+    .populate("eventId")
+    .populate("inviterId")
+    .exec()
+    .then((results) => {
       return res.json(results);
-    }
-  );
+    });
 });
 
-app.delete('/api/invites/id=:id',isAuthenticated,async(req,res)=>{
+app.delete("/api/invites/id=:id", isAuthenticated, async (req, res) => {
   const inviteId = req.params.id;
 
   const deleted = await Invitation.deleteOne({
-    _id:inviteId,
+    _id: inviteId,
   });
 
   return res.json(deleted);
-})
+});
 
 const port = 3000;
 app.listen(port, () => {

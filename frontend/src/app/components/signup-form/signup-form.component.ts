@@ -16,7 +16,7 @@ export class SignupFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private api: ApiService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class SignupFormComponent {
         [
           Validators.required,
           Validators.pattern(
-            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/
+            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/,
           ),
         ],
       ],
@@ -52,7 +52,7 @@ export class SignupFormComponent {
         values.lastName,
         values.type,
         values.password,
-        values.username
+        values.username,
       )
       .subscribe(
         (next) => {
@@ -64,7 +64,7 @@ export class SignupFormComponent {
               this.usernameTaken = true;
             }
           }
-        }
+        },
       );
 
     // Handle form submission here

@@ -14,7 +14,7 @@ export class PaymentFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public api: ApiService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -37,7 +37,7 @@ export class PaymentFormComponent implements OnInit {
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
     }
   }

@@ -34,9 +34,16 @@ a {
   text-align: left;
 }
 
+form input {
+  border: none; /* Remove the default border */
+  border-bottom: 1px solid var(--color-base); /* Add a dark bottom border */
+  background-color: transparent; /* Make the background transparent */
+  font-size: 1em;
+}
+
 label[for="lastName"],
 label[for="firstName"] {
-  margin-right: 5px;
+  margin-right: 10px;
   font-weight: bold;
 }
 
@@ -50,7 +57,7 @@ label[for="firstName"] {
 }
 
 .red {
-  background-color: red;
+  background-color: var(--color-error);
 }
 .profile-form .form-group {
   margin-bottom: 10px;
@@ -72,5 +79,10 @@ label[for="firstName"] {
 
 .error {
   margin-top: 10px;
-  color: red;
+  color: var(--color-error);
+}
+
+.unblock-button {
+  margin: 0;
+  margin-left: 10px;
 }

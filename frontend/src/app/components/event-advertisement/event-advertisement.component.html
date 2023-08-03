@@ -1,0 +1,10 @@
+<div class="banner" (click)="seeEvent()">
+  <div class="row">
+    <h2>{{ event.eventName }}</h2>
+    <div *ngFor="let type of event.eventTypes" class="type">
+      {{ type.replace(sRegex, "") }}
+    </div>
+  </div>
+  <p><strong>Date:</strong> {{ event.eventDate }}</p>
+  <p><strong>Location:</strong> {{ event.eventLocation }}</p>
+</div>

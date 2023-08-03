@@ -20,7 +20,7 @@ export class ReportFormComponent {
       .submitChatReport(
         this.message.senderName,
         this.messageTxt,
-        this.message.message
+        this.message.message,
       )
       .subscribe(
         (next) => {
@@ -31,7 +31,7 @@ export class ReportFormComponent {
         },
         () => {
           this.messageTxt = '';
-        }
+        },
       );
   }
 }

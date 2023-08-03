@@ -32,6 +32,10 @@ const limeEventSchema = new mongoose.Schema({
       default: [],
     },
   ],
+  advertise: {
+    type: Boolean,
+    default: false,
+  },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
