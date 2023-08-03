@@ -11,7 +11,7 @@ import { EventAddComponent } from './pages/event-add/event-add.component';
 import { UsersearchComponent } from './pages/usersearch/usersearch.component';
 import { StaffComponent } from './pages/staff/staff.component';
 import { MyInvitesComponent } from './pages/my-invites/my-invites.component';
-
+import { AuthGuard } from './auth.guard';
 const routes: Routes = [
   {
     path: '',
@@ -28,6 +28,7 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'premium-signup',
@@ -36,26 +37,32 @@ const routes: Routes = [
   {
     path: 'event-home',
     component: EventHomeComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'event-info-page',
     component: EventInfoPageComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'event-add',
     component: EventAddComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'user-search',
     component: UsersearchComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'staff',
     component: StaffComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'my-invites',
     component: MyInvitesComponent,
+    canActivate:[AuthGuard],
   },
 ];
 
