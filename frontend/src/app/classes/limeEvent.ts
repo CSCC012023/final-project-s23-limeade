@@ -5,8 +5,8 @@ export interface LimeEvent {
   eventDate: string;
   eventLocation: string;
   eventTypes: string[];
+  eventCost: string;
   interestedUsers: string[];
   advertise: boolean;
-  eventCost: string;
   userId: string;
 }

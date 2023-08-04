@@ -14,10 +14,9 @@ export class ApiService {
   type: string = '';
 
   constructor(private http: HttpClient) {
-    this.loggedIn = localStorage.getItem('loggedin')==='true';
+    this.loggedIn = localStorage.getItem('loggedin') === 'true';
     this.userId = localStorage.getItem('userId') || '';
     this.type = localStorage.getItem('type') || '';
-
   }
 
   signUp(
@@ -25,7 +24,7 @@ export class ApiService {
     lastName: string,
     type: string,
     password: string,
-    username: string,
+    username: string
   ): Observable<User> {
     return this.http.post<User>(
       this.apiEndPoint + '/api/users/signup',
@@ -38,7 +37,7 @@ export class ApiService {
       },
       {
         withCredentials: true,
-      },
+      }
     );
   }
 
@@ -49,7 +48,7 @@ export class ApiService {
         username: username,
         password: password,
       },
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
@@ -61,21 +60,21 @@ export class ApiService {
       this.apiEndPoint + '/api/users/logout',
       {
         withCredentials: true,
-      },
+      }
     );
   }
 
   deleteInvite(inviteId: string) {
     return this.http.delete<any>(
       this.apiEndPoint + `/api/invites/id=${inviteId}`,
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
   getUserByUsername(username: string): Observable<any> {
     return this.http.get<any>(
       this.apiEndPoint + `/api/users/username=${username}`,
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
@@ -86,15 +85,14 @@ export class ApiService {
   }
 
   switchToPremium() {
-
     return this.http.patch<any>(
       this.apiEndPoint + '/api/users/switchToPremium',
       {},
-      { withCredentials: true },
+      { withCredentials: true }
     );
-  };
+  }
 
-  switchToBasic(){
+  switchToBasic() {
     return this.http.patch<any>(
       this.apiEndPoint + '/api/users/switchToBasic',
       {},
@@ -126,7 +124,7 @@ export class ApiService {
     userId: string,
     firstName: string,
     lastName: string,
-    interests: string[],
+    interests: string[]
   ): Observable<{ message: string }> {
     return this.http.patch<{ message: string }>(
       this.apiEndPoint + '/api/users/profile',
@@ -136,7 +134,7 @@ export class ApiService {
         lastName: lastName,
         interests: interests,
       },
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
@@ -144,7 +142,7 @@ export class ApiService {
     return this.http.patch<LimeEvent>(
       this.apiEndPoint + '/api/events/joinEvent',
       { eventId: eventId, userId: userId },
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
@@ -152,7 +150,7 @@ export class ApiService {
     return this.http.patch<LimeEvent>(
       this.apiEndPoint + '/api/events/leaveEvent',
       { eventId: eventId, userId: userId },
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
@@ -164,17 +162,18 @@ export class ApiService {
     eventLocation: string,
     eventTypes: string[],
     eventCost: string,
+    advertise: boolean = false
   ): Observable<LimeEvent> {
     return this.http.patch<LimeEvent>(
       this.apiEndPoint + `/api/events/id=${eventId}`,
-      { 
+      {
         eventName: eventName,
         eventDescription: eventDescription,
         eventDate: eventDate,
         eventLocation: eventLocation,
         eventTypes: eventTypes,
         eventCost: eventCost,
-        
+        advertise: advertise,
       },
       { withCredentials: true }
     );
@@ -183,14 +182,14 @@ export class ApiService {
   userSearch(queryString: string): Observable<User[]> {
     return this.http.get<User[]>(
       this.apiEndPoint + `/api/users/usersearch/queryString=${queryString}`,
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
   submitChatReport(
     reportedUsername: string,
     messageTxt: string,
-    optionalMsgString: string,
+    optionalMsgString: string
   ): Observable<{ message: string }> {
     return this.http.post<{ message: string }>(
       this.apiEndPoint + `/api/users/report`,
@@ -201,13 +200,13 @@ export class ApiService {
       },
       {
         withCredentials: true,
-      },
+      }
     );
   }
 
   submitProfileReport(
     reportedUsername: string,
-    messageTxt: string,
+    messageTxt: string
   ): Observable<{ message: string }> {
     return this.http.post<{ message: string }>(
       this.apiEndPoint + `/api/users/report`,
@@ -217,7 +216,7 @@ export class ApiService {
       },
       {
         withCredentials: true,
-      },
+      }
     );
   }
 
@@ -225,7 +224,7 @@ export class ApiService {
     return this.http.patch<{ message: string }>(
       this.apiEndPoint + `/api/users/block`,
       { blockedUserId: userId },
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
@@ -233,7 +232,7 @@ export class ApiService {
     return this.http.patch<{ message: string }>(
       this.apiEndPoint + `/api/users/unblock`,
       { blockedUserId: userId },
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
@@ -250,8 +249,8 @@ export class ApiService {
     eventLocation: string,
     eventTypes: string[],
     userId: string,
-    advertise: boolean,
     eventCost: string,
+    advertise: boolean
   ): Observable<LimeEvent> {
     return this.http.post<LimeEvent>(
       this.apiEndPoint + '/api/events',
@@ -261,11 +260,11 @@ export class ApiService {
         eventDate: eventDate,
         eventLocation: eventLocation,
         eventTypes: eventTypes,
+        eventCost: eventCost,
         advertise: advertise,
         userId: userId,
-        eventCost: eventCost,
       },
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
@@ -291,7 +290,7 @@ export class ApiService {
     eventDateMin: string = '',
     eventDateMax: string = '',
     eventLocation: string = '',
-    eventTypes: string[] = [],
+    eventTypes: string[] = []
   ): Observable<LimeEvent[]> {
     let filter = this.createQueryString('', 'userId', userId);
     filter = this.createQueryString(filter, 'sort', sort);
@@ -303,7 +302,7 @@ export class ApiService {
       this.apiEndPoint + '/api/events/' + filter,
       {
         withCredentials: true,
-      },
+      }
     );
   }
 
@@ -312,7 +311,7 @@ export class ApiService {
       this.apiEndPoint + '/api/events/recommended',
       {
         withCredentials: true,
-      },
+      }
     );
   }
 
@@ -321,13 +320,13 @@ export class ApiService {
       this.apiEndPoint + '/api/events/advertised',
       {
         withCredentials: true,
-      },
+      }
     );
   }
 
   getEventsByName(
     eventName: string,
-    allEvents: boolean,
+    allEvents: boolean
   ): Observable<LimeEvent[]> {
     let filter = allEvents
       ? ''
@@ -341,7 +340,7 @@ export class ApiService {
         filter,
       {
         withCredentials: true,
-      },
+      }
     );
   }
 
@@ -350,7 +349,7 @@ export class ApiService {
       this.apiEndPoint + '/api/events/' + eventId,
       {
         withCredentials: true,
-      },
+      }
     );
   }
 }

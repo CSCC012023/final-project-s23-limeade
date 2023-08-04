@@ -1,8 +1,9 @@
 form {
+  margin-top: 40px;
   max-width: 400px;
 }
 
-.form-row {
+.form-group, .form-row {
   margin-bottom: 15px;
 }
 
@@ -15,8 +16,9 @@ label {
 input[type="text"] {
   width: 100%;
   padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  border: none; /* Remove the default border */
+  border-bottom: 1px solid var(--color-base); /* Add a dark bottom border */
+  background-color: transparent; /* Make the background transparent */
 }
 
 .form-column {
@@ -25,14 +27,14 @@ input[type="text"] {
 }
 
 button[type="submit"] {
+  margin: 10px 0 0;
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color: var(--color-success);
   color: #fff;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
 }
 
 button[type="submit"]:hover {
-  background-color: #45a049;
+  filter: saturate(140%);
 }

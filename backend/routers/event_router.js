@@ -187,6 +187,7 @@ eventsRouter.patch("/id=:id", async (req, res) => {
   event.eventLocation = req.body.eventLocation;
   event.eventTypes = req.body.eventTypes;
   event.eventCost = req.body.eventCost;
+  event.advertise = req.body.advertise;
 
   try {
     await event.save();

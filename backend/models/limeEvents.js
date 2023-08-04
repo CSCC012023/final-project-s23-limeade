@@ -25,6 +25,10 @@ const limeEventSchema = new mongoose.Schema({
       default: [],
     },
   ],
+  eventCost: {
+    type: String,
+    required: true,
+  },
   interestedUsers: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -39,10 +43,6 @@ const limeEventSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true,
-  },
-  eventCost: {
-    type: String,
     required: true,
   },
 });

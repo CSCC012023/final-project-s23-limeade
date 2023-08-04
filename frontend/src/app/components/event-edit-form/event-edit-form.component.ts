@@ -17,7 +17,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-event-edit-form',
   templateUrl: './event-edit-form.component.html',
-  styleUrls: ['./event-edit-form.component.css']
+  styleUrls: ['./event-edit-form.component.css'],
 })
 export class EventEditFormComponent {
   eventForm!: FormGroup;
@@ -37,18 +37,30 @@ export class EventEditFormComponent {
   }
 
   ngOnInit() {
-
     this.eventForm = this.formBuilder.group({
       eventName: [this.event.eventName, [Validators.required]],
       eventDescription: [this.event.eventDescription, [Validators.required]],
-      eventDate: ['', [Validators.required]],
+      eventDate: [
+        new Date(this.event.eventDate).toISOString().slice(0, -8),
+        [Validators.required],
+      ],
       eventLocation: [this.event.eventLocation, [Validators.required]],
       eventCost: [this.event.eventCost, [Validators.required]],
       eventTypes: this.formBuilder.array([
         new FormControl('', [Validators.required]),
       ]),
+      advertise: [this.event.advertise],
     });
 
+    if (this.event.eventTypes.length > 0) {
+      for (let i = 0; i < this.event.eventTypes.length; i++) {
+        if (i == 0) {
+          this.eventTypes.controls[i].setValue(this.event.eventTypes[i]);
+        } else {
+          this.addRelatedInterest(this.event.eventTypes[i]);
+        }
+      }
+    }
 
     this.api.getInterests().subscribe((next) => {
       this.interests = next;
@@ -59,11 +71,18 @@ export class EventEditFormComponent {
     return this.eventForm.controls['eventTypes'] as FormArray<FormControl>;
   }
 
-  addRelatedInterest() {
+  removeRelatedInterest(index: number) {
     const eventTypes = this.eventForm.get(
       'eventTypes'
     ) as FormArray<FormControl>;
-    eventTypes.push(new FormControl(''));
+    eventTypes.removeAt(index);
+  }
+
+  addRelatedInterest(interest = '') {
+    const eventTypes = this.eventForm.get(
+      'eventTypes'
+    ) as FormArray<FormControl>;
+    eventTypes.push(new FormControl(interest));
   }
 
   onSubmit() {
@@ -83,6 +102,7 @@ export class EventEditFormComponent {
         values.eventLocation,
         uniqueTypes,
         values.eventCost,
+        values.advertise
       )
       .subscribe((next) => {
         this.event = next;
