@@ -178,7 +178,7 @@ eventsRouter.patch("/leaveEvent", async (req, res) => {
 
 eventsRouter.patch("/id=:id", async (req, res) => {
   const event = await limeEvent.findById(req.params.id);
-  if(!event) {
+  if (!event) {
     return res.status(404).json({ error: "Cannot find event" });
   }
   event.eventName = req.body.eventName;
