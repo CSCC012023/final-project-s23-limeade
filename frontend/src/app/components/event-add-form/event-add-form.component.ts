@@ -88,8 +88,8 @@ export class EventAddFormComponent {
         values.eventLocation,
         uniqueTypes,
         this.api.userId,
-        values.advertise,
         values.eventCost,
+        values.advertise,
       )
       .subscribe((next) => {
         this.router.navigate(['/event-home']);
