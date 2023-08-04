@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LimeEvent } from 'src/app/classes/limeEvent';
+import { User } from 'src/app/classes/user';
 import {
   FormBuilder,
   FormGroup,
@@ -13,40 +15,51 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-event-add-form',
-  templateUrl: './event-add-form.component.html',
-  styleUrls: ['./event-add-form.component.css'],
+  selector: 'app-event-edit-form',
+  templateUrl: './event-edit-form.component.html',
+  styleUrls: ['./event-edit-form.component.css'],
 })
-export class EventAddFormComponent {
+export class EventEditFormComponent {
   eventForm!: FormGroup;
   interests: string[] = [];
   error: string = '';
   sRegex: RegExp = /s$/i;
+  @Input() event!: LimeEvent;
+  @Output() eventChange = new EventEmitter<LimeEvent>();
 
   constructor(
     private formBuilder: FormBuilder,
     private api: ApiService,
     private router: Router,
-    private library: FaIconLibrary,
+    private library: FaIconLibrary
   ) {
     library.addIcons(faPlus);
   }
 
   ngOnInit() {
     this.eventForm = this.formBuilder.group({
-      eventName: ['', [Validators.required]],
-      eventDescription: ['', [Validators.required]],
-      eventDate: [new Date().toISOString().slice(0, -8), [Validators.required]],
-      eventLocation: ['', [Validators.required]],
-      eventCost: ['', [Validators.required]],
+      eventName: [this.event.eventName, [Validators.required]],
+      eventDescription: [this.event.eventDescription, [Validators.required]],
+      eventDate: [
+        new Date(this.event.eventDate).toISOString().slice(0, -8),
+        [Validators.required],
+      ],
+      eventLocation: [this.event.eventLocation, [Validators.required]],
+      eventCost: [this.event.eventCost, [Validators.required]],
       eventTypes: this.formBuilder.array([
         new FormControl('', [Validators.required]),
       ]),
-      advertise: [false],
+      advertise: [this.event.advertise],
     });
 
-    if (this.api.type === 'Premium') {
-      this.eventForm.addControl('advertise', new FormControl(false));
+    if (this.event.eventTypes.length > 0) {
+      for (let i = 0; i < this.event.eventTypes.length; i++) {
+        if (i == 0) {
+          this.eventTypes.controls[i].setValue(this.event.eventTypes[i]);
+        } else {
+          this.addRelatedInterest(this.event.eventTypes[i]);
+        }
+      }
     }
 
     this.api.getInterests().subscribe((next) => {
@@ -60,16 +73,16 @@ export class EventAddFormComponent {
 
   removeRelatedInterest(index: number) {
     const eventTypes = this.eventForm.get(
-      'eventTypes',
+      'eventTypes'
     ) as FormArray<FormControl>;
     eventTypes.removeAt(index);
   }
 
-  addRelatedInterest() {
+  addRelatedInterest(interest = '') {
     const eventTypes = this.eventForm.get(
-      'eventTypes',
+      'eventTypes'
     ) as FormArray<FormControl>;
-    eventTypes.push(new FormControl(''));
+    eventTypes.push(new FormControl(interest));
   }
 
   onSubmit() {
@@ -81,18 +94,19 @@ export class EventAddFormComponent {
     let uniqueTypes = [...new Set(values.eventTypes)] as string[];
     uniqueTypes = uniqueTypes.filter((interest) => interest !== '');
     this.api
-      .addEvent(
+      .editEvent(
+        this.event._id,
         values.eventName,
         values.eventDescription,
         values.eventDate,
         values.eventLocation,
         uniqueTypes,
-        this.api.userId,
-        values.advertise,
         values.eventCost,
+        values.advertise
       )
       .subscribe((next) => {
-        this.router.navigate(['/event-home']);
+        this.event = next;
+        this.eventChange.emit(this.event);
       });
   }
 }

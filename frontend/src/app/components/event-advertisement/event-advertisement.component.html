@@ -1,4 +1,4 @@
-<div class="banner" (click)="seeEvent()">
+<div *ngIf="showBanner" class="banner" (click)="seeEvent()">
   <div class="row">
     <h2>{{ event.eventName }}</h2>
     <div *ngFor="let type of event.eventTypes" class="type">

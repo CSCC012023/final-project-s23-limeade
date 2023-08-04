@@ -1,6 +1,12 @@
 <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
   <label for="eventName">Event Name</label>
-  <input type="text" formControlName="eventName" id="eventName" required />
+  <input
+    type="text"
+    formControlName="eventName"
+    id="eventName"
+    placeholder="{{ event.eventName }}"
+    required
+  />
 
   <label for="eventDescription">Description</label>
   <textarea
@@ -26,12 +32,7 @@
     required
   />
   <label for="eventLocation">Cost</label>
-  <input
-    type="text"
-    formControlName="eventCost"
-    id="eventCost"
-    required
-  />
+  <input type="text" formControlName="eventCost" id="eventCost" required />
   <ng-container *ngIf="interests.length > 0">
     <label for="eventTypes">Event Type</label>
     <ng-container formArrayName="eventTypes">

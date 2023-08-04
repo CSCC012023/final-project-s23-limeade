@@ -49,6 +49,7 @@ button {
 
 .filter-button {
   margin-top: 10px;
+  margin-bottom: 5px;
   padding: 0;
   border: none;
   background: none;
@@ -98,4 +99,14 @@ form input::placeholder {
 .msg {
   margin: 5px 0;
   font-size: 0.9em;
+}
+.event-edit-button {
+  margin-left: 10px;
+  background-color: yellow;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }

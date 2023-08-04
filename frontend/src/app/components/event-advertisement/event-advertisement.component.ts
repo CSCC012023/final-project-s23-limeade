@@ -10,6 +10,7 @@ import { LimeEvent } from 'src/app/classes/limeEvent';
 })
 export class EventAdvertisementComponent {
   event!: LimeEvent;
+  showBanner: boolean = false;
   sRegex: RegExp = /s$/i;
 
   constructor(
@@ -19,7 +20,16 @@ export class EventAdvertisementComponent {
 
   ngOnInit() {
     this.api.getAdvertisedEvent().subscribe((next) => {
+
       this.event = next[0];
+
+      if(this.event)
+        this.showBanner = true;
+
+      const date: Date = new Date(this.event.eventDate);
+      if (date.toISOString() === this.event.eventDate) {
+        this.event.eventDate = date.toLocaleString();
+      }
     });
   }
 

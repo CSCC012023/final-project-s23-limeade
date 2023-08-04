@@ -12,7 +12,7 @@ const limeEventSchema = new mongoose.Schema({
   },
   eventDate: {
     type: Date,
-    //required:true,
+    required: true,
   },
   eventLocation: {
     required: true,
@@ -25,6 +25,10 @@ const limeEventSchema = new mongoose.Schema({
       default: [],
     },
   ],
+  eventCost: {
+    type: String,
+    required: true,
+  },
   interestedUsers: [
     {
       type: mongoose.Schema.Types.ObjectId,

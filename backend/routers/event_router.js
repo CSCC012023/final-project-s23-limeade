@@ -128,12 +128,10 @@ eventsRouter.post("/", async (req, res) => {
     eventDate: req.body.eventDate,
     eventLocation: req.body.eventLocation,
     eventTypes: req.body.eventTypes,
+    eventCost: req.body.eventCost,
+    advertise: req.body.advertise,
     userId: req.body.userId,
   });
-
-  if (req.body.advertise) {
-    event.advertise = req.body.advertise;
-  }
 
   try {
     await event.save();
@@ -148,24 +146,6 @@ eventsRouter.get("/:id", async (req, res) => {
   const event = await limeEvent.findById(req.params.id);
   return res.json(event);
 });
-
-/*eventsRouter.patch("/interested", async (req, res) => {
-  const event = await limeEvent.findById(req.body.eventId);
-  
-  if(req.body.action === "add" && !event.interestedUsers.includes(req.body.userId)){
-    event.interestedUsers.push(req.body.userId);
-  } else if(req.body.action === "remove"){
-    event.interestedUsers = event.interestedUsers.filter((userId) => userId !== req.body.userId);
-  }
-
-  try {
-    await event.save();
-  } catch (err) {
-    return res.status(422).json(err);
-  }
-
-  return res.json(event);
-});*/
 
 eventsRouter.patch("/joinEvent", async (req, res) => {
   const event = await limeEvent.findById(req.body.eventId);
@@ -196,12 +176,18 @@ eventsRouter.patch("/leaveEvent", async (req, res) => {
   return res.json(event);
 });
 
-eventsRouter.patch("/:id", async (req, res) => {
+eventsRouter.patch("/id=:id", async (req, res) => {
   const event = await limeEvent.findById(req.params.id);
+  if (!event) {
+    return res.status(404).json({ error: "Cannot find event" });
+  }
   event.eventName = req.body.eventName;
   event.eventDescription = req.body.eventDescription;
   event.eventDate = req.body.eventDate;
   event.eventLocation = req.body.eventLocation;
+  event.eventTypes = req.body.eventTypes;
+  event.eventCost = req.body.eventCost;
+  event.advertise = req.body.advertise;
 
   try {
     await event.save();

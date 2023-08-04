@@ -41,6 +41,7 @@ import { MyInvitesComponent } from './pages/my-invites/my-invites.component';
 import { InviteCardComponent } from './components/invite-card/invite-card.component';
 import { InterestFilterFormComponent } from './components/interest-filter-form/interest-filter-form.component';
 import { EventAdvertisementComponent } from './components/event-advertisement/event-advertisement.component';
+import { EventEditFormComponent } from './components/event-edit-form/event-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { EventAdvertisementComponent } from './components/event-advertisement/ev
     InviteCardComponent,
     InterestFilterFormComponent,
     EventAdvertisementComponent,
+    EventEditFormComponent,
   ],
   imports: [
     FormsModule,

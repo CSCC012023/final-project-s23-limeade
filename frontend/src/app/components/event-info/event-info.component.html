@@ -1,14 +1,19 @@
 <div class="event-info-card card">
-  <h2 class="row-spacing">{{ event.eventName }}</h2>
+  <h2 class="row-spacing">
+    {{ event.eventName }}
+    <button
+      *ngIf="api.userId == user._id"
+      class="event-edit-button"
+      (click)="toggleEditForm()"
+    >
+      Edit
+    </button>
+  </h2>
   <div class="row">
     <label>Date</label>
     <div class="field">{{ event.eventDate }}</div>
     <label>Location</label>
     <div class="field">{{ event.eventLocation }}</div>
-  </div>
-  <div class="row">
-    <label>Owner</label>
-    <div class="field">{{ user.username }}</div>
   </div>
   <div class="row">
     <label>{{
@@ -19,10 +24,18 @@
       {{ interest.replace(sRegex, "") }}
     </div>
   </div>
+  <div class="row">
+    <label>Event Cost</label>
+    <div class="field">{{ event.eventCost }}</div>
+  </div>
+  <div class="row">
+    <label>Owner</label>
+    <div class="field">{{ user.username }}</div>
+  </div>
   <label>Description</label>
   <div class="field row-spacing">{{ event.eventDescription }}</div>
   <button
-    class="filter-button row-spacing"
+    class="filter-button"
     [ngClass]="{ 'filter-selected': showFilterForm }"
     (click)="showFilterForm = !showFilterForm"
   >
@@ -61,4 +74,11 @@
       {{ inviteFeedback }}
     </p>
   </form>
+
+  <div *ngIf="toggleEdit" id="event-edit-form">
+    <app-event-edit-form
+      [event]="event"
+      (eventChange)="handleEventChange($event)"
+    ></app-event-edit-form>
+  </div>
 </div>
