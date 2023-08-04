@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { LimeEvent } from 'src/app/classes/limeEvent';
 import { User } from 'src/app/classes/user';
+import { Location } from '@angular/common';
 import { InvitationServiceService } from 'src/app/services/invitation-service.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
@@ -19,13 +20,15 @@ export class EventInfoComponent {
   interestedUsers: any[] = [];
   permanentInterestedUsers: any[] = [];
   sRegex: RegExp = /s$/i;
+  toggleEdit: boolean = false;
+  canEdit: boolean = false;
   invUsername: string = '';
   inviteError: string = '';
   inviteFeedback: string = '';
   showFilterForm: boolean = false;
 
   constructor(
-    private api: ApiService,
+    private api: ApiService, private location: Location,
     private invitationService: InvitationServiceService,
     private library: FaIconLibrary,
   ) {
@@ -35,6 +38,10 @@ export class EventInfoComponent {
   ngOnInit(): void {
     if (this.event.interestedUsers.includes(this.api.userId)) {
       this.userJoined = true;
+    }
+
+    if (this.event.userId === this.api.userId) {
+      this.canEdit = true;
     }
 
     this.event.interestedUsers.forEach((userId: string) => {
@@ -77,6 +84,19 @@ export class EventInfoComponent {
         this.permanentInterestedUsers = [...this.interestedUsers];
       });
     });
+  }
+
+  toggleEditForm() {
+    this.toggleEdit = !this.toggleEdit;
+  }
+
+  handleEventChange(event: LimeEvent) {
+    this.event = event;
+    const date: Date = new Date(this.event.eventDate);
+    if (date.toISOString() === this.event.eventDate) {
+      this.event.eventDate = date.toLocaleString();
+    }
+    this.toggleEditForm();
   }
 
   sendInvite() {

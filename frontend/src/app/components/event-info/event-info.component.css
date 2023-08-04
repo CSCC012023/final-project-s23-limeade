@@ -99,3 +99,12 @@ form input::placeholder {
   margin: 5px 0;
   font-size: 0.9em;
 }
+.event-edit-button {
+  background-color: yellow;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

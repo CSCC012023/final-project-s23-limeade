@@ -1,5 +1,5 @@
 <div class="event-info-card card">
-  <h2 class="row-spacing">{{ event.eventName }}</h2>
+  <h2 class="row-spacing">{{ event.eventName }} <button class="event-edit-button" (click)="toggleEditForm()">Edit</button></h2>
   <div class="row">
     <label>Date</label>
     <div class="field">{{ event.eventDate }}</div>
@@ -21,6 +21,10 @@
   </div>
   <label>Description</label>
   <div class="field row-spacing">{{ event.eventDescription }}</div>
+  <div class="row">
+    <label>Event Cost</label>
+    <div class="field">{{ event.eventCost }}</div>
+  </div>
   <button
     class="filter-button row-spacing"
     [ngClass]="{ 'filter-selected': showFilterForm }"
@@ -61,4 +65,8 @@
       {{ inviteFeedback }}
     </p>
   </form>
+
+  <div *ngIf="toggleEdit" id="event-edit-form">
+    <app-event-edit-form [event]="event" (eventChange)="handleEventChange($event)"></app-event-edit-form>
+  </div>
 </div>

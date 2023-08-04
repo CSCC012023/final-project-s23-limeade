@@ -156,6 +156,30 @@ export class ApiService {
     );
   }
 
+  editEvent(
+    eventId: string,
+    eventName: string,
+    eventDescription: string,
+    eventDate: string,
+    eventLocation: string,
+    eventTypes: string[],
+    eventCost: string,
+  ): Observable<LimeEvent> {
+    return this.http.patch<LimeEvent>(
+      this.apiEndPoint + `/api/events/id=${eventId}`,
+      { 
+        eventName: eventName,
+        eventDescription: eventDescription,
+        eventDate: eventDate,
+        eventLocation: eventLocation,
+        eventTypes: eventTypes,
+        eventCost: eventCost,
+        
+      },
+      { withCredentials: true }
+    );
+  }
+
   userSearch(queryString: string): Observable<User[]> {
     return this.http.get<User[]>(
       this.apiEndPoint + `/api/users/usersearch/queryString=${queryString}`,
@@ -226,7 +250,8 @@ export class ApiService {
     eventLocation: string,
     eventTypes: string[],
     userId: string,
-    advertise: boolean = false,
+    advertise: boolean,
+    eventCost: string,
   ): Observable<LimeEvent> {
     return this.http.post<LimeEvent>(
       this.apiEndPoint + '/api/events',
@@ -238,6 +263,7 @@ export class ApiService {
         eventTypes: eventTypes,
         advertise: advertise,
         userId: userId,
+        eventCost: eventCost,
       },
       { withCredentials: true },
     );
