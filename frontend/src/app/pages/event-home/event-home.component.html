@@ -1,0 +1,65 @@
+<div *ngIf="api.loggedIn" class="row event-body">
+  <div class="col-10 col-sm-12">
+    <app-event-recommended-carousel></app-event-recommended-carousel>
+  </div>
+</div>
+
+<div class="row event-body">
+  <div class="col-10 col-sm-12">
+    <app-event-advertisement></app-event-advertisement>
+  </div>
+</div>
+
+<div class="row button-bar">
+  <div class="col-10 col-sm-12 row inner-button-bar">
+    <div class="search-container">
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search..."
+        class="search-bar"
+      />
+      <button
+        *ngIf="searchText"
+        id="event-clear-btn"
+        (click)="clearSearch()"
+      ></button>
+      <button id="event-search-btn" (click)="getEventsByName()">Search</button>
+    </div>
+    <button
+      class="filter-button"
+      [ngClass]="{ 'filter-selected': showFilterForm }"
+      (click)="showFilterForm = !showFilterForm"
+    >
+      Filter <fa-icon class="filter-icon" icon="sliders" size="1x"></fa-icon>
+    </button>
+    <button [ngClass]="{ selected: allEvents }" (click)="getAllEvents()">
+      All Events
+    </button>
+    <button [ngClass]="{ selected: !allEvents }" (click)="getMyEvents()">
+      My Events
+    </button>
+  </div>
+</div>
+
+<div class="row event-body">
+  <div class="col-10 col-sm-12">
+    <div class="filter-form">
+      <app-event-filter-form
+        *ngIf="showFilterForm"
+        (filter)="filterEvents($event)"
+      ></app-event-filter-form>
+    </div>
+    <h2 *ngIf="allEvents">All Events</h2>
+    <h2 *ngIf="!allEvents">My Events</h2>
+    <div class="large-event-container" *ngIf="largeEvent">
+      <app-large-event-card [event]="largeEvent"></app-large-event-card>
+    </div>
+
+    <div class="small-card-list">
+      <div *ngFor="let event of events" class="event-card">
+        <app-event-card [event]="event"></app-event-card>
+      </div>
+    </div>
+  </div>
+</div>

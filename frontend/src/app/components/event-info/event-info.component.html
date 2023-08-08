@@ -1,0 +1,84 @@
+<div class="event-info-card card">
+  <h2 class="row-spacing">
+    {{ event.eventName }}
+    <button
+      *ngIf="api.userId == user._id"
+      class="event-edit-button"
+      (click)="toggleEditForm()"
+    >
+      Edit
+    </button>
+  </h2>
+  <div class="row">
+    <label>Date</label>
+    <div class="field">{{ event.eventDate }}</div>
+    <label>Location</label>
+    <div class="field">{{ event.eventLocation }}</div>
+  </div>
+  <div class="row">
+    <label>{{
+      event.eventTypes.length > 1 ? "Event Types" : "Event Type"
+    }}</label>
+    <div *ngIf="event.eventTypes.length === 0" class="field">N/A</div>
+    <div class="field-small type" *ngFor="let interest of event.eventTypes">
+      {{ interest.replace(sRegex, "") }}
+    </div>
+  </div>
+  <div class="row">
+    <label>Event Cost</label>
+    <div class="field">{{ event.eventCost }}</div>
+  </div>
+  <div class="row">
+    <label>Owner</label>
+    <div class="field">{{ user.username }}</div>
+  </div>
+  <label>Description</label>
+  <div class="field row-spacing">{{ event.eventDescription }}</div>
+  <button
+    class="filter-button"
+    [ngClass]="{ 'filter-selected': showFilterForm }"
+    (click)="showFilterForm = !showFilterForm"
+  >
+    Filter Interested Users
+    <fa-icon class="filter-icon" icon="sliders" size="1x"></fa-icon>
+  </button>
+  <app-interest-filter-form
+    *ngIf="showFilterForm"
+    class="row-spacing"
+    (selected)="filterUsersByInterest($event)"
+  ></app-interest-filter-form>
+  <div class="row">
+    <label>Interested Users</label>
+    <div class="field-small user" *ngFor="let user of interestedUsers">
+      {{ user.username }}
+    </div>
+  </div>
+  <button class="row-spacing" *ngIf="!userJoined" (click)="joinEvent()">
+    Join
+  </button>
+  <button class="row-spacing" *ngIf="userJoined" (click)="leaveEvent()">
+    Leave
+  </button>
+  <form class="row invite-form" (submit)="sendInvite()">
+    <input
+      type="text"
+      [(ngModel)]="invUsername"
+      name="invUsername"
+      placeholder="Enter a username"
+    />
+    <button type="submit">Send Invite</button>
+    <p *ngIf="inviteError" class="error msg" name="inviteError">
+      {{ inviteError }}
+    </p>
+    <p *ngIf="inviteFeedback" class="msg" name="inviteFeedback">
+      {{ inviteFeedback }}
+    </p>
+  </form>
+
+  <div *ngIf="toggleEdit" id="event-edit-form">
+    <app-event-edit-form
+      [event]="event"
+      (eventChange)="handleEventChange($event)"
+    ></app-event-edit-form>
+  </div>
+</div>

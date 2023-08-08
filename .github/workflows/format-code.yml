@@ -1,0 +1,26 @@
+name: Format Code
+
+on:
+  push:
+    branches:
+      - development
+  pull_request:
+    branches:
+      - development
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Run prettier
+        uses: creyD/prettier_action@v4.3
+        with:
+          commit_message: "chore: run prettier"
