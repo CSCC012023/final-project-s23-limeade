@@ -1,3 +1,7 @@
+.row {
+  justify-content: center;
+}
+
 a {
   margin-left: 20px;
 }

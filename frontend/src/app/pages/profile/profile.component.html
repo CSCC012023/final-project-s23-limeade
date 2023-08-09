@@ -1,13 +1,19 @@
-<a *ngIf="api.type === 'Basic'" routerLink="/premium-signup"
-  >Switch to Premium</a
->
-<a *ngIf="api.type === 'Premium'" (click)="setToBasic()">Switch to Basic</a>
+<div class="row">
+  <div class="col-10 col-sm-12">
+    <a *ngIf="api.type === 'Basic'" routerLink="/premium-signup"
+      >Switch to Premium</a
+    >
+    <a *ngIf="api.type === 'Premium'" class="link" (click)="setToBasic()"
+      >Switch to Basic</a
+    >
+  </div>
+</div>
 
 <div *ngIf="!editMode" class="profile-container">
   <!-- Display profile information -->
   <div class="profile-box">
     <h2>{{ user.username }}</h2>
-    <h3>Membership Type: {{user.type}}</h3>
+    <strong>Membership Type:</strong> {{ user.type }}
     <div class="profile-details">
       <p><strong>First Name:</strong> {{ user.firstName }}</p>
       <p><strong>Last Name:</strong> {{ user.lastName }}</p>
