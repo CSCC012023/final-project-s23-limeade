@@ -73,11 +73,13 @@ button:enabled {
   cursor: pointer;
 }
 
-a:link {
+a:link, .link {
   color: var(--color-1);
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-a:visited {
+a:visited, .link:visited {
   color: var(--color-2);
 }
 
