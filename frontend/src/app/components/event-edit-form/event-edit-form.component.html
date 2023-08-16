@@ -1,0 +1,80 @@
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+  <label for="eventName">Event Name</label>
+  <input
+    type="text"
+    formControlName="eventName"
+    id="eventName"
+    placeholder="{{ event.eventName }}"
+    required
+  />
+
+  <label for="eventDescription">Description</label>
+  <textarea
+    formControlName="eventDescription"
+    id="eventDescription"
+    required
+  ></textarea>
+
+  <label for="eventDate">Date</label>
+  <input
+    type="datetime-local"
+    formControlName="eventDate"
+    id="eventDate"
+    min="2000-01-01T00:00"
+    required
+  />
+
+  <label for="eventLocation">Location</label>
+  <input
+    type="text"
+    formControlName="eventLocation"
+    id="eventLocation"
+    required
+  />
+  <label for="eventLocation">Cost</label>
+  <input type="text" formControlName="eventCost" id="eventCost" required />
+  <ng-container *ngIf="interests.length > 0">
+    <label for="eventTypes">Event Type</label>
+    <ng-container formArrayName="eventTypes">
+      <div
+        class="event-type-container"
+        *ngFor="let control of eventTypes.controls; let i = index"
+      >
+        <select [formControlName]="i">
+          <option *ngFor="let interest of interests" [value]="interest">
+            {{ interest.replace(sRegex, "") }}
+          </option>
+        </select>
+        <button
+          *ngIf="eventTypes.length > 1"
+          type="button"
+          class="remove-interest-button"
+          (click)="removeRelatedInterest(i)"
+        ></button>
+      </div>
+      <button
+        type="button"
+        class="add-interest-button"
+        [disabled]="eventTypes.length === interests.length"
+        (click)="addRelatedInterest()"
+      >
+        <fa-icon id="add-interest-icon" icon="plus" size="1x"></fa-icon>
+      </button>
+    </ng-container>
+  </ng-container>
+
+  <div class="row">
+    <label for="advertise">Advertise Event</label>
+    <div class="line"></div>
+    <input type="checkbox" formControlName="advertise" id="advertise" />
+  </div>
+
+  <div class="error" *ngIf="eventForm.invalid">
+    Please fill in all required fields.
+  </div>
+
+  <button type="submit">Submit</button>
+  <div class="error">
+    {{ error }}
+  </div>
+</form>

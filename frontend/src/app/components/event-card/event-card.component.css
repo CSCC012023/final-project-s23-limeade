@@ -1,0 +1,11 @@
+.event-card {
+  position: relative;
+  min-height: 80px;
+  padding: 8px;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}

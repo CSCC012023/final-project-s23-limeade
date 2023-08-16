@@ -1,0 +1,8 @@
+<div class="invite-card card">
+  <h3>You've been invited to an event: {{ eventName }}</h3>
+  <p><strong>Invited by:</strong> {{ inviterName }}</p>
+  <div class="grid">
+    <button class="green-button" (click)="onVisitClicked()">Visit</button>
+    <button class="red-button" (click)="onDeclineClicked()">Decline</button>
+  </div>
+</div>
